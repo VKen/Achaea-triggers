@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE muclient>
+<!-- Saved on Sunday, May 17, 2009, 5:01 PM -->
+<!-- MuClient version 4.37 -->
+<!-- Written by Nick Gammon -->
+<!-- Home Page: http://www.mushclient.com/ -->
+<muclient>
+
+<!-- macros -->
+
+<macros
+   muclient_version="4.37"
+   world_file_version="15"
+   date_saved="2009-05-17 17:01:43"
+  >
+
+  <macro name="up" type="send_now" >
+  <send>up</send>
+
+  </macro>
+
+  <macro name="down" type="send_now" >
+  <send>down</send>
+
+  </macro>
+
+  <macro name="north" type="send_now" >
+  <send>north</send>
+
+  </macro>
+
+  <macro name="south" type="send_now" >
+  <send>south</send>
+
+  </macro>
+
+  <macro name="east" type="send_now" >
+  <send>east</send>
+
+  </macro>
+
+  <macro name="west" type="send_now" >
+  <send>west</send>
+
+  </macro>
+
+  <macro name="examine" type="replace" >
+  <send>examine </send>
+
+  </macro>
+
+  <macro name="look" type="replace" >
+  <send>look </send>
+
+  </macro>
+
+  <macro name="page" type="replace" >
+  <send>page </send>
+
+  </macro>
+
+  <macro name="say" type="replace" >
+  <send>say </send>
+
+  </macro>
+
+  <macro name="whisper" type="replace" >
+  <send>whisper </send>
+
+  </macro>
+
+  <macro name="doing" type="send_now" >
+  <send>DOING</send>
+
+  </macro>
+
+  <macro name="who" type="send_now" >
+  <send>WHO</send>
+
+  </macro>
+
+  <macro name="drop" type="replace" >
+  <send>drop </send>
+
+  </macro>
+
+  <macro name="take" type="replace" >
+  <send>take </send>
+
+  </macro>
+
+  <macro name="F2+Shift" type="send_now" >
+  <send>!eva</send>
+
+  </macro>
+
+  <macro name="F3+Shift" type="send_now" >
+  <send>!evl</send>
+
+  </macro>
+
+  <macro name="F4+Shift" type="send_now" >
+  <send>!evgs</send>
+
+  </macro>
+
+  <macro name="F5+Shift" type="send_now" >
+  <send>!evac</send>
+
+  </macro>
+
+  <macro name="F6+Shift" type="send_now" >
+  <send>!eves</send>
+
+  </macro>
+
+  <macro name="F7+Shift" type="send_now" >
+  <send>!evxp</send>
+
+  </macro>
+
+  <macro name="F8+Shift" type="send_now" >
+  <send>!evkp</send>
+
+  </macro>
+
+  <macro name="logout" type="send_now" >
+  <send>LOGOUT</send>
+
+  </macro>
+
+  <macro name="quit" type="send_now" >
+  <send>QUIT</send>
+
+  </macro>
+
+  <macro name="Alt+A" type="send_now" >
+  <send>atk</send>
+
+  </macro>
+
+  <macro name="Alt+L" type="send_now" >
+  <send>!ts</send>
+
+  </macro>
+
+  <macro name="Alt+M" type="send_now" >
+  <send>!em</send>
+
+  </macro>
+
+  <macro name="Alt+N" type="send_now" >
+  <send>!sm</send>
+
+  </macro>
+
+  <macro name="Alt+O" type="send_now" >
+  <send>!im</send>
+
+  </macro>
+
+  <macro name="Alt+P" type="send_now" >
+  <send>!ds</send>
+
+  </macro>
+
+  <macro name="Alt+Q" type="send_now" >
+  <send>!ath</send>
+
+  </macro>
+
+  <macro name="Alt+R" type="send_now" >
+  <send>!sa</send>
+
+  </macro>
+
+  <macro name="Alt+S" type="send_now" >
+  <send>!l</send>
+
+  </macro>
+
+  <macro name="Alt+T" type="send_now" >
+  <send>!bc</send>
+
+  </macro>
+
+  <macro name="Alt+U" type="send_now" >
+  <send>!sam</send>
+
+  </macro>
+
+  <macro name="Alt+X" type="send_now" >
+  <send>!rz</send>
+
+  </macro>
+
+  <macro name="Alt+Y" type="send_now" >
+  <send>!en</send>
+
+  </macro>
+
+  <macro name="Alt+Z" type="send_now" >
+  <send>rsl</send>
+
+  </macro>
+
+  <macro name="F1+Ctrl" type="send_now" >
+  <send>!evdd</send>
+
+  </macro>
+
+  <macro name="F1+Shift" type="send_now" >
+  <send>!evdd</send>
+
+  </macro>
+</macros>
+</muclient>

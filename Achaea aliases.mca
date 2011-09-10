@@ -1,0 +1,3182 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE muclient>
+<!-- Saved on Monday, May 25, 2009, 12:33 AM -->
+<!-- MuClient version 4.37 -->
+<!-- Written by Nick Gammon -->
+<!-- Home Page: http://www.mushclient.com/ -->
+<muclient>
+
+<!-- aliases -->
+
+<aliases
+   muclient_version="4.37"
+   world_file_version="15"
+   date_saved="2009-05-25 00:33:28"
+  >
+  <alias
+   match="^(help|chelp|hhelp|clhelp|ohelp|rn|read|more|stat stats|latest).*$"
+   enabled="y"
+   group="Normal"
+   regexp="y"
+   send_to="12"
+  >
+  <send>world.EnableTrigger('LineGag',false)
+world.Send("%0")
+world.DoAfterSpecial(1,"world.EnableTrigger('LineGag',true)",12)</send>
+  </alias>
+  <alias
+   name="falcon_seek"
+   match="!fsk *"
+   enabled="y"
+   ignore_case="y"
+   sequence="90"
+  >
+  <send>falcon seek %1</send>
+  </alias>
+  <alias
+   name="falcon_slay"
+   match="!fsl *"
+   enabled="y"
+   echo_alias="y"
+   send_to="13"
+   ignore_case="y"
+   sequence="90"
+  >
+  <send>falcon track %1
+falcon slay %1</send>
+  </alias>
+  <alias
+   name="apply_caloric"
+   match="!ac"
+   enabled="y"
+   send_to="13"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>apply caloric</send>
+  </alias>
+  <alias
+   name="apply_epidermal"
+   match="!ae"
+   enabled="y"
+   send_to="13"
+   sequence="100"
+  >
+  <send>apply epidermal</send>
+  </alias>
+  <alias
+   match="!aet"
+   enabled="y"
+   sequence="100"
+  >
+  <send>apply epidermal to torso</send>
+  </alias>
+  <alias
+   name="apply_frost"
+   match="!af"
+   enabled="y"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>sip frost</send>
+  </alias>
+  <alias
+   name="apply_mending"
+   match="!am"
+   enabled="y"
+   send_to="13"
+   sequence="100"
+  >
+  <send>apply mending</send>
+  </alias>
+  <alias
+   name="apply_mend_arm"
+   match="!ama"
+   enabled="y"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>apply mending to arm</send>
+  </alias>
+  <alias
+   name="apply_mend_legs"
+   match="!aml"
+   enabled="y"
+   send_to="13"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>apply mending to legs</send>
+  </alias>
+  <alias
+   name="apply_mass"
+   match="!ams"
+   enabled="y"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>get mass from pouch
+apply mass</send>
+  </alias>
+  <alias
+   name="apply_restoration_arm"
+   match="!ara"
+   enabled="y"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>apply restoration to arms</send>
+  </alias>
+  <alias
+   name="apply_restore_leg"
+   match="!arl"
+   enabled="y"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>apply restoration to leg</send>
+  </alias>
+  <alias
+   name="apply_restore_torso"
+   match="!art"
+   enabled="y"
+   sequence="100"
+  >
+  <send>apply restoration to torso</send>
+  </alias>
+  <alias
+   name="sileris"
+   match="!as"
+   enabled="y"
+   group="herb"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>outr sileris
+apply sileris</send>
+  </alias>
+  <alias
+   name="ath_on"
+   match="!ath"
+   enabled="y"
+   send_to="12"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>EnableTrigger ("auto_health", true)
+Note ("Auto-health On")
+EnableAlias ("ath_off", true)
+EnableAlias ("ath_on", false)
+
+local SB
+local SP
+SP = GetVariable("sipping")
+SB = GetVariable("sipbalance")
+if SB == '1' and SP == '0' then
+  Send("sip health")
+  SetVariable("sipping","1")
+else
+  Note ("Not ready")
+end</send>
+  </alias>
+  <alias
+   name="ath_off"
+   match="!ath"
+   send_to="12"
+   sequence="100"
+  >
+  <send>EnableTrigger ("auto_health", false)
+Note ("Auto-health Off")
+EnableAlias ("ath_on", true)
+EnableAlias ("ath_off", false)</send>
+  </alias>
+  <alias
+   name="battlecry_target"
+   match="!bc"
+   enabled="y"
+   expand_variables="y"
+   sequence="100"
+  >
+  <send>battlecry @target</send>
+  </alias>
+  <alias
+   name="battlecry"
+   match="!bc *"
+   enabled="y"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>battlecry %1</send>
+  </alias>
+  <alias
+   name="cleave_target"
+   match="!cl"
+   enabled="y"
+   expand_variables="y"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>cleave @target</send>
+  </alias>
+  <alias
+   name="cleave"
+   match="!cl *"
+   enabled="y"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>cleave %1</send>
+  </alias>
+  <alias
+   name="compose"
+   match="!cm"
+   enabled="y"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>compose</send>
+  </alias>
+  <alias
+   name="concentrate"
+   match="!cn"
+   enabled="y"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>concentrate</send>
+  </alias>
+  <alias
+   name="combat"
+   match="!combat"
+   enabled="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>EnableTrigger ("autoatk", false)
+EnableTrigger ("whack", false)
+EnableTrigger ("stand_atk", false)
+EnableTrigger ("writhe", false)
+EnableTrigger ("autoatk2", true)
+EnableTrigger ("auto_clot", true)
+EnableTrigger ("rsl", false)
+EnableTrigger ("raze", true)
+EnableTrigger ("w_atk", false)
+EnableTrigger ("writhe_free", true)
+Accelerator ("CTRL+1", "target left leg")
+Accelerator ("CTRL+2", "target right leg")
+Accelerator ("CTRL+3", "target left arm")
+Accelerator ("CTRL+4", "target right arm")
+Accelerator ("CTRL+5", "target torso")
+Accelerator ("CTRL+6", "target head")
+Accelerator ("CTRL+0", "target nothing")
+Note ("Combat Mode")
+</send>
+  </alias>
+  <alias
+   match="!d"
+   enabled="y"
+   expand_variables="y"
+   sequence="100"
+  >
+  <send>defend @dtarget</send>
+  </alias>
+  <alias
+   name="defend"
+   match="!d *"
+   enabled="y"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>defend %1</send>
+  </alias>
+  <alias
+   name="defences"
+   match="!def"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>weathering
+resistance
+fitness
+sip levitation
+sip speed
+outr hawthorn
+eat hawthorn
+outr bayberry
+eat bayberry
+outr kola
+eat kola
+outr cohosh
+eat cohosh</send>
+  </alias>
+  <alias
+   name="disengage_target"
+   match="!dn"
+   enabled="y"
+   expand_variables="y"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>disengage @target</send>
+  </alias>
+  <alias
+   name="disengage"
+   match="!dn *"
+   enabled="y"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>disengage %1</send>
+  </alias>
+  <alias
+   name="disembowel_target"
+   match="!ds"
+   enabled="y"
+   expand_variables="y"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>disembowel @target</send>
+  </alias>
+  <alias
+   name="disembowel"
+   match="!ds *"
+   enabled="y"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>disembowel %1</send>
+  </alias>
+  <alias
+   match="!dt *"
+   enabled="y"
+   variable="dtarget"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("dtarget", "%1")
+Note ("Targeting to defend %1")</send>
+  </alias>
+  <alias
+   name="draw_weapon"
+   match="!dw"
+   enabled="y"
+   omit_from_output="y"
+   sequence="100"
+  >
+  <send>unwield darkbow
+wear darkbow
+unwield pole
+unwield totem
+draw strong
+draw strong
+grip
+parry head</send>
+  </alias>
+  <alias
+   name="ash"
+   match="!ea"
+   enabled="y"
+   group="herb"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>outr ash
+eat ash</send>
+  </alias>
+  <alias
+   name="eat_bayberry"
+   match="!ebb"
+   enabled="y"
+   group="herb"
+   sequence="100"
+  >
+  <send>outr bayberry
+eat bayberry</send>
+  </alias>
+  <alias
+   name="bloodroot"
+   match="!ebr"
+   enabled="y"
+   group="herb"
+   variable="cure"
+   omit_from_log="y"
+   send_to="13"
+   sequence="100"
+  >
+  <send>outr bloodroot
+eat bloodroot</send>
+  </alias>
+  <alias
+   name="bellwort"
+   match="!ebw"
+   enabled="y"
+   group="herb"
+   send_to="13"
+   sequence="100"
+  >
+  <send>outr bellwort
+eat bellwort</send>
+  </alias>
+  <alias
+   name="cohosh"
+   match="!ec"
+   enabled="y"
+   group="herb"
+   sequence="100"
+  >
+  <send>outr cohosh
+eat cohosh</send>
+  </alias>
+  <alias
+   name="echinacea"
+   match="!ee"
+   enabled="y"
+   group="herb"
+   send_to="13"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>outr echinacea
+eat echinacea</send>
+  </alias>
+  <alias
+   name="ginseng"
+   match="!eg"
+   enabled="y"
+   group="herb"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>outr ginseng
+eat ginseng</send>
+  </alias>
+  <alias
+   name="goldenseal"
+   match="!egs"
+   enabled="y"
+   group="herb"
+   variable="cure"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>outr goldenseal
+eat goldenseal</send>
+  </alias>
+  <alias
+   name="eat_hawthorn"
+   match="!eh"
+   enabled="y"
+   group="herb"
+   sequence="100"
+  >
+  <send>outr hawthorn
+eat hawthorn</send>
+  </alias>
+  <alias
+   name="kelp"
+   match="!ek"
+   enabled="y"
+   group="herb"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>outr kelp
+eat kelp</send>
+  </alias>
+  <alias
+   name="kola"
+   match="!ekl"
+   enabled="y"
+   group="herb"
+   sequence="100"
+  >
+  <send>outr kola
+eat kola</send>
+  </alias>
+  <alias
+   name="lobelia"
+   match="!el"
+   enabled="y"
+   group="herb"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>outr lobelia
+eat lobelia</send>
+  </alias>
+  <alias
+   name="moss_off"
+   match="!em"
+   send_to="12"
+   sequence="100"
+  >
+  <send>EnableTrigger ("auto_moss", false)
+Note ("Moss Off")
+EnableAlias ("moss", true)
+EnableAlias ("moss_off", false)</send>
+  </alias>
+  <alias
+   name="moss"
+   match="!em"
+   enabled="y"
+   group="herb"
+   send_to="12"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>Send ("outr moss")
+Send ("eat moss")
+EnableTrigger ("auto_moss", true)
+Note ("Moss On")
+EnableAlias ("moss_off", true)
+EnableAlias ("moss", false)</send>
+  </alias>
+  <alias
+   name="engage_target"
+   match="!en"
+   enabled="y"
+   expand_variables="y"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>engage @target</send>
+  </alias>
+  <alias
+   name="engage"
+   match="!en *"
+   enabled="y"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>engage %1</send>
+  </alias>
+  <alias
+   name="pear"
+   match="!ep"
+   enabled="y"
+   group="herb"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>outr pear
+eat pear</send>
+  </alias>
+  <alias
+   name="envenom_epteth_epteth"
+   match="!eva"
+   enabled="y"
+   sequence="100"
+  >
+  <send>envenom left with epteth
+envenom right with epteth</send>
+  </alias>
+  <alias
+   name="envenom_aconite_curare"
+   match="!evac"
+   enabled="y"
+   sequence="100"
+  >
+  <send>envenom left with aconite
+envenom right with curare</send>
+  </alias>
+  <alias
+   match="!evas"
+   enabled="y"
+   sequence="100"
+  >
+  <send>envenom left with aconite
+envenom right with slike</send>
+  </alias>
+  <alias
+   name="ev_curar_aconite"
+   match="!evca"
+   enabled="y"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>envenom left with curare
+envenom right with aconite</send>
+  </alias>
+  <alias
+   name="ev_curare_prefarar"
+   match="!evcp"
+   enabled="y"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>envenom left with curare
+envenom right with prefarar</send>
+  </alias>
+  <alias
+   name="envenom_delphinium"
+   match="!evdd"
+   enabled="y"
+   sequence="100"
+  >
+  <send>envenom left with delphinium
+envenom right with delphinium</send>
+  </alias>
+  <alias
+   name="env_digi_gecko"
+   match="!evdg"
+   enabled="y"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>envenom left with digitalis
+envenom right with gecko</send>
+  </alias>
+  <alias
+   name="env_euryp_slike"
+   match="!eves"
+   enabled="y"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>envenom left with eurypteria
+envenom right with slike</send>
+  </alias>
+  <alias
+   name="env_geck_digi"
+   match="!evgd"
+   enabled="y"
+   sequence="100"
+  >
+  <send>envenom left with gecko
+envenom right with digitalis</send>
+  </alias>
+  <alias
+   name="envenom_gecko_slike"
+   match="!evgs"
+   enabled="y"
+   sequence="100"
+  >
+  <send>envenom left with gecko
+envenom right with slike</send>
+  </alias>
+  <alias
+   name="env_kal_prefar"
+   match="!evkp"
+   enabled="y"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>envenom left with kalmia
+envenom right with prefarar</send>
+  </alias>
+  <alias
+   name="ev_epteth_epteth"
+   match="!evl"
+   enabled="y"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>envenom left with epseth
+envenom right with epseth</send>
+  </alias>
+  <alias
+   name="ev_oleander_slike"
+   match="!evos"
+   enabled="y"
+   sequence="100"
+  >
+  <send>envenom left with oleander
+envenom right with slike</send>
+  </alias>
+  <alias
+   name="ev_prefarar_curare"
+   match="!evpc"
+   enabled="y"
+   sequence="100"
+  >
+  <send>envenom left with prefarar
+envenom right with curare</send>
+  </alias>
+  <alias
+   name="envenom_prefarar_kalmia"
+   match="!evpk"
+   enabled="y"
+   sequence="100"
+  >
+  <send>envenom left with prefarar
+envenom right with kalmia</send>
+  </alias>
+  <alias
+   name="env_pre_pre"
+   match="!evpp"
+   enabled="y"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>envenom left with prefarar
+envenom right with prefarar</send>
+  </alias>
+  <alias
+   name="envenom_slike_eurypteria"
+   match="!evse"
+   enabled="y"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>envenom left with slike
+envenom right with eurypteria</send>
+  </alias>
+  <alias
+   name="ev_slike_oleander"
+   match="!evso"
+   enabled="y"
+   sequence="100"
+  >
+  <send>envenom left with slike
+envenom right with oleander</send>
+  </alias>
+  <alias
+   name="env_xentio_prefarar"
+   match="!evxp"
+   enabled="y"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>envenom left with xentio
+envenom right with prefarar</send>
+  </alias>
+  <alias
+   name="fitness"
+   match="!f"
+   enabled="y"
+   send_to="12"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>local BAL
+local FT
+local ATK
+ATK = GetVariable ("atking")
+BAL = GetVariable ("balance")
+FT = GetVariable ("fitness")
+if BAL == '1' and FT == '0' and ATK == '0' then
+Send("fitness")
+elseif FT == '0' then
+SetVariable ("fit","fitness")
+end</send>
+  </alias>
+  <alias
+   name="falcon_assess"
+   match="!fa"
+   enabled="y"
+   send_to="13"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>falcon assess</send>
+  </alias>
+  <alias
+   name="falcon_deliver"
+   match="!fd * *"
+   enabled="y"
+   send_to="13"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>falcon deliver %1 to %2</send>
+  </alias>
+  <alias
+   name="falcon_follow"
+   match="!ff *"
+   enabled="y"
+   send_to="13"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>falcon follow %1</send>
+  </alias>
+  <alias
+   name="falcon_hunt"
+   match="!fh"
+   enabled="y"
+   send_to="13"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>falcon hunt</send>
+  </alias>
+  <alias
+   name="falcon_observe"
+   match="!fo"
+   enabled="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>Send ("falcon observe")</send>
+  </alias>
+  <alias
+   name="falcon_passive"
+   match="!fp"
+   enabled="y"
+   send_to="13"
+   sequence="100"
+  >
+  <send>order falcon passive</send>
+  </alias>
+  <alias
+   name="falcon_recall"
+   match="!fr"
+   enabled="y"
+   send_to="12"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>Send ("falcon recall")
+SetVariable ("balance","0")</send>
+  </alias>
+  <alias
+   name="falcon_report"
+   match="!frp"
+   enabled="y"
+   send_to="13"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>falcon report</send>
+  </alias>
+  <alias
+   name="falcon_retrieve"
+   match="!frt *"
+   enabled="y"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>falcon retrieve %1</send>
+  </alias>
+  <alias
+   name="falcon_sanctuary"
+   match="!fs"
+   enabled="y"
+   send_to="13"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>falcon sanctuary</send>
+  </alias>
+  <alias
+   name="falcon_slay_target"
+   match="!fsl"
+   enabled="y"
+   expand_variables="y"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>falcon track @target
+falcon slay @target</send>
+  </alias>
+  <alias
+   name="falcon_startle_target"
+   match="!fst"
+   enabled="y"
+   expand_variables="y"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>falcon startle @target</send>
+  </alias>
+  <alias
+   name="falcon_startle"
+   match="!fst *"
+   enabled="y"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>falcon startle %1</send>
+  </alias>
+  <alias
+   name="falcon_track_target"
+   match="!ft"
+   enabled="y"
+   expand_variables="y"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>falcon track @target</send>
+  </alias>
+  <alias
+   name="falcon_track"
+   match="!ft *"
+   enabled="y"
+   send_to="13"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>falcon track %1</send>
+  </alias>
+  <alias
+   name="hunt"
+   match="!hunt"
+   enabled="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>EnableTrigger ("autoatk", true)
+EnableTrigger ("whack", true)
+EnableTrigger ("stand_atk", true)
+EnableTrigger ("writhe", false)
+EnableTrigger ("autoatk2", false)
+EnableTrigger ("auto_clot", false)
+EnableTrigger ("raze", false)
+EnableTrigger ("rsl", true)
+EnableTrigger ("w_atk", true)
+EnableTrigger ("writhe_free", false)
+SetVariable ("atk", "dsl")
+Note ("Hunt Mode")</send>
+  </alias>
+  <alias
+   name="icon_scan"
+   match="!i"
+   enabled="y"
+   omit_from_output="y"
+   sequence="100"
+  >
+  <send>p eye
+p monolith
+p totem</send>
+  </alias>
+  <alias
+   name="impale_target"
+   match="!im"
+   enabled="y"
+   expand_variables="y"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>impale @target</send>
+  </alias>
+  <alias
+   name="impale"
+   match="!im *"
+   enabled="y"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>impale %1</send>
+  </alias>
+  <alias
+   name="lunge_target"
+   match="!l"
+   enabled="y"
+   expand_variables="y"
+   send_to="12"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>Send ("lunge @target")
+SetVariable ("balance","0")</send>
+  </alias>
+  <alias
+   name="lunge"
+   match="!l *"
+   enabled="y"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>lunge %1</send>
+  </alias>
+  <alias
+   name="mastery_off"
+   match="!m"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SendNoEcho ("mastery off")
+Note ("Mastery Off")
+EnableAlias ("mastery_on", true)
+EnableAlias ("mastery_off", false)</send>
+  </alias>
+  <alias
+   name="mastery_on"
+   match="!m"
+   enabled="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SendNoEcho ("mastery on")
+Note ("Mastery On")
+EnableAlias ("mastery_off", true)
+EnableAlias ("mastery_on", false)</send>
+  </alias>
+  <alias
+   name="parry"
+   match="!p *"
+   enabled="y"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>parry %1</send>
+  </alias>
+  <alias
+   name="resistance"
+   match="!r"
+   enabled="y"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>resistance</send>
+  </alias>
+  <alias
+   name="raze"
+   match="!rz"
+   enabled="y"
+   expand_variables="y"
+   group="combat"
+   send_to="12"
+   omit_from_output="y"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>Send ("raze @target")
+SetVariable ("balance", "0")</send>
+  </alias>
+  <alias
+   name="shoot_target"
+   match="!sa"
+   enabled="y"
+   expand_variables="y"
+   send_to="12"
+   omit_from_output="y"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>SendNoEcho ("aim @target e")
+SendNoEcho ("shoot @target e")
+SendNoEcho ("aim @target s")
+SendNoEcho ("shoot @target s")
+SendNoEcho ("aim @target w")
+SendNoEcho ("shoot @target w")
+SendNoEcho ("aim @target n")
+SendNoEcho ("shoot @target n")
+SendNoEcho ("aim @target ne")
+SendNoEcho ("shoot @target ne")
+SendNoEcho ("aim @target se")
+SendNoEcho ("shoot @target se")
+SendNoEcho ("aim @target nw")
+SendNoEcho ("shoot @target nw")
+SendNoEcho ("aim @target sw")
+SendNoEcho ("shoot @target sw")
+SendNoEcho ("aim @target in")
+SendNoEcho ("shoot @target in")
+SendNoEcho ("aim @target out")
+SendNoEcho ("shoot @target out")
+SendNoEcho ("aim @target u")
+SendNoEcho ("shoot @target u")
+SendNoEcho ("aim @target d")
+SendNoEcho ("shoot @target d")</send>
+  </alias>
+  <alias
+   name="shoot_arrow_all"
+   match="!sa *"
+   enabled="y"
+   group="combat"
+   send_to="13"
+   omit_from_output="y"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>aim %1 e
+shoot %1 e
+aim %1 s
+shoot %1 s
+aim %1 w
+shoot %1 w
+aim %1 n
+shoot %1 n
+aim %1 ne
+shoot %1 ne
+aim %1 se
+shoot %1 se
+aim %1 nw
+shoot %1 nw
+aim %1 sw
+shoot %1 sw
+aim %1 in
+shoot %1 in
+aim %1 out
+shoot %1 out
+aim %1 u
+shoot %1 u
+aim %1 d
+shoot %1 d</send>
+  </alias>
+  <alias
+   name="shoot_meteor_target"
+   match="!sam"
+   enabled="y"
+   expand_variables="y"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>shoot @target with meteor</send>
+  </alias>
+  <alias
+   name="shoot_meteor"
+   match="!sam *"
+   enabled="y"
+   variable="combat"
+   send_to="13"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>shoot %1 with meteor</send>
+  </alias>
+  <alias
+   name="sturdiness"
+   match="!sf"
+   enabled="y"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>stand firm</send>
+  </alias>
+  <alias
+   name="sip_health"
+   match="!sh"
+   enabled="y"
+   send_to="12"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>Send ("sip health")
+SetVariable ("sipping","1")</send>
+  </alias>
+  <alias
+   name="sip_immunity"
+   match="!si"
+   enabled="y"
+   sequence="100"
+  >
+  <send>sip immunity</send>
+  </alias>
+  <alias
+   name="sketch_algiz"
+   match="!ska *"
+   enabled="y"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>outr greenink
+sketch algiz on %1</send>
+  </alias>
+  <alias
+   name="sketch_berkana"
+   match="!skb *"
+   enabled="y"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>outr 3 yellowink
+sketch berkana on %1</send>
+  </alias>
+  <alias
+   name="sketch_dagaz"
+   match="!skd"
+   enabled="y"
+   sequence="100"
+  >
+  <send>outr redink
+outr greenink
+sketch dagaz on ground</send>
+  </alias>
+  <alias
+   name="sketch_fehu"
+   match="!skf"
+   enabled="y"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>outr redink
+sketch fehu on ground</send>
+  </alias>
+  <alias
+   name="sketch_gular"
+   match="!skg *"
+   enabled="y"
+   sequence="100"
+  >
+  <send>outr redink
+sketch gular on ground %1</send>
+  </alias>
+  <alias
+   name="sketch_hugalaz"
+   match="!skh"
+   enabled="y"
+   sequence="100"
+  >
+  <send>outr blueink
+sketch hugalaz on ground</send>
+  </alias>
+  <alias
+   name="sketch_isaz"
+   match="!ski"
+   enabled="y"
+   sequence="100"
+  >
+  <send>outr redink
+outr blueink
+sketch isaz on ground</send>
+  </alias>
+  <alias
+   name="sketch_jera"
+   match="!skj *"
+   enabled="y"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>outr purpleink
+sketch Jera on %1</send>
+  </alias>
+  <alias
+   name="sketch_othala"
+   match="!skl"
+   enabled="y"
+   sequence="100"
+  >
+  <send>outr 5 redink
+sketch othala on ground</send>
+  </alias>
+  <alias
+   name="sketch_nairat"
+   match="!skn"
+   enabled="y"
+   sequence="100"
+  >
+  <send>outr yellowink
+sketch nairat on ground</send>
+  </alias>
+  <alias
+   name="sketch_raido"
+   match="!skr"
+   enabled="y"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>outr greenink
+sketch raido on ground</send>
+  </alias>
+  <alias
+   name="sketch_thurisaz_target"
+   match="!skt"
+   enabled="y"
+   expand_variables="y"
+   omit_from_output="y"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>outr redink
+outr blueink
+sketch thurisaz on ground for @target</send>
+  </alias>
+  <alias
+   name="sketch_thurisaz"
+   match="!skt *"
+   enabled="y"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>outr redink
+outr blueink
+sketch thurisaz on ground for %1</send>
+  </alias>
+  <alias
+   name="sketch_uruz"
+   match="!sku"
+   enabled="y"
+   send_to="13"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>outr blueink
+outr yellowink
+sketch uruz on ground</send>
+  </alias>
+  <alias
+   name="sketch_wunjo"
+   match="!skw"
+   enabled="y"
+   sequence="100"
+  >
+  <send>outr redink
+sketch wunjo on ground</send>
+  </alias>
+  <alias
+   name="sip_levitation"
+   match="!sl"
+   enabled="y"
+   send_to="13"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>sip levitation</send>
+  </alias>
+  <alias
+   name="sip_mana"
+   match="!sm"
+   enabled="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>Send ("sip mana")
+SetVariable ("sipping","1")</send>
+  </alias>
+  <alias
+   name="smoke_elm"
+   match="!sme"
+   enabled="y"
+   expand_variables="y"
+   send_to="13"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>put elm in @epipe
+smoke @epipe</send>
+  </alias>
+  <alias
+   name="stop_mass"
+   match="!sms"
+   enabled="y"
+   sequence="100"
+  >
+  <send>put mass in pouch</send>
+  </alias>
+  <alias
+   name="skullcap_on"
+   match="!smsc"
+   enabled="y"
+   send_to="12"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>Send ("put skullcap in 384270")
+Send ("light 384270")
+Send ("smoke 384270")
+EnableTrigger ("auto_aura", true)
+SetVariable ("auto_aura","1")
+Note ("Auto-skullcap On")</send>
+  </alias>
+  <alias
+   name="skullcap_off"
+   match="!smscoff"
+   enabled="y"
+   send_to="12"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>EnableTrigger ("auto_aura", false)
+SetVariable ("sc","")
+SetVariable ("auto_aura","0")
+Note ("Auto-skullcap Off")</send>
+  </alias>
+  <alias
+   name="smoke_valerian"
+   match="!smv"
+   enabled="y"
+   expand_variables="y"
+   send_to="13"
+   sequence="100"
+  >
+  <send>put valerian in @vpipe
+smoke @vpipe</send>
+  </alias>
+  <alias
+   name="switch_range"
+   match="!sr"
+   enabled="y"
+   omit_from_output="y"
+   sequence="100"
+  >
+  <send>relax grip
+sheathe sword
+sheathe sword
+unwield pole
+unwield totem
+remove darkbow
+wield darkbow
+grip</send>
+  </alias>
+  <alias
+   name="sip_speed"
+   match="!ss"
+   enabled="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>Send("sip speed")
+DoAfterSpecial (0.2,'SetVariable("sipping","0")',sendto.script)
+DoAfterSpecial (1,'SetVariable("sipbalance","1")',sendto.script)</send>
+  </alias>
+  <alias
+   name="sip_venom"
+   match="!sv"
+   enabled="y"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>sip venom</send>
+  </alias>
+  <alias
+   name="sheathe_weapon"
+   match="!sw"
+   enabled="y"
+   sequence="100"
+  >
+  <send>relax grip
+sheathe
+sheathe</send>
+  </alias>
+  <alias
+   name="targetting"
+   match="!t *"
+   enabled="y"
+   echo_alias="y"
+   send_to="12"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>SetVariable ("target","%1")
+local REP
+REP = GetVariable("report")
+if REP == '1' then
+SendNoEcho ("pt Target %1")
+else
+end</send>
+  </alias>
+  <alias
+   name="touch_boar"
+   match="!tb"
+   enabled="y"
+   group="tattoo"
+   sequence="100"
+  >
+  <send>touch boar</send>
+  </alias>
+  <alias
+   name="touch_cloak"
+   match="!tc"
+   enabled="y"
+   group="tattoo"
+   send_to="12"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>local BAL
+local ATK
+local CL
+ATK = GetVariable ("atking")
+BAL = GetVariable ("balance")
+CL = GetVariable ("cloak")
+if CL == '0' and  BAL == '1' and ATK == '0' then
+Send ("touch cloak")
+Note ("cloak now")
+elseif CL == '0' and BAL == '0' then
+SetVariable ("cloaking","touch cloak")
+Note ("cloak set 1")
+elseif CL == '0' and ATK == '1' then
+SetVariable ("cloaking","touch cloak")
+Note ("cloak set 2")
+end</send>
+  </alias>
+  <alias
+   name="touch_mindseye"
+   match="!tm"
+   enabled="y"
+   group="tattoos"
+   sequence="100"
+  >
+  <send>touch mindseye</send>
+  </alias>
+  <alias
+   name="touch_shield"
+   match="!ts"
+   enabled="y"
+   group="tattoo"
+   send_to="12"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>local BAL
+local ATK
+local SH
+ATK = GetVariable ("atking")
+BAL = GetVariable ("balance")
+SH = GetVariable ("shield")
+Execute ("!combat")
+if BAL == '1' and ATK == '0' then
+Send ("touch shield")
+elseif SH == '0' and BAL == '0' then
+SetVariable ("shielding","touch shield")
+elseif SH == '0' and ATK == '1' then
+SetVariable ("shielding","touch shield")
+end</send>
+  </alias>
+  <alias
+   name="touch_tree"
+   match="!tt"
+   enabled="y"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>touch tree</send>
+  </alias>
+  <alias
+   name="weathering"
+   match="!w"
+   enabled="y"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>weathering</send>
+  </alias>
+  <alias
+   name="wipe"
+   match="!wb"
+   enabled="y"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>wipe 88838
+wipe 363086
+wipe 176423
+wipe 60271</send>
+  </alias>
+  <alias
+   name="dam_quest"
+   match="#bd"
+   enabled="y"
+   omit_from_output="y"
+   sequence="100"
+  >
+  <send>put explosives in dam
+give dagger to arges
+give beaver to arges
+give beaver to arges
+give beaver to arges
+give beaver to arges
+give beaver to arges</send>
+  </alias>
+  <alias
+   name="pie_quest"
+   match="#bp"
+   enabled="y"
+   omit_from_output="y"
+   sequence="100"
+  >
+  <send>give thyme to dora
+give milk to dora
+give salmon to dora
+give salmon to dora
+give salmon to dora</send>
+  </alias>
+  <alias
+   match="#bs"
+   enabled="y"
+   sequence="100"
+  >
+  <send>give lumber to captain
+give rope to captain
+give canvas to captain
+give nails to captain
+give nails to captain</send>
+  </alias>
+  <alias
+   name="slc_beach_quest"
+   match="#bt"
+   enabled="y"
+   omit_from_output="y"
+   sequence="100"
+  >
+  <send>give wood to simmons
+give glass to simmons
+give stone to simmons
+give bottle to simmons</send>
+  </alias>
+  <alias
+   name="creamy_goat"
+   match="#cg"
+   enabled="y"
+   omit_from_output="y"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>give goat to cyclops
+give goat to cyclops
+give goat to cyclops
+give goat to cyclops
+give goat to cyclops
+give goat to cyclops
+give goat to cyclops
+give goat to cyclops
+give goat to cyclops
+give goat to cyclops
+give goat to cyclops
+give goat to cyclops
+give goat to cyclops</send>
+  </alias>
+  <alias
+   name="get_cake_quest"
+   match="#gc"
+   enabled="y"
+   omit_from_output="y"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>open jar
+get key from jar
+unlock cupboard
+open cupboard
+get cake from cupboard
+w</send>
+  </alias>
+  <alias
+   name="x_harvest_quest"
+   match="#h"
+   enabled="y"
+   omit_from_output="y"
+   sequence="100"
+  >
+  <send>give leaf to woman
+give leaf to woman
+give leaf to woman
+give leaf to woman
+give leaf to woman
+give leaf to woman
+give leaf to woman
+give leaf to woman
+give leaf to woman
+give leaf to woman
+give berries to woman
+give berries to woman
+give berries to woman
+give berries to woman
+give berries to woman
+give berries to woman
+give meat to woman
+give meat to woman
+give meat to woman
+give meat to woman
+give meat to woman
+give meat to woman
+give meat to woman
+give meat to woman
+give meat to woman
+give meat to woman</send>
+  </alias>
+  <alias
+   name="h_on"
+   match="#harvest"
+   enabled="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>EnableTimer ("harvest", true)
+Note ("Harvest On")
+EnableAlias ("h_off", true)
+EnableAlias ("h_on", false)</send>
+  </alias>
+  <alias
+   name="h_off"
+   match="#harvest"
+   send_to="12"
+   sequence="100"
+  >
+  <send>EnableTimer ("harvest", false)
+Note ("Harvest Off")
+EnableAlias ("h_on", true)
+EnableAlias ("h_off", false)</send>
+  </alias>
+  <alias
+   match="#o"
+   enabled="y"
+   sequence="100"
+  >
+  <send>ask aneesh prove
+agree aneesh</send>
+  </alias>
+  <alias
+   name="private_beach_quest"
+   match="#pb"
+   enabled="y"
+   sequence="100"
+  >
+  <send>give pail to man
+give wood to man
+give starfish to man
+give fish to man
+give fish to man
+give fish to man
+give fish to man
+give fish to man
+give fish to man
+give fish to man</send>
+  </alias>
+  <alias
+   name="rabbit_quest"
+   match="#rq"
+   enabled="y"
+   omit_from_output="y"
+   sequence="100"
+  >
+  <send>give pot to biba
+give rabbit to biba
+give rabbit to biba
+give rabbit to biba
+give rabbit to biba
+give rabbit to biba
+give rabbit to biba
+</send>
+  </alias>
+  <alias
+   name="credits_buy"
+   match="$cb * *"
+   enabled="y"
+   sequence="100"
+  >
+  <send>credits buy %1 at %2</send>
+  </alias>
+  <alias
+   name="convert_bound"
+   match="$ccb *"
+   enabled="y"
+   sequence="100"
+  >
+  <send>credits convert %1 to bound credits
+agree</send>
+  </alias>
+  <alias
+   name="convert_lesson"
+   match="$ccl *"
+   enabled="y"
+   sequence="100"
+  >
+  <send>credits convert %1 to lessons
+agree</send>
+  </alias>
+  <alias
+   name="greeting"
+   match="$greet"
+   enabled="y"
+   sequence="100"
+  >
+  <send>ht Good Jera, Wardens
+hnt Good Jera, Novitiates
+ct Greetings Fair Cyrene</send>
+  </alias>
+  <alias
+   name="novitiate_greet"
+   match="$ng *"
+   enabled="y"
+   omit_from_output="y"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>speak achaean
+tell %1 Good Jera and Welcome to the house. Please read HHELP WELCOME, HHELP ETIQUETTE and HHELP RULES to get started. Once you've finished them, you may announce on HNT channel and we'll assign a warden to conduct orientation for you. Feel free to ask if you have any queries.
+ht Greeted %1</send>
+  </alias>
+  <alias
+   name="get_stuff"
+   match="*     *"
+   enabled="y"
+   sequence="100"
+  >
+  <send>get *1</send>
+  </alias>
+  <alias
+   match="arc"
+   enabled="y"
+   sequence="100"
+  >
+  <send>envenom left with curare
+arc</send>
+  </alias>
+  <alias
+   name="attack"
+   match="atk"
+   enabled="y"
+   expand_variables="y"
+   group="combat"
+   send_to="12"
+   sequence="100"
+  >
+  <send>Send ("dsl @target")
+SetVariable ("atking","1")
+DoAfterSpecial (1.5,'SetVariable("atking","0")',sendto.script)</send>
+  </alias>
+  <alias
+   name="bait"
+   match="bait *"
+   enabled="y"
+   group="fishing"
+   variable="bait"
+   send_to="12"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>SetVariable ("bait", "%1")
+Note ("Bait '%1' chosen.")</send>
+  </alias>
+  <alias
+   name="cyrene_to_inn"
+   match="c2ci"
+   enabled="y"
+   send_to="11"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send> w (nw) n w 4(nw) n (nw) 2n (nw) 2n 2(nw) (ne) 2n (nw) w (nw) n (nw) 2n (nw) 2n (ne) n 3(ne) (se) 3e</send>
+  </alias>
+  <alias
+   name="cyrene_to_delos"
+   match="c2d"
+   enabled="y"
+   send_to="11"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send> w (nw) n w 4(nw) n (nw) 2n (nw) 2n 2(nw) (ne) 2n (nw) w (nw) n (nw) 2n (nw) 2n (ne) n 3(ne) (se) 3e 2(se) 2e (se) 2e 2(se) s (se) 2s 2(se) e s (se) 2e (ne) e (se) e (se) 2e</send>
+  </alias>
+  <alias
+   name="cyrene_eleusis"
+   match="c2e"
+   enabled="y"
+   send_to="11"
+   sequence="100"
+  >
+  <send> w (nw) n w 4(nw) n (nw) 2n (nw) 2n 2(nw) (ne) 2n (nw) w (nw) n (nw) 2n (nw) 2n (ne) n 3(ne) (se) 3e 2(se) 2e (se) 2e 2(se) (ne) e (ne) n (se) e s e 2(ne) (se) (sw) (se) s 2(se) s 2e (se) s (sw) s u</send>
+  </alias>
+  <alias
+   name="cyrene_eljazira"
+   match="c2ej"
+   enabled="y"
+   send_to="11"
+   sequence="100"
+  >
+  <send> (nw) 2n w (ne) e s 2e (se)</send>
+  </alias>
+  <alias
+   name="cyrene2genji"
+   match="c2g"
+   enabled="y"
+   send_to="11"
+   sequence="100"
+  >
+  <send>2s (se) s (sw) u (sw) u s (sw) (nw) w (sw) w (nw) (ne) n 3w 3u </send>
+  </alias>
+  <alias
+   name="cyrene_to_jaru"
+   match="c2j"
+   enabled="y"
+   send_to="11"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send> 2s (se) 2(ne) n (ne) 3n (ne) u (ne) e (se) d (ne) e 2(ne) n (ne) 3e </send>
+  </alias>
+  <alias
+   name="cyrene_to_shallam"
+   match="c2s"
+   enabled="y"
+   send_to="11"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>2s (se) 2(ne) n (ne) 3n (ne) u (ne) e (se) d (ne) e 2(ne) n (ne) 3e 2(se) e (ne) 2(se) 2s 3(se) 5e (out/in) 3e </send>
+  </alias>
+  <alias
+   name="to_seasone"
+   match="c2sea"
+   enabled="y"
+   send_to="11"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>w (nw) n w 4(nw) n (nw) 2n (nw) 2n 2(nw) (ne) 2n (nw) w (nw) n (nw) 2n (nw) 2n (ne) n (ne) e </send>
+  </alias>
+  <alias
+   name="cyrene_shastaan"
+   match="c2shs"
+   enabled="y"
+   send_to="11"
+   sequence="100"
+  >
+  <send>2s (se) 2(ne) n (ne) 3n (ne) u (ne) e (se) d (ne) e 2(ne) n (ne) e 2n (nw) w (nw) n e s 2(ne) e (nw) d (ne) d 3e 2s 2(se) s (se) s 3(se) e (se) s (se) e (ne) 2n (nw) n (nw) n (nw) 2n u e (ne) 2e n </send>
+  </alias>
+  <alias
+   name="cyrene_sealioncove"
+   match="c2slc"
+   enabled="y"
+   send_to="11"
+   sequence="100"
+  >
+  <send>2s (se) s (sw) u (sw) u s (sw) (nw) w 3(sw) (se) (sw) w (sw) e 2s d (sw) (se) (ne) d (sw) 2d e 2d </send>
+  </alias>
+  <alias
+   name="cyrene_to_tarsuke"
+   match="c2t"
+   enabled="y"
+   send_to="11"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>w (nw) n w 4(nw) n (nw) 2n (nw) 2n 2(nw) (ne) 2n (nw) w (nw) n (nw) 2n (nw) 2n (ne) n 3(ne) (se) 2e (ne) n 2(ne) 3n (ne) e 2n (ne) 3e (ne) 2e (ne) 2e (ne) e 2n e 2(ne) 4e 2(ne) </send>
+  </alias>
+  <alias
+   name="cyrene_valleyofactar"
+   match="c2va"
+   enabled="y"
+   send_to="11"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send> s 3(sw) w u n (nw) </send>
+  </alias>
+  <alias
+   name="cyrene_xhaiden"
+   match="c2x"
+   enabled="y"
+   send_to="11"
+   sequence="100"
+  >
+  <send>w (nw) n w 4(nw) n (nw) 2n (nw) 2n 2(nw) (ne) 2n (nw) w (nw) n (nw) (sw) w (sw) w (nw) 2w (sw) 3u w d (nw) 3u (nw) d </send>
+  </alias>
+  <alias
+   name="atch_butterfly"
+   match="cb"
+   enabled="y"
+   sequence="100"
+  >
+  <send>catch butterfly</send>
+  </alias>
+  <alias
+   name="cityenemies"
+   match="ce"
+   enabled="y"
+   sequence="100"
+  >
+  <send>cityenemies</send>
+  </alias>
+  <alias
+   name="cityenemies_seek"
+   match="ce *"
+   enabled="y"
+   sequence="100"
+  >
+  <send>cityenemies %1</send>
+  </alias>
+  <alias
+   name="credits_market"
+   match="cfs"
+   enabled="y"
+   send_to="13"
+   omit_from_output="y"
+   sequence="100"
+  >
+  <send>credits for sale</send>
+  </alias>
+  <alias
+   name="cyrenegates_valleyofactar"
+   match="cg2va"
+   enabled="y"
+   send_to="11"
+   sequence="100"
+  >
+  <send> (in/out) (ne) e (out/in) (ne) n (ne) u (nw) u n (ne) e 2u (ne) n 2d 2e n (nw)</send>
+  </alias>
+  <alias
+   name="crystalinn_cyrene"
+   match="ci2c"
+   enabled="y"
+   send_to="11"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>3w (nw) 3(sw) s (sw) 2s (se) 2s (se) s (se) e (se) 2s (sw) 2(se) 2s (se) 2s (se) s 4(se) e s (se) e </send>
+  </alias>
+  <alias
+   name="crystalinn_delos"
+   match="ci2d"
+   enabled="y"
+   send_to="11"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send> 2(se) 2e (se) 2e 2(se) s (se) 2s 2(se) e s (se) 2e (ne) e (se) e (se) 2e</send>
+  </alias>
+  <alias
+   name="crystalinn_eleusis"
+   match="ci2e"
+   enabled="y"
+   send_to="11"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send> 2(se) 2e (se) 2e 2(se) (ne) e (ne) n (se) e s e 2(ne) (se) (sw) (se) s 2(se) s 2e (se) s (sw) s u</send>
+  </alias>
+  <alias
+   name="crystalinn_hashan"
+   match="ci2h"
+   enabled="y"
+   send_to="11"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>w (ne) n 2(ne) 3n (ne) e 2n (ne) 3e (ne) 2e (ne) 2e (ne) e 2n e 2(ne) e (se) s </send>
+  </alias>
+  <alias
+   name="crystalinn_manara"
+   match="ci2m"
+   enabled="y"
+   send_to="11"
+   sequence="100"
+  >
+  <send>w (ne) n 2(ne) n (nw) (ne) n (nw) n e (ne) e (se) 2e (ne) (nw) n (ne) 2e (ne) n (ne) e (ne) e 2n e (nw) n (nw) d </send>
+  </alias>
+  <alias
+   name="crystalinn_seasone"
+   match="ci2sea"
+   enabled="y"
+   send_to="11"
+   sequence="100"
+  >
+  <send> 3w (nw) 2(sw) e</send>
+  </alias>
+  <alias
+   name="crystalinn_tarsuke"
+   match="ci2t"
+   enabled="y"
+   send_to="11"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>w (ne) n 2(ne) 3n (ne) e 2n (ne) 3e (ne) 2e (ne) 2e (ne) e 2n e 2(ne) 4e 2(ne) </send>
+  </alias>
+  <alias
+   name="crystalinn_xhaiden"
+   match="ci2x"
+   enabled="y"
+   send_to="11"
+   sequence="100"
+  >
+  <send> 3w (nw) 3(sw) s (sw) 2s (se) 2s (sw) w (sw) w (nw) 2w (sw) 3u w d (nw) 3u (nw) d</send>
+  </alias>
+  <alias
+   name="ct"
+   match="ct *"
+   enabled="y"
+   send_to="13"
+   sequence="100"
+  >
+  <send>ct %1</send>
+  </alias>
+  <alias
+   match="cure_limbs"
+   enabled="y"
+   group="cure"
+   send_to="12"
+   sequence="100"
+  >
+  <send>local AP
+local SB
+local RAD
+local LAD
+local LLD
+local RLD
+AP = GetVariable("apply")
+SB = GetVariable("salvebalance")
+LAD = GetVariable("leftarmdamage")
+RAD = GetVariable("rightarmdamage")
+LLD = GetVariable("leftlegdamage")
+RLD = GetVariable("rightlegdamage")
+if AP == '0' and SB == '1' and LLD &gt;= '2' then
+Send ("apply restoration to legs")
+SetVariable ("apply","1")
+elseif AP == '0' and SB == '1' and RLD &gt;= '2' then
+Send ("apply restoration to legs")
+SetVariable ("apply","1")
+elseif AP == '0' and SB == '1' and LLD == '1' then
+Send ("apply mending to legs")
+SetVariable ("apply","1")
+elseif AP == '0' and SB == '1' and RLD == '1' then
+Send ("apply mending to legs")
+SetVariable ("apply","1")
+elseif AP == '0' and SB == '1' and LAD &gt;= '2' then
+Send ("apply restoration to arms")
+SetVariable ("apply","1")
+elseif AP == '0' and SB == '1' and RAD &gt;= '2' then
+Send ("apply restoration to arms")
+SetVariable ("apply","1")
+elseif AP == '0' and SB == '1' and LAD == '1' then
+Send ("apply mending to arms")
+SetVariable ("apply","1")
+elseif AP == '0' and SB == '1' and RAD == '1' then
+Send ("apply mending to arms")
+SetVariable ("apply","1")
+end</send>
+  </alias>
+  <alias
+   match="cure_stupidity"
+   enabled="y"
+   group="cure"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("stupidity","1")
+local ET
+local HB
+local GS
+ET = GetVariable("eating")
+HB = GetVariable("herbbalance")
+GS = GetVariable("gs")
+if ET == '0' and HB == '1' and GS == '0' then
+Send ("outr goldenseal")
+Send ("eat goldenseal")
+SetVariable ("eating","1")
+Note ("eating")
+else
+end
+if ET == '0' and HB == '1' and GS == '1' then
+Send ("eat goldenseal")
+SetVariable ("eating","1")
+Note ("eating")
+else
+end</send>
+  </alias>
+  <alias
+   match="cure_stupidity_syndrome"
+   enabled="y"
+   group="cure"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("stupidity","1")
+SetVariable ("writhe","0")
+SetVariable ("sipping","0")
+SetVariable ("eating","0")
+SetVariable ("apply","0")
+SetVariable ("atking","0")
+local ET
+local HB
+local GS
+ET = GetVariable("eating")
+HB = GetVariable("herbbalance")
+GS = GetVariable("gs")
+if ET == '0' and HB == '1' and GS == '0' then
+Send ("outr goldenseal")
+Send ("eat goldenseal")
+SetVariable ("eating","1")
+else
+end
+if ET == '0' and HB == '1' and GS == '1' then
+Send ("eat goldenseal")
+SetVariable ("eating","1")
+else
+end</send>
+  </alias>
+  <alias
+   name="delos_to_cyrene"
+   match="d2c"
+   enabled="y"
+   send_to="11"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>2w (nw) w (nw) w (sw) 2w (nw) n w 2(nw) 2n (nw) n 2(nw) 2w (nw) 2w 2(nw) 3w (nw) 3(sw) s (sw) 2s (se) 2s (se) s (se) e (se) 2s (sw) 2(se) 2s (se) 2s (se) s 4(se) e s (se) e </send>
+  </alias>
+  <alias
+   name="delos_crystalinn"
+   match="d2ci"
+   enabled="y"
+   send_to="11"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>2w (nw) w (nw) w (sw) 2w (nw) n w 2(nw) 2n (nw) n 2(nw) 2w (nw) 2w 2(nw) </send>
+  </alias>
+  <alias
+   name="delos_shallam"
+   match="d2s"
+   enabled="y"
+   send_to="11"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send> s 2(se) 2s (se) 3s (sw) 2s (se) s 3(sw) w (sw) 7(se)</send>
+  </alias>
+  <alias
+   name="delos_tarsuke"
+   match="d2t"
+   enabled="y"
+   send_to="11"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send> 3e 2(ne) e (se) 2n (nw) (ne) (nw) 5n (nw) 2n 2(nw) 3n (ne) 3n (ne) n 2(nw) 2n (nw) w (ne)</send>
+  </alias>
+  <alias
+   match="deadoff"
+   enabled="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>EnableTriggerGroup ("dead",false)
+Note("Dead Silence")</send>
+  </alias>
+  <alias
+   match="deadon"
+   enabled="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>EnableTriggerGroup ("dead",true)
+Note ("Scanning Death")</send>
+  </alias>
+  <alias
+   match="def"
+   enabled="y"
+   send_to="12"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>local BAL
+local ATK
+BAL = GetVariable("balance")
+ATK = GetVariable("atking")
+if BAL == '1' and ATK == '0' then
+Send ("def")
+else
+SetVariable ("def2","def")
+end</send>
+  </alias>
+  <alias
+   match="defence_up"
+   enabled="y"
+   send_to="12"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>local CL
+CL = GetVariable("cloak")
+if CL == '0' then
+Send ("touch cloak")
+else
+end
+local SF
+SF = GetVariable("selfishness")
+if SF == '0' then
+Send ("selfishness")
+else
+end
+local KL
+KL = GetVariable ("kola")
+if KL == '0' then
+Send ("outr kola")
+Send ("eat kola")
+else
+end
+local ET
+local HB
+local GS
+ET = GetVariable("eating")
+HB = GetVariable("herbbalance")
+local BL
+BL = GetVariable ("blindness")
+local DF
+DF = GetVariable ("deafness")
+local EH
+EH = GetVariable ("eat_hawthorn")
+if ET == '0' and HB == '1' then
+   if DF == '0' and EH =='0' then
+      Send("outr hawthorn")
+      Send("eat hawthorn")
+   elseif BL == '0' then
+      Send("outr bayberry")
+      Send("eat bayberry")
+   end
+else
+end</send>
+  </alias>
+  <alias
+   match="diag"
+   enabled="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>local BAL
+local ATK
+BAL = GetVariable("balance")
+ATK = GetVariable("atking")
+if BAL == '1' and ATK == '0' then
+Send ("diag me")
+DoAfterSpecial (2,'Execute("herb_cures")',sendto.script)
+DoAfterSpecial (2,'Execute("salve_cures")',sendto.script)
+elseif ATK == '1' or BAL == '0' then
+SetVariable ("diagnose","diag me")
+end</send>
+  </alias>
+  <alias
+   match="dm"
+   enabled="y"
+   sequence="100"
+  >
+  <send>map</send>
+  </alias>
+  <alias
+   name="drop_mono"
+   match="drop mono"
+   enabled="y"
+   omit_from_output="y"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>get monolith from 246704
+drop monolith</send>
+  </alias>
+  <alias
+   name="eleusis_cyrene"
+   match="e2c"
+   enabled="y"
+   send_to="11"
+   sequence="100"
+  >
+  <send>d n (ne) n (nw) 2w n 2(nw) n (nw) (ne) (nw) 2(sw) w n w (nw) s (sw) w (sw) 2(nw) 2w (nw) 2w 2(nw) 3w (nw) 3(sw) s (sw) 2s (se) 2s (se) s (se) e (se) 2s (sw) 2(se) 2s (se) 2s (se) s 4(se) e s (se) e </send>
+  </alias>
+  <alias
+   name="eleusis_crystalinn"
+   match="e2ci"
+   enabled="y"
+   send_to="11"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>d n (ne) n (nw) 2w n 2(nw) n (nw) (ne) (nw) 2(sw) w n w (nw) s (sw) w (sw) 2(nw) 2w (nw) 2w 2(nw) </send>
+  </alias>
+  <alias
+   name="eljazira_cyrene"
+   match="ej2c"
+   enabled="y"
+   send_to="11"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>(nw) 2w n w (sw) e 2s (se) </send>
+  </alias>
+  <alias
+   name="enter_cyrene"
+   match="enc"
+   enabled="y"
+   send_to="11"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>s 3(sw) w u 2w 2u s (sw) 2d w (sw) s d (se) d (sw) s (sw) (in/out) w (sw) (out/in)</send>
+  </alias>
+  <alias
+   name="exit_cyrene"
+   match="exc"
+   enabled="y"
+   send_to="11"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>(in/out) (ne) e (out/in) (ne) n (ne) u (nw) u n (ne) e 2u (ne) n 2d 2e d e 3(ne) n </send>
+  </alias>
+  <alias
+   match="f *"
+   enabled="y"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>follow %1
+</send>
+  </alias>
+  <alias
+   name="fish"
+   match="fish *"
+   enabled="y"
+   expand_variables="y"
+   group="fishing"
+   send_to="12"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>Send ("get @bait from bucket")
+Send ("bait hook with @bait")
+DoAfter (4.5, "cast line %1")
+SetVariable ("fdir", "%1")</send>
+  </alias>
+  <alias
+   match="g$"
+   enabled="y"
+   omit_from_output="y"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>get bucket from pouch
+get gold from bucket</send>
+  </alias>
+  <alias
+   name="genji_cyrene"
+   match="g2c"
+   enabled="y"
+   send_to="11"
+   sequence="100"
+  >
+  <send> 3d 3e s (sw) (se) e (ne) e (se) (ne) n d (ne) d (ne) n (nw) 2n</send>
+  </alias>
+  <alias
+   name="genji_sealioncove"
+   match="g2slc"
+   enabled="y"
+   send_to="11"
+   sequence="100"
+  >
+  <send>3d 3e s (sw) (se) e 2(sw) (se) (sw) w (sw) e 2s d (sw) (se) (ne) d (sw) 2d e 2d </send>
+  </alias>
+  <alias
+   name="item"
+   match="ga"
+   enabled="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>Send ("ih")
+EnableTrigger ("get_stuff", true)
+</send>
+  </alias>
+  <alias
+   name="get_from_container"
+   match="ga *"
+   enabled="y"
+   expand_variables="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>EnableTrigger ("get_container", true)
+SetVariable ("check", "%1")
+Send ("p %1")
+Send ("g sovereign from %1")
+DoAfterSpecial (2, 'EnableTrigger("get_container", false)', sendto.script)</send>
+  </alias>
+  <alias
+   name="give_weaselbait"
+   match="gb"
+   enabled="y"
+   omit_from_output="y"
+   sequence="100"
+  >
+  <send>give bait to weasel
+g bait from box
+g bait from box
+g bait from box
+g bait from box
+g bait from box</send>
+  </alias>
+  <alias
+   name="get_gold"
+   match="gg"
+   enabled="y"
+   sequence="100"
+  >
+  <send>get gold</send>
+  </alias>
+  <alias
+   match="gmt"
+   enabled="y"
+   sequence="100"
+  >
+  <send>get bag from pouch
+get meteor from bag
+</send>
+  </alias>
+  <alias
+   match="gp"
+   enabled="y"
+   omit_from_output="y"
+   sequence="100"
+  >
+  <send>give 16478 to tobold
+get pipe</send>
+  </alias>
+  <alias
+   name="get_totem"
+   match="gttm"
+   enabled="y"
+   sequence="100"
+  >
+  <send>get bag from pouch
+get totem from bag</send>
+  </alias>
+  <alias
+   match="gw"
+   enabled="y"
+   sequence="100"
+  >
+  <send>give bundle to mahla
+give bundle to mahla
+give bundle to mahla
+give bundle to lahai
+give bundle to lahai
+give bundle to lahai</send>
+  </alias>
+  <alias
+   name="hashan_crystalinn"
+   match="h2ci"
+   enabled="y"
+   send_to="11"
+   sequence="100"
+  >
+  <send> n (nw) w 2(sw) w 2s w (sw) 2w (sw) 2w (sw) 3w (sw) 2s w (sw) 3s 2(sw) s (sw) e</send>
+  </alias>
+  <alias
+   match="herb_cures"
+   enabled="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>local CLU
+local SEN
+local WKN
+local STU
+local SHY
+local DIZ
+local DAR
+local NAU
+local REL
+local HAE
+local PAR
+local SLI
+local WEA
+local REC
+SHY = GetVariable("shyness")
+WEA = GetVariable("weariness")
+STU = GetVariable("stupidity")
+WKN = GetVariable("weaken")
+SEN = GetVariable("sensitivity")
+CLU = GetVariable("clumsiness")
+DIZ = GetVariable("dizziness")
+DAR = GetVariable("darkshade")
+NAU = GetVariable("nausea")
+REL = GetVariable("relapse")
+HAE = GetVariable("haemophilia")
+PAR = GetVariable("paralysis")
+SLI = GetVariable("slickness")
+REC = GetVariable("recklessness")
+local ET
+local HB
+ET = GetVariable("eating")
+HB = GetVariable("herbbalance")
+if ET == '0' and HB == '1' then
+if PAR == '1' or SLI == '1' then
+Send ("outr bloodroot")
+Send ("eat bloodroot")
+SetVariable ("eating","1")
+elseif REC == '1' then
+Send ("outr lobelia")
+Send ("eat lobelia")
+SetVariable ("eating","1")
+elseif WKN == '1' or SEN == '1' or CLU == '1' or WEA == '1' then
+Send ("outr kelp")
+Send ("eat kelp")
+SetVariable ("eating","1")
+elseif SHY =='1' or STU == '1' or DIZ == '1' then
+Send ("outr goldenseal")
+Send ("eat goldenseal")
+SetVariable ("eating","1")
+elseif DAR == '1' or NAU == '1' or REL == '1' or HAE == '1' then
+Send ("outr ginseng")
+Send ("eat ginseng")
+SetVariable ("eating","1")
+end
+else
+end</send>
+  </alias>
+  <alias
+   name="raido_home"
+   match="home"
+   enabled="y"
+   send_to="13"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>say ride home</send>
+  </alias>
+  <alias
+   match="hungry"
+   enabled="y"
+   sequence="100"
+  >
+  <send>get bread from pouch
+eat bread</send>
+  </alias>
+  <alias
+   name="jaru_to_cyrene"
+   match="j2c"
+   enabled="y"
+   send_to="11"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send> 3w (sw) s 2(sw) w (sw) u (nw) w (sw) d (sw) 3s (sw) s 2(sw) (nw) 2n</send>
+  </alias>
+  <alias
+   match="k$"
+   enabled="y"
+   omit_from_output="y"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>get bucket from pouch
+put gold in bucket
+put bucket in pouch</send>
+  </alias>
+  <alias
+   match="kmt"
+   enabled="y"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>get bag from pouch
+combine meteor
+put meteor in bag
+put bag in pouch</send>
+  </alias>
+  <alias
+   name="keep_totem"
+   match="kttm"
+   enabled="y"
+   sequence="100"
+  >
+  <send>unwield totem
+get bag from pouch
+put totem in bag
+put bag in pouch</send>
+  </alias>
+  <alias
+   match="lightpipe"
+   enabled="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SendNoEcho ("light 384270")</send>
+  </alias>
+  <alias
+   match="lose thief"
+   enabled="y"
+   expand_variables="y"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>lose @thief</send>
+  </alias>
+  <alias
+   name="lifevision"
+   match="lv"
+   enabled="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>Send ("open chest")
+Send ("get mask from chest")
+Send ("wear mask")
+Send ("lifevision")
+DoAfter (6, "remove mask")
+DoAfter (6, "open chest")
+DoAfter (6, "put mask in chest")
+DoAfter (6, "close chest")</send>
+  </alias>
+  <alias
+   name="map"
+   match="m"
+   enabled="y"
+   send_to="13"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>map</send>
+  </alias>
+  <alias
+   name="manara_crystalinn"
+   match="m2ci"
+   enabled="y"
+   send_to="11"
+   sequence="100"
+  >
+  <send> u (se) s (se) w 2s w (sw) w (sw) s (sw) 2w (sw) s (se) (sw) 2w (nw) w (sw) w s (se) s (sw) (se) s 2(sw) s (sw) e</send>
+  </alias>
+  <alias
+   match="od *"
+   enabled="y"
+   sequence="100"
+  >
+  <send>open door %1</send>
+  </alias>
+  <alias
+   match="pf"
+   enabled="y"
+   sequence="100"
+  >
+  <send>pull fruit</send>
+  </alias>
+  <alias
+   name="put_gold_pouch"
+   match="pg"
+   enabled="y"
+   send_to="13"
+   omit_from_output="y"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>put sovereign in pouch</send>
+  </alias>
+  <alias
+   name="pull_plant"
+   match="pp"
+   enabled="y"
+   omit_from_output="y"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>pull plant
+pull bush</send>
+  </alias>
+  <alias
+   match="pt *"
+   enabled="y"
+   omit_from_log="y"
+   send_to="13"
+   sequence="100"
+  >
+  <send>pt %1</send>
+  </alias>
+  <alias
+   match="r mt"
+   enabled="y"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>get bag from pouch
+get arrow from bag</send>
+  </alias>
+  <alias
+   match="ratwalk"
+   enabled="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>EnableTimerGroup ("walk", true)</send>
+  </alias>
+  <alias
+   match="ratwalkoff"
+   enabled="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>EnableTimerGroup ("walk", false)
+Note ("Ratwalk off")</send>
+  </alias>
+  <alias
+   name="reply"
+   match="reply *"
+   enabled="y"
+   send_to="13"
+   sequence="100"
+  >
+  <send>reply %1</send>
+  </alias>
+  <alias
+   name="reset"
+   match="reset"
+   enabled="y"
+   send_to="12"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>SetVariable ("sipping","0")
+SetVariable ("sipbalance","1")
+SetVariable ("writhe","0")
+SetVariable ("writhing","0")
+SetVariable ("eating","0")
+SetVariable ("balance","1")
+SetVariable ("herbbalance","1")
+SetVariable ("apply","0")
+SetVariable ("salvebalance","1")
+SetVariable ("atking","0")
+SetVariable ("lp","")
+SetVariable ("gs","0")
+SetVariable ("eat_hawthorn","0")
+Note ("All Reset")
+</send>
+  </alias>
+  <alias
+   name="razeslash"
+   match="rsl"
+   enabled="y"
+   expand_variables="y"
+   group="combat"
+   send_to="12"
+   omit_from_output="y"
+   sequence="100"
+  >
+  <send>Send ("rsl @target")
+SetVariable ("balance","0")</send>
+  </alias>
+  <alias
+   name="shallam_to_cyrene"
+   match="s2c"
+   enabled="y"
+   send_to="11"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send> 3w (in/out) 5w 3(nw) 2n 2(nw) (sw) w 2(nw) 3w (sw) s 2(sw) w (sw) u (nw) w (sw) d (sw) 3s (sw) s 2(sw) (nw) 2n</send>
+  </alias>
+  <alias
+   name="shallam_delos"
+   match="s2d"
+   enabled="y"
+   send_to="11"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>7(nw) (ne) e 3(ne) n (nw) 2n (ne) 3n (nw) 2n 2(nw) n </send>
+  </alias>
+  <alias
+   match="salve_cures"
+   enabled="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>local AN
+local FR
+local AP
+local SB
+AN = GetVariable("anorexia")
+FR = GetVariable("freeze")
+AP = GetVariable("apply")
+SB = GetVariable("salvebalance")
+if AP == '0' and SB == '1' then
+   if AN == '1' then
+      Send("apply epidermal to torso")
+      SetVariable ("apply","1")
+   elseif FR &gt;= '1' then
+      Send("apply caloric")
+      SetVariable ("apply","1")
+   else
+   end
+else
+end
+</send>
+  </alias>
+  <alias
+   match="sb *"
+   enabled="y"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>wield snowball
+relax grip
+throw snowball at %1</send>
+  </alias>
+  <alias
+   name="seasone_cyrene"
+   match="sea2c"
+   enabled="y"
+   send_to="11"
+   sequence="100"
+  >
+  <send> w (sw) s (sw) 2s (se) 2s (se) s (se) e (se) 2s (sw) 2(se) 2s (se) 2s (se) s 4(se) e s (se) e</send>
+  </alias>
+  <alias
+   name="seasone_crystalinn"
+   match="sea2ci"
+   enabled="y"
+   send_to="11"
+   sequence="100"
+  >
+  <send>w 2(ne) (se) 3e </send>
+  </alias>
+  <alias
+   name="shopping"
+   match="shop *"
+   enabled="y"
+   variable="shopping"
+   omit_from_log="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("shopping","%1")
+EnableTrigger ("shopping_item", true)
+Note ("shopping for %1!")</send>
+  </alias>
+  <alias
+   match="shopoff"
+   enabled="y"
+   send_to="12"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>EnableTrigger ("shopping_item", false)
+Note ("Not shopping anymore.")</send>
+  </alias>
+  <alias
+   name="shastaan_cyrene"
+   match="shs2c"
+   enabled="y"
+   send_to="11"
+   sequence="100"
+  >
+  <send> s 2w (sw) w d 2s (se) s (se) s (se) 2s (sw) w (nw) n (nw) w 3(nw) n (nw) n 2(nw) 2n 3w u (sw) u (se) w 2(sw) n w s (se) e (se) 2s w (sw) s 2(sw) w (sw) u (nw) w (sw) d (sw) 3s (sw) s 2(sw) (nw) 2n</send>
+  </alias>
+  <alias
+   name="sealioncove_cyrene"
+   match="slc2c"
+   enabled="y"
+   send_to="11"
+   sequence="100"
+  >
+  <send> 2u w 2u (ne) u (sw) (nw) (ne) u 2n w (ne) e (ne) (nw) 3(ne) e (se) (ne) n d (ne) d (ne) n (nw) 2n</send>
+  </alias>
+  <alias
+   name="sealioncove_genji"
+   match="slc2g"
+   enabled="y"
+   send_to="11"
+   sequence="100"
+  >
+  <send> 2u w 2u (ne) u (sw) (nw) (ne) u 2n w (ne) e (ne) (nw) 2(ne) w (nw) (ne) n 3w 3u</send>
+  </alias>
+  <alias
+   match="smg"
+   enabled="y"
+   sequence="100"
+  >
+  <send>smudge ground</send>
+  </alias>
+  <alias
+   name="squint"
+   match="sq*"
+   enabled="y"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>squint %1</send>
+  </alias>
+  <alias
+   name="stand_totem"
+   match="sttm"
+   enabled="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>EnableTrigger ("re_grip", false)
+EnableTrigger ("re_grip2", false)
+EnableTrigger ("auto_aura",false)
+SendNoEcho ("relax grip")
+SendNoEcho ("sheathe")
+SendNoEcho ("sheathe")
+SendNoEcho ("unwield bow")
+SendNoEcho ("wear bow")
+SendNoEcho ("unwield pole")
+SendNoEcho ("g bag from pouch")
+SendNoEcho ("g totem from bag")
+SendNoEcho ("wield totem")
+SendNoEcho ("grip")
+SendNoEcho ("stand totem")
+EnableTrigger ("autoatk2", false)
+DoAfterSpecial (7, 'EnableTrigger ("autoatk2", true)' ,sendto.script)
+DoAfterSpecial (7, 'SetVariable ("balance", "1")' ,sendto.script)
+DoAfterSpecial (7, 'EnableTrigger ("re_grip", true)' ,sendto.script)
+DoAfterSpecial (7, 'EnableTrigger ("re_grip2", true)' ,sendto.script)
+DoAfterSpecial (7, 'EnableTrigger ("auto_aura", true)' ,sendto.script)</send>
+  </alias>
+  <alias
+   name="tarsuke_to_cyrene"
+   match="t2c"
+   enabled="y"
+   send_to="11"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send> 2(sw) 4w 2(sw) w 2s w (sw) 2w (sw) 2w (sw) 3w (sw) 2s w (sw) 3s 2(sw) s (sw) 2w (nw) 3(sw) s (sw) 2s (se) 2s (se) s (se) e (se) 2s (sw) 2(se) 2s (se) 2s (se) s 4(se) e s (se) e</send>
+  </alias>
+  <alias
+   name="tarsuke_crystalinn"
+   match="t2ci"
+   enabled="y"
+   send_to="11"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send> 2(sw) 4w 2(sw) w 2s w (sw) 2w (sw) 2w (sw) 3w (sw) 2s w (sw) 3s 2(sw) s (sw) e</send>
+  </alias>
+  <alias
+   name="tarsuke_delos"
+   match="t2d"
+   enabled="y"
+   send_to="11"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>(sw) e (se) 2s 2(se) s (sw) 3s (sw) 3s 2(se) 2s (se) 5s (se) (sw) (se) 2s (nw) w 2(sw) 3w </send>
+  </alias>
+  <alias
+   name="tumbling"
+   match="tb *"
+   enabled="y"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>tumble %1</send>
+  </alias>
+  <alias
+   name="tell"
+   match="tell *"
+   enabled="y"
+   send_to="13"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>tell %1</send>
+  </alias>
+  <alias
+   match="tf"
+   enabled="y"
+   sequence="100"
+  >
+  <send>turn figure
+push figure
+turn figure</send>
+  </alias>
+  <alias
+   name="throw_eyesigil"
+   match="throw eye"
+   enabled="y"
+   sequence="100"
+  >
+  <send>relax grip
+sheathe
+sheathe
+unwield pole
+unwield bow
+unwield totem
+wear bow
+get eye from 246704
+wield eye
+throw eye at ground
+draw strong
+draw strong
+grip</send>
+  </alias>
+  <alias
+   name="take_pearl"
+   match="tp"
+   enabled="y"
+   sequence="100"
+  >
+  <send>take pearl</send>
+  </alias>
+  <alias
+   name="trace_target"
+   match="tr"
+   enabled="y"
+   group="trace"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("traceloc", " is not here.")
+EnableTrigger ("snub_trace", true)
+EnableTrigger ("trace_withwho", true)
+SendImmediate ("who b")</send>
+  </alias>
+  <alias
+   name="trace"
+   match="tr *"
+   enabled="y"
+   variable="trace"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("trace", "%1")
+SetVariable ("traceloc", " is not here.")
+EnableTrigger ("snub_trace", true)
+SendImmediate ("who b")
+
+
+</send>
+  </alias>
+  <alias
+   name="trace_loc"
+   match="trl *"
+   enabled="y"
+   group="trace"
+   send_to="12"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>SetVariable ("traceloc2","%1")
+EnableTrigger ("snub_trace", true)
+EnableTrigger ("trace_withwho", true)
+Send ("who b")</send>
+  </alias>
+  <alias
+   name="valleyofactar_cyrene"
+   match="va2c"
+   enabled="y"
+   send_to="11"
+   sequence="100"
+  >
+  <send> (se) s d e 3(ne) n</send>
+  </alias>
+  <alias
+   name="valleyofactar_cyrenegates"
+   match="va2cg"
+   enabled="y"
+   send_to="11"
+   sequence="100"
+  >
+  <send>(se) s 2w 2u s (sw) 2d w (sw) s d (se) d (sw) s (sw) (in/out) w (sw) (out/in) </send>
+  </alias>
+  <alias
+   name="impale_withdraw"
+   match="wb"
+   enabled="y"
+   ignore_case="y"
+   sequence="100"
+  >
+  <send>withdraw blade</send>
+  </alias>
+  <alias
+   name="xhaiden_cyrene"
+   match="x2c"
+   enabled="y"
+   send_to="11"
+   sequence="100"
+  >
+  <send> u (se) 3d (se) u e 3d (ne) 2e (se) e (ne) e (ne) (se) s (se) e (se) 2s (sw) 2(se) 2s (se) 2s (se) s 4(se) e s (se) e</send>
+  </alias>
+  <alias
+   name="xhaiden_crystalinn"
+   match="x2ci"
+   enabled="y"
+   send_to="11"
+   sequence="100"
+  >
+  <send>u (se) 3d (se) u e 3d (ne) 2e (se) e (ne) e (ne) 2n (nw) 2n (ne) n 3(ne) (se) 3e </send>
+  </alias>
+  <alias
+   name="immediate_send"
+   match="~*"
+   enabled="y"
+   send_to="13"
+   sequence="100"
+  >
+  <send>%1</send>
+  </alias>
+</aliases>
+</muclient>

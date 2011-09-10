@@ -1,0 +1,7001 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE muclient>
+<!-- Saved on Monday, May 25, 2009, 12:33 AM -->
+<!-- MuClient version 4.37 -->
+<!-- Written by Nick Gammon -->
+<!-- Home Page: http://www.mushclient.com/ -->
+<muclient>
+
+<!-- triggers -->
+
+<triggers
+   muclient_version="4.37"
+   world_file_version="15"
+   date_saved="2009-05-25 00:33:33"
+  >
+  <trigger
+   enabled="y"
+   group="snub"
+   match="^$"
+   name="LineGag"
+   omit_from_log="y"
+   omit_from_output="y"
+   regexp="y"
+   sequence="1"
+  >
+  </trigger>
+  <trigger
+   enabled="y"
+   group="login"
+   match="Enter an option or enter your character's name"
+   match_text_colour="y"
+   name="auto_login"
+   regexp="y"
+   send_to="8"
+   sequence="30"
+   text_colour="15"
+  >
+  <send>1
+acee
+123456
+</send>
+  </trigger>
+  <trigger
+   custom_colour="17"
+   enabled="y"
+   expand_variables="y"
+   group="anti-theft"
+   match="* remove a * pouch."
+   name="wear_pouch"
+   send_to="13"
+   sequence="50"
+   other_back_colour="darkorange"
+  >
+  <send>wear @pouch
+wear @pouch
+wear @pouch</send>
+  </trigger>
+  <trigger
+   custom_colour="7"
+   expand_variables="y"
+   group="anti-theft"
+   ignore_case="y"
+   match="*a soulmaster*"
+   match_text_colour="y"
+   name="anti_soulmaster"
+   send_to="13"
+   sequence="50"
+   text_colour="15"
+  >
+  <send>put hat in @pack
+put hat in @pack
+put hat in @pack
+put letter in @pack
+put letter in @pack
+put letter in @pack
+put sovereigns in @pack
+put sovereigns in @pack
+put sovereigns in @pack
+lose soulmaster
+p soulmaster</send>
+  </trigger>
+  <trigger
+   custom_colour="17"
+   enabled="y"
+   group="anti-theft"
+   ignore_case="y"
+   match="*ou remove a bejewelled Cyrenian scabbard."
+   name="wear_scabbard"
+   send_to="13"
+   sequence="50"
+   other_back_colour="darkorange"
+  >
+  <send>wear 25523
+wear 139870
+wear 25523
+wear 139870
+wear 25523
+wear 139870</send>
+  </trigger>
+  <trigger
+   custom_colour="17"
+   enabled="y"
+   expand_variables="y"
+   group="anti-theft"
+   match="*ou remove a suit of * field plate armour."
+   name="wear_armor"
+   send_to="12"
+   sequence="50"
+   other_back_colour="orange"
+  >
+  <send>DoAfter (3, "wear @armor")
+DoAfter (3.1, "wear @armor")
+DoAfter (3.2, "wear @armor")
+DoAfter (3.3, "wear @armor")
+DoAfter (3.4, "wear @armor")
+DoAfter (3.5, "wear @armor")</send>
+  </trigger>
+  <trigger
+   expand_variables="y"
+   group="anti-theft"
+   ignore_case="y"
+   match="*the soulmaster*"
+   name="anti_soulmaster2"
+   send_to="13"
+   sequence="50"
+  >
+  <send>put hat in @pack
+put hat in @pack
+put hat in @pack
+put letter in @pack
+put letter in @pack
+put letter in @pack
+put sovereigns in @pack
+put sovereigns in @pack
+put sovereigns in @pack
+lose soulmaster
+p soulmaster</send>
+  </trigger>
+  <trigger
+   custom_colour="17"
+   enabled="y"
+   expand_variables="y"
+   group="anti-theft"
+   ignore_case="y"
+   match="*ou remove a * backpack*"
+   name="wear_pack"
+   send_to="13"
+   sequence="70"
+   other_back_colour="darkorange"
+  >
+  <send>wear @pack
+wear @pack
+wear @pack</send>
+  </trigger>
+  <trigger
+   custom_colour="17"
+   colour_change_type="1"
+   group="dead"
+   ignore_case="y"
+   match="* has been slain by the might of *."
+   name="check_dead2"
+   send_to="13"
+   sequence="80"
+   other_text_colour="plum"
+  >
+  <send>whois %1
+whois %2</send>
+  </trigger>
+  <trigger
+   custom_colour="7"
+   enabled="y"
+   expand_variables="y"
+   group="anti-theft"
+   ignore_case="y"
+   make_underline="y"
+   match="* snaps * fingers in front of you."
+   name="anti_hypnosis"
+   send_to="12"
+   sequence="80"
+  >
+  <send>SendNoEcho ("put hat in @pack")
+SendNoEcho ("put hat in @pack")
+SendNoEcho ("put arrow in bag")
+SendNoEcho ("put bag in @pack")
+SendNoEcho ("put letter in @pack")
+SendNoEcho ("put letter in @pack")
+SendNoEcho ("put sovereigns in @pack")
+SendNoEcho ("put sovereigns in @pack")
+SendNoEcho ("wear @pack")
+SendNoEcho ("wear ring")
+SendNoEcho ("wear @pouch")
+SendNoEcho ("slap %1")
+SendNoEcho ("lose %1")
+SendNoEcho ("enemy %1")
+SendNoEcho ("wear @armor")
+SetVariable ("thief","%1")
+SendNoEcho ("writhe")
+SendNoEcho ("gasp")
+SendNoEcho ("gasp")
+SendNoEcho ("gasp")
+SendNoEcho ("gasp")
+SendNoEcho ("gasp")
+SendNoEcho ("gasp")
+SendNoEcho ("gasp")
+SendNoEcho ("gasp")
+SendNoEcho ("say %1 is hypnoptising me!")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="falcon"
+   ignore_case="y"
+   match="*Wardens): * says, &quot;Falcons slay * now.&quot;"
+   name="wfalcon_slay"
+   send_to="13"
+   sequence="80"
+  >
+  <send>falcon slay %3</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="falcon"
+   ignore_case="y"
+   match="*Wardens): * says, &quot;Falcons track * now.&quot;"
+   name="wfalcon_track"
+   send_to="13"
+   sequence="80"
+  >
+  <send>falcon track %3</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="falcon"
+   ignore_case="y"
+   match="*Wardens): * says, &quot;Falcons, recall.&quot;"
+   name="wfalcon_recall1"
+   send_to="13"
+   sequence="80"
+  >
+  <send>falcon hunt</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="anti-theft"
+   match="*ou cease wielding an ornate steel rapier in your*"
+   name="rewield2"
+   send_to="13"
+   sequence="80"
+  >
+  <send>wield 60271
+wield 176423</send>
+  </trigger>
+  <trigger
+   custom_colour="17"
+   enabled="y"
+   expand_variables="y"
+   group="anti-theft"
+   ignore_case="y"
+   match="*ou remove *falconry glove*"
+   name="wear_glove"
+   send_to="13"
+   sequence="80"
+   other_back_colour="yellow"
+  >
+  <send>wear @glove
+wear @glove</send>
+  </trigger>
+  <trigger
+   custom_colour="17"
+   enabled="y"
+   group="anti-theft"
+   match="*ou remove* ring*"
+   name="rewear_ring"
+   sequence="80"
+   other_back_colour="orange"
+  >
+  <send>wear ring
+wear ring
+wear ring</send>
+  </trigger>
+  <trigger
+   custom_colour="9"
+   enabled="y"
+   group="anti-snub"
+   match="*ou take a drink from*vial*"
+   name="drinking_vials"
+   send_to="12"
+   sequence="80"
+  >
+  <send>SetVariable ("sipbalance","0")
+SetVariable ("sipping","0")</send>
+  </trigger>
+  <trigger
+   custom_colour="17"
+   colour_change_type="1"
+   group="dead"
+   ignore_case="y"
+   match="* has been slain by *."
+   name="check_dead"
+   send_to="13"
+   sequence="90"
+   other_text_colour="plum"
+  >
+  <send>whois %1
+whois %2</send>
+  </trigger>
+  <trigger
+   custom_colour="11"
+   enabled="y"
+   expand_variables="y"
+   group="combat"
+   ignore_case="y"
+   make_underline="y"
+   match="*nearly invisible magical shield forms*@target*"
+   name="rsl"
+   send_to="9"
+   sequence="90"
+   variable="atk"
+  >
+  <send>rsl</send>
+  </trigger>
+  <trigger
+   custom_colour="3"
+   colour_change_type="1"
+   group="combat"
+   ignore_case="y"
+   make_underline="y"
+   match="*ou may drink another health or mana elixir."
+   name="auto_health"
+   send_to="12"
+   sequence="90"
+  >
+  <send>SetVariable ("sipbalance","1")
+Send ("sip health")
+SetVariable ("sipping","1")</send>
+  </trigger>
+  <trigger
+   custom_colour="3"
+   group="combat"
+   make_underline="y"
+   match="*ou may eat another bit of irid moss."
+   name="auto_moss"
+   sequence="90"
+  >
+  <send>outr moss
+eat moss</send>
+  </trigger>
+  <trigger
+   custom_colour="17"
+   enabled="y"
+   group="anti-theft"
+   ignore_case="y"
+   match="*ou remove a *."
+   name="auto_wear"
+   send_to="13"
+   sequence="90"
+   other_back_colour="gold"
+  >
+  <send>wear %2
+wear %2
+wear %2</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="anti-snub"
+   match="*ou takes some salve from * vial and rubs*"
+   name="salve"
+   send_to="12"
+   sequence="90"
+  >
+  <send>SetVariable ("apply","0")
+SetVariable ("salvebalance","0")</send>
+  </trigger>
+  <trigger
+   custom_colour="17"
+   enabled="y"
+   group="defence"
+   make_underline="y"
+   match="*ou touch the tattoo and a nearly invisible magical*"
+   send_to="12"
+   sequence="90"
+   other_text_colour="darkviolet"
+  >
+  <send>SetVariable ("balance","0")
+SetVariable ("shield","1")
+SetVariable ("shielding","")</send>
+  </trigger>
+  <trigger
+   custom_colour="2"
+   group="combat def"
+   make_underline="y"
+   match="*our aura of weapons rebounding disappears*"
+   name="auto_aura"
+   send_to="12"
+   sequence="90"
+  >
+  <send>Send ("put skullcap in 384270")
+Send ("light 384270")
+Send ("smoke 384270")
+SetVariable ("sc","smoke 384270")</send>
+  </trigger>
+  <trigger
+   custom_colour="17"
+   enabled="y"
+   expand_variables="y"
+   ignore_case="y"
+   make_underline="y"
+   match="@target takes some salve from*and rubs it on*legs."
+   sequence="90"
+   other_back_colour="deeppink"
+  >
+  </trigger>
+  <trigger
+   custom_colour="17"
+   enabled="y"
+   expand_variables="y"
+   group="trace"
+   ignore_case="y"
+   match="@trace *(*)"
+   name="trace"
+   send_to="12"
+   sequence="90"
+   variable="traceloc"
+   other_text_colour="darkslategray"
+   other_back_colour="yellow"
+  >
+  <send>SetVariable("traceloc"," at %2")
+SetVariable("traceloc2","%2")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="status alert"
+   keep_evaluating="y"
+   match="^(.*?)h\, (.*?)m (.*?)\-"
+   name="promptstatus"
+   regexp="y"
+   send_to="12"
+   sequence="90"
+  >
+  <send>SetVariable ("health", "%1")
+SetVariable ("mana", "%2")
+SetVariable ("defences", "%3")
+local SB
+local SP
+SP = GetVariable("sipping")
+SB = GetVariable("sipbalance")
+if %1 &lt; 2200 then
+if SB == '1' and SP == '0' then
+  Execute("!sh")
+  SetVariable ("sipping","1")
+  DoAfterSpecial (2,'SetVariable("sipping","0")',sendto.script)
+else
+  Note ("Not ready")
+end
+else
+end</send>
+  </trigger>
+  <trigger
+   custom_colour="17"
+   enabled="y"
+   group="combat"
+   match="*arrow flies towards you, shot by %1."
+   name="anti_arrow3"
+   sequence="99"
+   other_text_colour="chartreuse"
+   other_back_colour="crimson"
+  >
+  <send>Say Arrow shot by %1!
+sip health
+touch shield</send>
+  </trigger>
+  <trigger
+   custom_colour="2"
+   expand_variables="y"
+   match="&quot;*&quot; *"
+   name="get_container"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SendImmediate ("get %1 from @check")</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="(.*?)( |\*)(p|\*)(r|\*)(i|\*)(c|\*)(k|\*)(l|\*)(y|\*)( |\*)(s|\*)(t|\*)(i|\*)(n|\*)(g|\*)(i|\*)(n|\*)(g|\*)( |\*)(o|\*)(v|\*)(e|\*)(r|\*)(c|\*)(o|\*)(m|\*)(e|\*)(s|\*)( |\*)(y|\*)(o|\*)(u|\*)(r|\*)( |\*)(b|\*)(o|\*)(d|\*)(y|\*)(\,|\*)( |\*)(f|\*)(a|\*)(d|\*)(i|\*)(n|\*)(g|\*)( |\*)(a|\*)(w|\*)(a|\*)(y|\*)( |\*)(i|\*)(n|\*)(t|\*)(o|\*)( |\*)(n|\*)(u|\*)(m|\*)(b|\*)(n|\*)(e|\*)(s|\*)(s|\*)\.$"
+   name="curare"
+   regexp="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("paralysis","1")
+local ET
+local HB
+ET = GetVariable("eating")
+HB = GetVariable("herbbalance")
+if ET == '0' and HB == '1' then
+Send ("outr bloodroot")
+Send ("eat bloodroot")
+SetVariable ("eating","1")
+else
+end</send>
+  </trigger>
+  <trigger
+   custom_colour="17"
+   enabled="y"
+   expand_variables="y"
+   group="trace"
+   ignore_case="y"
+   match="(Praying for Salvation) @trace."
+   name="tracepray"
+   send_to="9"
+   sequence="100"
+   variable="traceloc"
+   other_text_colour="darkslategray"
+   other_back_colour="yellow"
+  >
+  <send> is praying.</send>
+  </trigger>
+  <trigger
+   group="pickup"
+   match="*    *"
+   name="get_stuff"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SendNoEcho ("get %1")</send>
+  </trigger>
+  <trigger
+   expand_variables="y"
+   group="shopping"
+   match="*  @shopping* *"
+   name="shopping_item"
+   sequence="100"
+  >
+  <send>wp %2</send>
+  </trigger>
+  <trigger
+   group="shopping"
+   match="*  broadsword* *"
+   name="wp_broadsword"
+   sequence="100"
+  >
+  <send>wp %2</send>
+  </trigger>
+  <trigger
+   group="shopping"
+   match="*  fieldplate* *"
+   name="wp_fieldplate"
+   sequence="100"
+  >
+  <send>wp %2</send>
+  </trigger>
+  <trigger
+   group="shopping"
+   match="*  rapier* *"
+   name="wp_rapier"
+   sequence="100"
+  >
+  <send>wp %2</send>
+  </trigger>
+  <trigger
+   group="shopping"
+   match="*  ring* *"
+   name="wp_rings"
+   sequence="100"
+  >
+  <send>wp %2</send>
+  </trigger>
+  <trigger
+   group="shopping"
+   match="*  shortsword* *"
+   name="wp_shortsword"
+   sequence="100"
+  >
+  <send>wp %2</send>
+  </trigger>
+  <trigger
+   custom_colour="8"
+   enabled="y"
+   group="combat"
+   ignore_case="y"
+   make_underline="y"
+   match="* aura of weapons rebounding disappears."
+   name="aura_alert"
+   sequence="100"
+  >
+  </trigger>
+  <trigger
+   custom_colour="6"
+   enabled="y"
+   group="anti-warp"
+   ignore_case="y"
+   make_underline="y"
+   match="* beam of prismatic light suddenly shoots into the room."
+   name="prism_alert"
+   sequence="100"
+   other_text_colour="goldenrod"
+   other_back_colour="darkred"
+  >
+  <send>say ALERT! Someone is prisming in!</send>
+  </trigger>
+  <trigger
+   custom_colour="7"
+   enabled="y"
+   group="combat monk"
+   ignore_case="y"
+   make_underline="y"
+   match="* bows * head in silent prayer*"
+   name="Kai_deliverance"
+   send_to="2"
+   sequence="100"
+  >
+  <send>Warning! %1! Warning!</send>
+  </trigger>
+  <trigger
+   custom_colour="17"
+   enabled="y"
+   group="anti-theft"
+   make_underline="y"
+   match="* cease wielding * in your * hand."
+   name="unwield_alert"
+   send_to="13"
+   sequence="100"
+   other_text_colour="maroon"
+   other_back_colour="dodgerblue"
+  >
+  <send>wield 88838
+wield 363086
+wield 60271
+wield 176423
+wield darkbow
+grip</send>
+  </trigger>
+  <trigger
+   custom_colour="17"
+   enabled="y"
+   group="combat"
+   make_underline="y"
+   match="* down the last drop from *"
+   name="emptyvial_alert"
+   send_to="12"
+   sequence="100"
+   other_back_colour="magenta"
+  >
+  <send>SetVariable ("sipbalance","0")
+SetVariable ("sipping","0")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="snub"
+   match="* exhales loudly*"
+   omit_from_output="y"
+   sequence="100"
+  >
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   ignore_case="y"
+   make_underline="y"
+   match="* feel your allergy to the sun going into temporary remission*"
+   name="darkshade"
+   send_to="13"
+   sequence="100"
+   other_text_colour="red"
+   other_back_colour="whitesmoke"
+  >
+  <send>outr ginseng
+eat ginseng</send>
+  </trigger>
+  <trigger
+   custom_colour="6"
+   enabled="y"
+   group="anti-warp"
+   make_underline="y"
+   match="* fiery portal opens in the air before you*"
+   name="portaling4"
+   sequence="100"
+  >
+  <send>say ALERT Incoming!</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="defence strip"
+   match="* flays the sileris coating from you*"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("sileris","0")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   expand_variables="y"
+   group="anti-theft"
+   ignore_case="y"
+   match="* flings a Hierophant tarot card at you."
+   name="hierophant_card"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SendNoEcho ("put hat in @pack")
+SendNoEcho ("put hat in @pack")
+SendNoEcho ("put arrow in bag")
+SendNoEcho ("put bag in @pack")
+SendNoEcho ("put letter in @pack")
+SendNoEcho ("put letter in @pack")
+SendNoEcho ("put sovereigns in @pack")
+SendNoEcho ("put sovereigns in @pack")
+SendNoEcho ("wear @pack")
+SendNoEcho ("wear ring")
+SendNoEcho ("wear @pouch")
+SendNoEcho ("slap %1")
+SendNoEcho ("lose %1")
+SendNoEcho ("enemy %1")
+SendNoEcho ("@armor")
+SetVariable ("thief","%1")
+SendNoEcho ("writhe")
+SendNoEcho ("gasp")
+SendNoEcho ("gasp")
+SendNoEcho ("say %1 is hypnoptising me!")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="falcon"
+   match="* grow still and begin to silently pray for preservation of your soul*"
+   name="auto_sanctuary"
+   omit_from_output="y"
+   send_to="13"
+   sequence="100"
+  >
+  <send>falcon sanctuary
+inr all moss
+inr all bloodroot
+inr all ginseng
+inr all goldenseal
+inr all kelp
+inr all elm
+inr all skullcap
+inr all valerian
+inr all cohosh
+inr all bayberry
+inr all hawthorn
+inr all echinacea
+inr all plant
+inr all ink
+inr all ink
+inr all ink
+inr all ink
+inr all ink</send>
+  </trigger>
+  <trigger
+   custom_colour="17"
+   group="dead"
+   match="* has been slain in * by *"
+   name="dead4"
+   sequence="100"
+   other_text_colour="plum"
+  >
+  </trigger>
+  <trigger
+   custom_colour="17"
+   group="dead"
+   match="* has bled to death*"
+   name="bleed_death"
+   omit_from_output="y"
+   sequence="100"
+   other_text_colour="plum"
+  >
+  <send>whois %1</send>
+  </trigger>
+  <trigger
+   custom_colour="17"
+   group="dead"
+   ignore_case="y"
+   match="* has perished,*"
+   name="impaled_dead"
+   send_to="13"
+   sequence="100"
+   other_text_colour="plum"
+  >
+  <send>whois %1</send>
+  </trigger>
+  <trigger
+   custom_colour="11"
+   colour_change_type="1"
+   enabled="y"
+   group="identify"
+   ignore_case="y"
+   match="* is * in Cyrene."
+   name="identify"
+   omit_from_log="y"
+   sequence="100"
+  >
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="* mind swims as dizziness overtakes you*"
+   name="dizziness"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("dizziness","1")
+local ET
+local HB
+ET = GetVariable("eating")
+HB = GetVariable("herbbalance")
+if ET == '0' and HB == '1' then
+Send ("outr ginseng")
+Send ("eat ginseng")
+SetVariable ("eating","1")
+else
+end</send>
+  </trigger>
+  <trigger
+   custom_colour="9"
+   enabled="y"
+   group="combat"
+   make_underline="y"
+   match="* moves over to block the * exit*"
+   name="block_alert"
+   send_to="12"
+   sequence="100"
+  >
+  <send>Note ("%2 is blocked by %1")
+Note ("%2 is blocked by %1")
+Note ("%2 is blocked by %1")
+SendImmediate ("say %2 exit is blocked by %1")</send>
+  </trigger>
+  <trigger
+   custom_colour="5"
+   enabled="y"
+   group="combat"
+   ignore_case="y"
+   make_underline="y"
+   match="* of *'s reflections wink out of existence!"
+   name="reflections_alert"
+   sequence="100"
+  >
+  </trigger>
+  <trigger
+   custom_colour="6"
+   enabled="y"
+   group="anti-warp"
+   ignore_case="y"
+   make_underline="y"
+   match="* portal opens in the air in front of you, edges vibrating madly."
+   name="portal_alert"
+   send_to="13"
+   sequence="100"
+  >
+  <send>say A portal is opening!</send>
+  </trigger>
+  <trigger
+   custom_colour="17"
+   enabled="y"
+   group="combat knight"
+   make_underline="y"
+   match="* raises * over * head and begins to swing it*"
+   name="cleave0"
+   send_to="2"
+   sequence="100"
+   other_text_colour="gold"
+   other_back_colour="brown"
+  >
+  <send>CLEAVE!! CLEAVE!! CLEAVE !!</send>
+  </trigger>
+  <trigger
+   custom_colour="7"
+   enabled="y"
+   group="combat monk"
+   make_underline="y"
+   match="* slowly raises * head and you see * eyes glowing *"
+   name="kai_deliverance2"
+   send_to="2"
+   sequence="100"
+  >
+  <send>WARNING!! DO NOT ATTACK %1!!
+CLEAVE the bastard!</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   ignore_case="y"
+   make_underline="y"
+   match="* state of paralysis prevents you*"
+   name="paralysis"
+   send_to="12"
+   sequence="100"
+   other_text_colour="red"
+   other_back_colour="whitesmoke"
+  >
+  <send>SetVariable ("paralysis","1")
+SetVariable ("atking","0")
+local ET
+local HB
+ET = GetVariable("eating")
+HB = GetVariable("herbbalance")
+if ET == '0' and HB == '1' then
+Send ("outr bloodroot")
+Send ("eat bloodroot")
+SetVariable ("eating","1")
+else
+end</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="snub"
+   match="* suddenly inhales*"
+   omit_from_output="y"
+   sequence="100"
+  >
+  </trigger>
+  <trigger
+   custom_colour="17"
+   enabled="y"
+   group="combat priest"
+   match="* swings the crackling mace about * head, gathering momentum*"
+   name="judgement"
+   send_to="2"
+   sequence="100"
+   other_back_colour="yellow"
+  >
+  <send>Alert!
+Judgement!
+Judgement!</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="snub"
+   match="* takes a drink from * vial."
+   name="snub_drinkvial"
+   omit_from_output="y"
+   sequence="100"
+  >
+  </trigger>
+  <trigger
+   group="snub"
+   match="* takes some salve from * vial and rubs*"
+   name="snub_salve"
+   omit_from_output="y"
+   sequence="100"
+  >
+  </trigger>
+  <trigger
+   enabled="y"
+   group="quest"
+   match="*&quot;What garment did the Chancellor favour?&quot;"
+   name="ore_quest8"
+   send_to="12"
+   sequence="100"
+  >
+  <send>DoAfter (1,"ask aneesh white vest")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="quest"
+   match="*&quot;What was Geraldt's profession?&quot;"
+   name="ore_quest10"
+   send_to="12"
+   sequence="100"
+  >
+  <send>DoAfter (1,"ask aneesh Bookie")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="quest"
+   match="*&quot;What was the Steward's name?&quot;"
+   name="ore_quest4"
+   send_to="12"
+   sequence="100"
+  >
+  <send>DoAfter (1,"ask aneesh geraldt")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="quest"
+   match="*&quot;What was the Steward's profession?&quot;"
+   name="ore_quest7"
+   send_to="12"
+   sequence="100"
+  >
+  <send>DoAfter (1,"ask aneesh bookie")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="quest"
+   match="*&quot;Which garment did the Treasurer wear?&quot;"
+   name="ore_quest"
+   send_to="12"
+   sequence="100"
+  >
+  <send>DoAfter (1,"ask aneesh blue apron")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="quest"
+   match="*&quot;Which ministry did Uhrtrens serve?&quot;"
+   name="ore_quest3"
+   send_to="12"
+   sequence="100"
+  >
+  <send>DoAfter (1,"ask aneesh ambassador")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="quest"
+   match="*&quot;Which office held the Jeweller?&quot;"
+   name="ore_quest5"
+   send_to="12"
+   sequence="100"
+  >
+  <send>DoAfter (1,"ask aneesh treasurer")</send>
+  </trigger>
+  <trigger
+   custom_colour="17"
+   enabled="y"
+   group="chat"
+   ignore_case="y"
+   match="*Cyrene):*"
+   name="city_chat"
+   send_to="5"
+   sequence="100"
+   other_text_colour="hotpink"
+  >
+  <send>%2</send>
+  </trigger>
+  <trigger
+   custom_colour="17"
+   enabled="y"
+   group="chat"
+   match="*Cyrenian Combat Academy): *"
+   name="CCA"
+   send_to="5"
+   sequence="100"
+   other_text_colour="greenyellow"
+  >
+  <send>%2</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="status"
+   match="*Maya, the Great Mother! Your clumsiness*"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("clumsiness","0")</send>
+  </trigger>
+  <trigger
+   custom_colour="2"
+   enabled="y"
+   group="chat"
+   ignore_case="y"
+   match="*Novitiates):*"
+   name="novitiates_chat"
+   send_to="5"
+   sequence="100"
+   other_text_colour="darkkhaki"
+  >
+  <send>%2</send>
+  </trigger>
+  <trigger
+   custom_colour="11"
+   enabled="y"
+   group="party combat"
+   ignore_case="y"
+   make_underline="y"
+   match="*Party): * says, &quot;Target *.&quot;"
+   name="party_target"
+   send_to="9"
+   sequence="100"
+   variable="target"
+  >
+  <send>%3</send>
+  </trigger>
+  <trigger
+   custom_colour="11"
+   enabled="y"
+   group="chat"
+   match="*Party):*"
+   name="Partychat"
+   send_to="5"
+   sequence="100"
+  >
+  <send>%2</send>
+  </trigger>
+  <trigger
+   custom_colour="11"
+   enabled="y"
+   group="chat"
+   ignore_case="y"
+   match="*School of Runic Arts):*"
+   name="clan_tell"
+   send_to="5"
+   sequence="100"
+  >
+  <send>%2</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="quest"
+   match="*Veshina removes the vestment and throws it onto the*"
+   name="veshina"
+   send_to="12"
+   sequence="100"
+  >
+  <send>Execute ("get vestment")
+Execute ("!ac")
+Execute ("!t veshina")
+Execute ("atk")</send>
+  </trigger>
+  <trigger
+   custom_colour="17"
+   enabled="y"
+   group="chat"
+   ignore_case="y"
+   match="*Wardens): *"
+   name="House_tell"
+   send_to="5"
+   sequence="100"
+   other_text_colour="orangered"
+  >
+  <send>%2</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="falcon"
+   match="*Wardens): * says, &quot;Falcons recall.&quot;"
+   name="wfalcon_recall"
+   send_to="13"
+   sequence="100"
+  >
+  <send>falcon hunt</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*Why must everything be so difficult*"
+   name="stupidity2"
+   send_to="12"
+   sequence="100"
+  >
+  <send>Execute("cure_stupidity")</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*a dizzying warmth begin to spread through your body*"
+   name="voyria5"
+   send_to="13"
+   sequence="100"
+  >
+  <send>sip immunity</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*a tightening sensation in your lungs*"
+   name="asthma3"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("asthma","1")
+SetVariable ("fitness","0")
+Execute("!f")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="snub"
+   match="*anything called that here*"
+   name="snub_none3"
+   omit_from_output="y"
+   sequence="100"
+  >
+  </trigger>
+  <trigger
+   enabled="y"
+   group="snub"
+   match="*are already concentrating*"
+   name="snub_concentrating"
+   omit_from_output="y"
+   sequence="100"
+  >
+  </trigger>
+  <trigger
+   custom_colour="7"
+   enabled="y"
+   group="anti-warp"
+   make_underline="y"
+   match="*arrives from the ether*"
+   name="ether_walk"
+   send_to="2"
+   sequence="100"
+  >
+  <send>Alert! Alert!</send>
+  </trigger>
+  <trigger
+   custom_colour="17"
+   enabled="y"
+   group="combat"
+   ignore_case="y"
+   make_underline="y"
+   match="*arrow flies in towards you*"
+   name="anti_arrow"
+   send_to="13"
+   sequence="100"
+   other_text_colour="chartreuse"
+   other_back_colour="crimson"
+  >
+  <send>say Arrow!
+sip health
+touch shield</send>
+  </trigger>
+  <trigger
+   custom_colour="17"
+   enabled="y"
+   group="combat"
+   ignore_case="y"
+   make_underline="y"
+   match="*arrow flies towards you*"
+   name="anti_arrow2"
+   send_to="13"
+   sequence="100"
+   other_text_colour="chartreuse"
+   other_back_colour="crimson"
+  >
+  <send>say Arrow!
+sip health
+touch shield</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*as you are, your body is not able*"
+   name="paralysis6"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("paralysis","1")
+SetVariable ("atking","0")
+local ET
+local HB
+ET = GetVariable("eating")
+HB = GetVariable("herbbalance")
+if ET == '0' and HB == '1' then
+Send ("outr bloodroot")
+Send ("eat bloodroot")
+SetVariable ("eating","1")
+else
+end</send>
+  </trigger>
+  <trigger
+   custom_colour="7"
+   enabled="y"
+   group="combat"
+   make_underline="y"
+   match="*battering your body with excruciating force*"
+   name="thuriaz"
+   send_to="2"
+   sequence="100"
+  >
+  <send>Alert! You are Thuriazed</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="status"
+   match="*begin to writhe helplessly, throwing your body off balance*"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("balance","0")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="snub"
+   match="*begins sketching thuriaz*"
+   name="snub_thuriaz"
+   omit_from_output="y"
+   sequence="100"
+  >
+  </trigger>
+  <trigger
+   custom_colour="17"
+   enabled="y"
+   group="combat knight"
+   make_underline="y"
+   match="*begins to bear down on you with his*"
+   name="cleave"
+   send_to="2"
+   sequence="100"
+   other_text_colour="gold"
+   other_back_colour="brown"
+  >
+  <send>CLEAVE!! CLEAVE!! CLEAVE !!</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="status"
+   match="*bronchial tubes open up and your asthma is cured*"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable("asthma","0")
+SetVariable("fitness","0")
+SetVariable("fit","")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="fishing"
+   match="*but the hook pulls free of the fish."
+   name="fish_gone"
+   send_to="12"
+   sequence="100"
+  >
+  <send>DoAfter (2, "tease line")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="quest"
+   match="*buy me some more rum, Acee?*"
+   name="pirate_rum"
+   sequence="100"
+  >
+  <send>buy rum
+give rum to greybeard</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="snub"
+   match="*by that name here*"
+   name="snub_none2"
+   omit_from_output="y"
+   sequence="100"
+  >
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*cannot move as both your legs are crippled*"
+   name="crippled_legs3"
+   send_to="12"
+   sequence="100"
+  >
+  <send>Execute ("cure_limbs")
+local AP
+local SB
+AP = GetVariable("apply")
+SB = GetVariable("salvebalance")
+if AP == '0' and SB == '1' then
+Send ("apply mending to legs")
+SetVariable ("apply","1")
+else
+end</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="quest"
+   match="*chlandis, an aged peltmonger hands you a chunk of*"
+   name="meat_meat"
+   omit_from_output="y"
+   sequence="100"
+  >
+  <send>give caribou to woman
+give crane to woman</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   make_underline="y"
+   match="*clearly you know little of the sultry tango*"
+   send_to="12"
+   sequence="100"
+  >
+  <send>Execute("cure_stupidity_syndrome")</send>
+  </trigger>
+  <trigger
+   custom_colour="17"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*constricting around you."
+   name="entanglement"
+   sequence="100"
+   other_text_colour="lightcoral"
+   other_back_colour="navy"
+  >
+  <send>writhe</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*convulsions in your stomach*"
+   name="nauseous"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("nausea","1")
+local ET
+local HB
+ET = GetVariable("eating")
+HB = GetVariable("herbbalance")
+if ET == '0' and HB == '1' then
+Send ("outr ginseng")
+Send ("eat ginseng")
+SetVariable ("eating","1")
+else
+end</send>
+  </trigger>
+  <trigger
+   custom_colour="3"
+   enabled="y"
+   group="alert"
+   make_underline="y"
+   match="*covered by lush leaves and vines, a runic*"
+   name="totem_check"
+   send_to="2"
+   sequence="100"
+  >
+  <send>Totem Alert</send>
+  </trigger>
+  <trigger
+   custom_colour="17"
+   enabled="y"
+   group="combat apostate"
+   make_underline="y"
+   match="*daegger has looped around and dives towards your*"
+   name="shadowstrike"
+   send_to="13"
+   sequence="100"
+   other_text_colour="lightcoral"
+   other_back_colour="navy"
+  >
+  <send>writhe</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   ignore_case="y"
+   make_underline="y"
+   match="*dizzying beam of energy strikes you as your attack rebound*"
+   name="dizzyshield"
+   send_to="12"
+   sequence="100"
+  >
+  <send>Send ("concentrate")
+DoAfter (5, EnableTrigger ("dissyshield", true))
+EnableTrigger ("dizzyshield", false)
+</send>
+  </trigger>
+  <trigger
+   custom_colour="17"
+   enabled="y"
+   group="archery"
+   make_underline="y"
+   match="*draw your bow back and let fly an arrow*"
+   name="bullseye_alert"
+   sequence="100"
+   other_text_colour="yellow"
+   other_back_colour="blue"
+  >
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   match="*eing paralysed, you can't do tha*"
+   name="paralysis1"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("paralysis","1")
+SetVariable ("atking","0")
+local ET
+local HB
+ET = GetVariable("eating")
+HB = GetVariable("herbbalance")
+if ET == '0' and HB == '1' then
+Send ("outr bloodroot")
+Send ("eat bloodroot")
+SetVariable ("eating","1")
+else
+end</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   expand_variables="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*feel a deadening pall overcome your mind*"
+   name="deadening2"
+   send_to="13"
+   sequence="100"
+  >
+  <send>put elm in @epipe
+smoke @epipe</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*feel ugliness radiating from you*"
+   name="dishonour"
+   send_to="12"
+   sequence="100"
+  >
+  <send>Execute ("!smv")</send>
+  </trigger>
+  <trigger
+   custom_colour="7"
+   enabled="y"
+   group="anti-theft"
+   match="*feeling of generosity spreads throughout you*"
+   name="generousity"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable("selfishness","0")
+SendImmediate ("selfishness")</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="snub"
+   make_underline="y"
+   match="*first raise yourself from the floor*"
+   name="stand2"
+   sequence="100"
+  >
+  <send>stand</send>
+  </trigger>
+  <trigger
+   custom_colour="17"
+   enabled="y"
+   group="combat"
+   ignore_case="y"
+   match="*flaming meteor*"
+   name="meteor_alert"
+   send_to="2"
+   sequence="100"
+   other_text_colour="gold"
+   other_back_colour="maroon"
+  >
+  <send>Meteor Alert! Meteor Alert!</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   expand_variables="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*flings * Aeon tarot card at you."
+   name="aeon3"
+   send_to="13"
+   sequence="100"
+  >
+  <send>put elm in @epipe
+smoke @epipe</send>
+  </trigger>
+  <trigger
+   custom_colour="14"
+   enabled="y"
+   group="anti-theft"
+   match="*flows from it and into your very being*"
+   name="anti_soulmaster3"
+   send_to="13"
+   sequence="100"
+  >
+  <send>lose soulmaster</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="snub"
+   match="*from your quiver and nock it to your bow*"
+   name="snub_arrow"
+   omit_from_output="y"
+   sequence="100"
+  >
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*gasp as your fine-tuned reflexes disappear*"
+   name="clumsiness2"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("clumsiness","1")
+local ET
+local HB
+ET = GetVariable("eating")
+HB = GetVariable("herbbalance")
+if ET == '0' and HB == '1' then
+Send("outr kelp")
+Send("eat kelp")
+SetVariable ("eating","1")
+else
+end</send>
+  </trigger>
+  <trigger
+   custom_colour="6"
+   enabled="y"
+   group="anti-warp"
+   make_underline="y"
+   match="*gateway of light blazes into existence before your eyes*"
+   name="portaling2"
+   sequence="100"
+  >
+  <send>say ALERT! Someone is gateing in!</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   expand_variables="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*gives you a vengeful stare, and dark images begin to*"
+   name="hellsight1"
+   send_to="13"
+   sequence="100"
+  >
+  <send>put elm in @epipe
+smoke @epipe</send>
+  </trigger>
+  <trigger
+   custom_colour="7"
+   enabled="y"
+   group="combat monk"
+   make_underline="y"
+   match="*glowing white nimbus*"
+   name="kai_deliverance3"
+   send_to="2"
+   sequence="100"
+  >
+  <send>ALERT! DO NOT ATTACK!
+CLEAVE the bastard!</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="combat"
+   match="*gniting in holy flame, * mace burns away your protective aura*"
+   name="re_aura"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("aura","0")
+Send ("put skullcap in 384270")
+Send ("light 384270")
+Send ("smoke 384270")
+SetVariable ("sc","smoke 384270")</send>
+  </trigger>
+  <trigger
+   custom_colour="16"
+   enabled="y"
+   group="combat"
+   make_underline="y"
+   match="*grabs hold of a nearby branch and swings up and out of sight*"
+   name="Tree_alert"
+   sequence="100"
+  >
+  <send>Up the Trees!
+
+TTTTT RRRR   EEEEE  EEEEE     
+  T   R   R  E      E 
+  T   RRRR   EEEEE  EEEEE
+  T   R   R  E      E
+  T   R   R  EEEEE  EEEEE
+
+Up the Trees!
+</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*ground seems to tilt and you fall*"
+   name="vertigo"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("dizziness","1")
+local ET
+local HB
+ET = GetVariable("eating")
+HB = GetVariable("herbbalance")
+if ET == '0' and HB == '1' then
+Send("outr goldenseal")
+Send("eat goldenseal")
+SetVariable ("eating","1")
+else
+end</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   match="*hat do you want to eat?"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("eating","0")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="combat"
+   match="*hat pipe isn't lit*"
+   name="re_light"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("lp","0")
+local BAL
+BAL = GetVariable("balance")
+if BAL == '1' then
+Send ("light 384270")
+else
+end
+local AR
+AR = GetVariable ("aura")
+if AR == '0' then
+SendNoEcho ("@sc")
+else
+end</send>
+  </trigger>
+  <trigger
+   custom_colour="17"
+   enabled="y"
+   expand_variables="y"
+   group="status alert"
+   make_underline="y"
+   match="*have writhed free of your entanglement*"
+   name="w_atk"
+   send_to="12"
+   sequence="100"
+   other_text_colour="lime"
+  >
+  <send>SetVariable ("entangled","0")
+SetVariable ("writhe","0")
+SetVariable ("writhing","0")
+SetVariable ("balance","1")
+Send ("stand")
+Send ("@atk @target")</send>
+  </trigger>
+  <trigger
+   custom_colour="17"
+   group="status alert"
+   make_underline="y"
+   match="*have writhed free of your entanglement*"
+   name="writhe_free"
+   send_to="12"
+   sequence="100"
+   other_text_colour="lime"
+  >
+  <send>local TF
+local IP
+TF = GetVariable ("transfixed")
+IP = GetVariable ("impaled")
+SetVariable ("entangled","0")
+SetVariable ("writhe","0")
+SetVariable ("writhing","0")
+SetVariable ("balance","1")
+if TF == '1' or IP == '1' then
+Send ("writhe")
+else
+Send ("stand")
+end</send>
+  </trigger>
+  <trigger
+   custom_colour="6"
+   enabled="y"
+   group="anti-warp"
+   match="*he beginnings of a fiery portal appear before you*"
+   name="portaling3"
+   sequence="100"
+  >
+  <send>say ALERT! Someone is portalling in!</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="snub"
+   match="*he bush carries no more leaves that you could harvest."
+   name="snub_plant2"
+   omit_from_output="y"
+   sequence="100"
+  >
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   match="*he effect of the kalmia venom burns away at your fitness*"
+   name="kalmia2"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("fitness","0")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="sip balance"
+   match="*he elixir flows down your throat without effect*"
+   name="sip_noeffect"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("sipbalance","0")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="snub"
+   match="*he plant carries no more leaves that you could harvest."
+   name="snub_plant3"
+   omit_from_output="y"
+   sequence="100"
+  >
+  </trigger>
+  <trigger
+   enabled="y"
+   match="*he plant has no effect."
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("eating","0")
+SetVariable ("herbbalance","0")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="status"
+   match="*he raging fire about your skin goes out*"
+   name="cured_ablaze"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable("ablaze","0")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="combat affliction"
+   match="*he voices! The voices! Get them out of my head!!&quot; you*"
+   name="stupidity5"
+   send_to="12"
+   sequence="100"
+  >
+  <send>Execute("cure_stupidity_syndrome")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="snub"
+   match="*here by that name*"
+   name="snub_none"
+   omit_from_output="y"
+   sequence="100"
+  >
+  </trigger>
+  <trigger
+   custom_colour="17"
+   enabled="y"
+   group="status alert"
+   make_underline="y"
+   match="*heroic effort you manage to writhe yourself free*"
+   name="writhe_free3"
+   send_to="12"
+   sequence="100"
+   other_text_colour="lime"
+  >
+  <send>local ET
+local TF
+ET = GetVariable ("entangled")
+TF = GetVariable ("transfixed")
+SetVariable ("impaled","0")
+SetVariable ("writhe","0")
+SetVariable ("writhing","0")
+SetVariable ("balance","1")
+if ET == '1' or TF == '1' then
+Send ("writhe")
+else
+Send ("stand")
+end</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="quest"
+   match="*hite vest?&quot;"
+   name="ore_quest6"
+   send_to="12"
+   sequence="100"
+  >
+  <send>DoAfter (1,"ask aneesh prustitz")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="quest"
+   match="*ho wore the green tunic?&quot;"
+   name="ore_quest2"
+   send_to="12"
+   sequence="100"
+  >
+  <send>DoAfter (1,"ask aneesh ambassador")</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   expand_variables="y"
+   make_underline="y"
+   match="*horrible thoughts fill your mind, you begin to sob*"
+   send_to="12"
+   sequence="100"
+  >
+  <send>Execute("cure_stupidity_syndrome")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="snub"
+   match="*hy would you reject that person*"
+   name="rejection"
+   omit_from_output="y"
+   sequence="100"
+  >
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*idea of eating or drinking is repulsive to you*"
+   name="anorexia4"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable("anorexia","1")
+SetVariable ("sipping","0")
+SetVariable ("eating","0")
+local AP
+local SB
+AP = GetVariable("apply")
+SB = GetVariable("salvebalance")
+if AP == '0' and SB == '1' then
+Send ("apply epidermal to torso")
+SetVariable ("apply","1")
+else
+end</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*idea of putting something in your stomach sickens you*"
+   name="anorexia3"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("anorexia","1")
+SetVariable ("sipping","0")
+SetVariable ("eating","0")
+local AP
+local SB
+AP = GetVariable("apply")
+SB = GetVariable("salvebalance")
+if AP == '0' and SB == '1' then
+Send ("apply epidermal to torso")
+SetVariable ("apply","1")
+else
+end</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*infecting you with vicious toxins*"
+   name="voyria6"
+   sequence="100"
+  >
+  <send>sip immunity</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="defence"
+   match="*inhale deeply, allowing the air to fill your mighty*"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("fitness","1")
+SetVariable ("balance","0")
+SetVariable ("fit","")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="stat"
+   match="*inhale deeply, purging yourself of your asthmatic condition*"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("fit","")
+SetVariable ("asthma","0")
+SetVariable ("fitness","0")
+local SL
+SL = GetVariable("slickness")
+if SL == '1' then
+Execute ("!smv")
+else
+end</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   expand_variables="y"
+   group="fishing"
+   match="*ith a final tug, you finish reeling*"
+   name="rebait"
+   send_to="12"
+   sequence="100"
+  >
+  <send>Send ("put fish in bucket")
+Send ("take @bait from bucket")
+Send ("bait hook with @bait")
+DoAfter (4.5, "cast line @fdir")</send>
+  </trigger>
+  <trigger
+   custom_colour="17"
+   enabled="y"
+   group="combat serpent"
+   match="*ith a pop of * knuckles, * buries * foot under your back and*"
+   name="execute"
+   send_to="12"
+   sequence="100"
+   other_back_colour="yellow"
+  >
+  <send>Note ("ALERT! EXECUTE!")
+Send ("wake")
+Send ("writhe")
+Send ("stand")</send>
+  </trigger>
+  <trigger
+   custom_colour="17"
+   enabled="y"
+   group="combat"
+   make_underline="y"
+   match="*ith mounting horror, you realise that the meteorite is*"
+   name="meteor_alert2"
+   send_to="2"
+   sequence="100"
+   other_text_colour="yellow"
+   other_back_colour="maroon"
+  >
+  <send>METEOR ON YOU! METEOR ON YOU!</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="fishing"
+   match="*jerk back your fishing pole and feel the line go taut*"
+   name="hookreel"
+   send_to="12"
+   sequence="100"
+  >
+  <send>DoAfter (2, "reel line")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="quest"
+   match="*lack robes?&quot;"
+   name="ore_quest9"
+   send_to="12"
+   sequence="100"
+  >
+  <send>DoAfter (1,"ask aneesh Shevalt")</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   ignore_case="y"
+   make_underline="y"
+   match="*lames lick around you - you are on fire*"
+   name="ablaze"
+   send_to="12"
+   sequence="100"
+   other_text_colour="red"
+   other_back_colour="whitesmoke"
+  >
+  <send>SetVariable ("ablaze","1")
+local AP
+local SB
+AP = GetVariable("apply")
+SB = GetVariable("salvebalance")
+if AP == '0' and SB == '1' then
+Send ("apply mending")
+SetVariable ("apply","1")
+else
+end</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*lood begins to slowly drip from your nose*"
+   name="voyria1"
+   send_to="13"
+   sequence="100"
+  >
+  <send>drink immunity</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*look about yourself nervously*"
+   name="shyness1"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("shyness","1")
+local ET
+local HB
+ET = GetVariable("eating")
+HB = GetVariable("herbbalance")
+if ET == '0' and HB == '1' then
+Send ("outr goldenseal")
+Send ("eat goldenseal")
+SetVariable ("eating","1")
+else
+end</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   group="combat affliction"
+   make_underline="y"
+   match="*move sluggishly into action*"
+   name="aeon"
+   send_to="13"
+   sequence="100"
+  >
+  <send>put elm in @epipe
+smoke @epipe</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   expand_variables="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*movement through the time stream is slowed*"
+   name="aeon2"
+   send_to="13"
+   sequence="100"
+  >
+  <send>put elm in @epipe
+smoke @epipe</send>
+  </trigger>
+  <trigger
+   custom_colour="11"
+   enabled="y"
+   group="combat"
+   ignore_case="y"
+   make_underline="y"
+   match="*nearly invisible magical shield forms*"
+   name="Shield"
+   sequence="100"
+  >
+  </trigger>
+  <trigger
+   custom_colour="11"
+   expand_variables="y"
+   group="combat"
+   ignore_case="y"
+   make_underline="y"
+   match="*nearly invisible magical shield forms*@target*"
+   name="raze"
+   send_to="9"
+   sequence="100"
+   variable="atk"
+  >
+  <send>raze</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="snub"
+   match="*not fallen or kneeling*"
+   name="snub_standing"
+   omit_from_output="y"
+   sequence="100"
+  >
+  </trigger>
+  <trigger
+   enabled="y"
+   group="reset"
+   ignore_case="y"
+   match="*oad through a carved tunnel (road)*"
+   name="reset_target"
+   send_to="9"
+   sequence="100"
+   variable="target"
+  >
+  <send>nonono</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   match="*of your legs must be free and unhindered to do that*"
+   name="crippled_legs"
+   send_to="12"
+   sequence="100"
+  >
+  <send>local AP
+local SB
+local LLD
+local RLD
+AP = GetVariable("apply")
+SB = GetVariable("salvebalance")
+LLD = GetVariable("leftlegdamage")
+RLD = GetVariable("rightlegdamage")
+if LLD + RLD == '0' then
+Execute("diag")
+else
+Execute ("cure_limbs")
+local AP
+local SB
+AP = GetVariable("apply")
+SB = GetVariable("salvebalance")
+if AP == '0' and SB == '1' then
+Send ("apply mending to legs")
+SetVariable ("apply","1")
+else
+end
+end</send>
+  </trigger>
+  <trigger
+   custom_colour="17"
+   enabled="y"
+   group="combat serpent"
+   match="*olding your head up, * snaps * wrist, sending*"
+   name="execute2"
+   send_to="12"
+   sequence="100"
+   other_back_colour="yellow"
+  >
+  <send>Note ("ALERT! EXECUTE!")
+Send ("wake")
+Send ("writhe")
+Send ("stand")</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   match="*omething interferes with your ability to clot*"
+   name="haemophilia"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("Haemophillia","1")
+local ET
+local HB
+ET = GetVariable("eating")
+HB = GetVariable("herbbalance")
+if ET == '0' and HB == '1' then
+Send ("outr ginseng")
+Send ("eat ginseng")
+SetVariable ("eating","1")
+else
+end</send>
+  </trigger>
+  <trigger
+   custom_colour="17"
+   enabled="y"
+   group="status alert"
+   make_underline="y"
+   match="*ood is no longer repulsive to you*"
+   name="healed_slike"
+   send_to="12"
+   sequence="100"
+   other_text_colour="lime"
+  >
+  <send>SetVariable ("anorexia", "0")
+SetVariable ("sipping","0")
+SetVariable ("eating","0")</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*oth your arms are crippled, you cannot do that*"
+   name="crippled_arms1"
+   send_to="12"
+   sequence="100"
+  >
+  <send>Execute ("cure_limbs")
+local AP
+local SB
+AP = GetVariable("apply")
+SB = GetVariable("salvebalance")
+if AP == '0' and SB == '1' then
+Send ("apply mending to arms")
+SetVariable ("apply","1")
+else
+end</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*oth your arms must be free and functioning to do that*"
+   name="cripple_arms"
+   send_to="12"
+   sequence="100"
+  >
+  <send>Execute ("cure_limbs")
+local AP
+local SB
+AP = GetVariable("apply")
+SB = GetVariable("salvebalance")
+if AP == '0' and SB == '1' then
+Send ("apply mending to arms")
+SetVariable ("apply","1")
+else
+end</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="combat affliction"
+   match="*ou are asleep and can do nothing*"
+   name="auto_wake"
+   send_to="12"
+   sequence="100"
+  >
+  <send>Send ("wake")
+SetVariable ("eating","0")
+SetVariable ("sipping","0")
+SetVariable ("apply","0")
+SetVariable ("writhe","0")</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*ou are confused as to the effects of the venom*"
+   name="loki"
+   send_to="2"
+   sequence="100"
+  >
+  <send>Loki Alert! Loki Alert!</send>
+  </trigger>
+  <trigger
+   custom_colour="2"
+   enabled="y"
+   group="status"
+   ignore_case="y"
+   make_underline="y"
+   match="*ou are no longer stunned*"
+   name="stun_recovery"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("stunned","0")
+SendNoEcho ("stand")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   expand_variables="y"
+   group="archery"
+   match="*ou are not wielding a bow, Archer*"
+   name="unarmed_bow"
+   omit_from_output="y"
+   send_to="13"
+   sequence="100"
+  >
+  <send>relax grip
+sheathe sword
+sheathe sword
+remove darkbow
+wield darkbow
+grip
+aim @target e
+shoot @target e
+aim @target s
+shoot @target s
+aim @target w
+shoot @target w
+aim @target n
+shoot @target n
+aim @target ne
+shoot @target ne
+aim @target se
+shoot @target se
+aim @target nw
+shoot @target nw
+aim @target sw
+shoot @target sw
+aim @target in
+shoot @target in
+aim @target out
+shoot @target out
+aim @target u
+shoot @target u
+aim @target d
+shoot @target d</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*ou are paralysed and cannot do that*"
+   name="paralysis2"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("paralysis","1")
+SetVariable ("atking","0")
+local ET
+local HB
+ET = GetVariable("eating")
+HB = GetVariable("herbbalance")
+if ET == '0' and HB == '1' then
+Send ("outr bloodroot")
+Send ("eat bloodroot")
+SetVariable ("eating","1")
+else
+end</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*ou are paralysed and unable to do*"
+   name="paralysis4"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("paralysis","1")
+SetVariable ("atking","0")
+local ET
+local HB
+ET = GetVariable("eating")
+HB = GetVariable("herbbalance")
+if ET == '0' and HB == '1' then
+Send ("outr bloodroot")
+Send ("eat bloodroot")
+SetVariable ("eating","1")
+else
+end</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*ou are physically incapable*"
+   name="unknown6"
+   send_to="12"
+   sequence="100"
+  >
+  <send>local ET
+local HB
+ET = GetVariable("eating")
+HB = GetVariable("herbbalance")
+if ET == '0' and HB == '1' then
+Send("outr bloodroot")
+Send("eat bloodroot")
+SetVariable("eating","1")
+else
+end</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*ou are too stunned to be able to do anything*"
+   name="stunned"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("stunned","1")
+SetVariable ("writhe","0")
+SetVariable ("eating","0")
+SetVariable ("apply","0")</send>
+  </trigger>
+  <trigger
+   custom_colour="17"
+   enabled="y"
+   group="combat affliction"
+   match="*ou are too tangled up to do that*"
+   name="entangle2"
+   sequence="100"
+   other_text_colour="lightcoral"
+   other_back_colour="navy"
+  >
+  <send>writhe</send>
+  </trigger>
+  <trigger
+   custom_colour="17"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*ou are transfixed and cannot do that. You must writhe*"
+   name="transfixed2"
+   send_to="12"
+   sequence="100"
+   other_text_colour="lightcoral"
+   other_back_colour="navy"
+  >
+  <send>SetVariable ("transfixed","1")
+SetVariable ("Sipping","0")
+SetVariable ("apply","0")
+local W
+local WT
+W = GetVariable ("writhe")
+WT = GetVariable ("writhing")
+if W == '0' and WT == '0' then
+Send ("writhe")
+SetVariable ("writhe","1")
+else
+end
+DoAfterSpecial (3,"",sendto.script)</send>
+  </trigger>
+  <trigger
+   custom_colour="17"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*ou are transfixed and cannot move*"
+   name="transfixed"
+   send_to="12"
+   sequence="100"
+   other_text_colour="lightcoral"
+   other_back_colour="navy"
+  >
+  <send>SetVariable ("transfixed","1")
+SetVariable ("eating","0")
+SetVariable ("apply","0")
+local W
+local WT
+W = GetVariable ("writhe")
+WT = GetVariable ("writhing")
+if W == '0' and WT == '0' then
+Send ("writhe")
+SetVariable ("writhe","1")
+else
+end
+DoAfterSpecial (3,"",sendto.script)</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="status"
+   match="*ou aren't such a complete idiot anymore*"
+   name="cured_stupidity"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("stupidity","0")
+SetVariable ("gs","0")</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*ou begin feeling slightly flushed*"
+   name="voyria2"
+   send_to="13"
+   sequence="100"
+  >
+  <send>drink immunity</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="balance"
+   match="*ou begin sketching a * rune on the ground*"
+   name="sketching"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("balance","0")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="status"
+   match="*ou begin to struggle free of your entanglement*"
+   name="entangled"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("writhe","0")
+SetVariable ("writhing","1")
+SetVariable ("balance","0")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="combat affliction"
+   match="*ou begin trying to wrest your mind free of that which has*"
+   name="transfixed3"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("writhe","0")
+SetVariable ("writhing","1")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="combat"
+   ignore_case="y"
+   match="*ou bleed*"
+   name="clotting"
+   omit_from_output="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>Send("clot")
+Send("clot")
+local HEALTH
+local MANA
+local ET
+local HB
+HEALTH = GetVariable ("health")
+MANA = GetVariable ("mana")
+ET = GetVariable ("eating")
+HB = GetVariable ("herbbalance")
+if HEALTH == '3568' and MANA == '4175' then
+SetVariable ("recklessness","1")
+if ET == '0' and HB == '1' then
+Send ("outr lobelia")
+Send ("eat lobelia")
+SetVariable ("eating","1")
+else
+end
+else
+end</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   match="*ou burp obscenely*"
+   send_to="12"
+   sequence="100"
+  >
+  <send>Execute("cure_stupidity_syndrome")</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*ou cannot do that because both of your arms must be*"
+   name="broken_arms"
+   sequence="100"
+  >
+  </trigger>
+  <trigger
+   enabled="y"
+   group="snub"
+   match="*ou cannot see that being here*"
+   name="snub_none4"
+   omit_from_output="y"
+   sequence="100"
+  >
+  </trigger>
+  <trigger
+   enabled="y"
+   group="pipe"
+   match="*ou carefully light your treasured pipe*"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("lp","1")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="defence"
+   match="*ou caress the tattoo and immediately you feel a cloak of protection*"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("cloak","1")
+SetVariable ("balance","0")</send>
+  </trigger>
+  <trigger
+   custom_colour="17"
+   enabled="y"
+   group="anti-theft"
+   match="*ou cease to wield a *."
+   name="unwield_alert2"
+   sequence="100"
+   other_text_colour="brown"
+   other_back_colour="deepskyblue"
+  >
+  <send>wield 88838
+wield 363086
+wield darkbow
+grip</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="status"
+   match="*ou choke as you inhale water*"
+   name="auto_pear"
+   sequence="100"
+  >
+  <send>outr pear
+eat pear</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="snub"
+   match="*ou concentrate on gripping*"
+   name="snub_grip"
+   omit_from_output="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("grip","1")</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*ou cough suddenly, expelling black fluid*"
+   name="voyria3"
+   send_to="13"
+   sequence="100"
+  >
+  <send>drink immunity</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="snub"
+   match="*ou do not bleed*"
+   name="snub_bleed"
+   omit_from_output="y"
+   sequence="100"
+  >
+  </trigger>
+  <trigger
+   enabled="y"
+   group="snub"
+   match="*ou exert superior mental control and your wounds clot*"
+   name="snub_clot"
+   omit_from_output="y"
+   sequence="100"
+  >
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   ignore_case="y"
+   make_underline="y"
+   match="*ou feel a sharp pain in the back of your neck and your limbs*"
+   name="paralysis3"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("paralysis","1")
+local ET
+local HB
+ET = GetVariable("eating")
+HB = GetVariable("herbbalance")
+if ET == '0' and HB == '1' then
+Send ("outr bloodroot")
+Send ("eat bloodroot")
+SetVariable ("eating","1")
+else
+end</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*ou feel a tightening sensation grow in your lungs*"
+   name="asthma2"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("asthma","1")
+SetVariable ("fitness","0")
+Execute("!f")</send>
+  </trigger>
+  <trigger
+   custom_colour="17"
+   enabled="y"
+   group="defence"
+   make_underline="y"
+   match="*ou feel an aura of rebounding surround you*"
+   name="aura_up"
+   send_to="12"
+   sequence="100"
+   other_text_colour="darkorchid"
+  >
+  <send>SetVariable ("sc","")
+SetVariable ("aura","1")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="combat affliction"
+   match="*ou feel incredibly tired, and fall asleep immediately*"
+   name="delphinium"
+   sequence="100"
+  >
+  <send>wake</send>
+  </trigger>
+  <trigger
+   custom_colour="7"
+   enabled="y"
+   group="anti-theft"
+   make_underline="y"
+   match="*ou feel irresistibly compelled to remove *."
+   name="compulsion_removal"
+   send_to="13"
+   sequence="100"
+  >
+  <send>wear %2
+wear %2
+wear %2</send>
+  </trigger>
+  <trigger
+   custom_colour="7"
+   enabled="y"
+   group="anti-theft"
+   make_underline="y"
+   match="*ou feel irresistibly compelled to remove a *."
+   name="compulsion_removal2"
+   send_to="13"
+   sequence="100"
+  >
+  <send>wear %2
+wear %2
+wear %2</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   expand_variables="y"
+   group="anti-theft"
+   match="*ou feel irresistibly compelled to remove a*falconry glove*"
+   name="remove_glove"
+   send_to="13"
+   sequence="100"
+  >
+  <send>wear @glove
+wear @glove
+wear @glove</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*ou feel light headed and dizzy*"
+   name="notechis"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("dizziness","1")
+local ET
+local HB
+ET = GetVariable("eating")
+HB = GetVariable("herbbalance")
+if ET == '0' and HB == '1' then
+Send ("outr ginseng")
+Send ("eat ginseng")
+SetVariable ("eating","1")
+else
+end</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*ou feel suddenly as if food is the most repulsive*"
+   name="anorexia"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable("anorexia","1")
+SetVariable ("sipping","1")
+SetVariable ("eating","1")
+local AP
+local SB
+AP = GetVariable("apply")
+SB = GetVariable("salvebalance")
+if AP == '0' and SB == '1' then
+Send ("apply epidermal to torso")
+SetVariable ("apply","1")
+else
+end</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="status"
+   match="*ou feel your blood thickening*"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("relapse","0")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="combat"
+   match="*ou feel your density return to normal*"
+   name="auto_mass"
+   send_to="12"
+   sequence="100"
+  >
+  <send>local AP
+local SB
+AP = GetVariable("apply")
+SB = GetVariable("salvebalance")
+if AP == '0' and SB == '1' then
+Send ("apply mass")
+SetVariable ("apply","1")
+else
+end</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   match="*ou feel your energy robbed from you as lethargy overtakes yo*"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("lethargy","1")
+local ET
+local HB
+ET = GetVariable("eating")
+HB = GetVariable("herbbalance")
+if ET == '0' and HB == '1' then
+Send ("outr ginseng")
+Send ("eat ginseng")
+SetVariable ("eating","1")
+else
+end</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*ou flip the bird*"
+   name="stupidity1"
+   send_to="12"
+   sequence="100"
+  >
+  <send>Execute("cure_stupidity_syndrome")</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   match="*ou fondle yourself absently."
+   send_to="12"
+   sequence="100"
+  >
+  <send>Execute("cure_stupidity_syndrome")</send>
+  </trigger>
+  <trigger
+   custom_colour="17"
+   expand_variables="y"
+   group="anti-theft"
+   ignore_case="y"
+   make_underline="y"
+   match="*ou get * gold sovereigns from *"
+   name="put_gold"
+   sequence="100"
+   other_back_colour="orange"
+  >
+  <send>put sovereigns in @pack
+put sovereigns in @pack
+put sovereigns in @pack</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   expand_variables="y"
+   group="anti-theft"
+   match="*ou get a luxurious black top hat from a * backpack*"
+   name="top_hat2"
+   send_to="13"
+   sequence="100"
+  >
+  <send>put tophat in @pack</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*ou grunt a bit and then let out a loud &quot;OINK!*"
+   name="stupidity3"
+   send_to="12"
+   sequence="100"
+  >
+  <send>Execute("cure_stupidity_syndrome")</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*ou have a particularly intense shiver."
+   name="cold"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("freeze","1")
+local AP
+local SB
+AP = GetVariable("apply")
+SB = GetVariable("salvebalance")
+if AP == '0' and SB == '1' then
+Send("apply caloric")
+Send("concentrate")
+SetVariable("apply","1")
+else
+Send("concentrate")
+end</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   match="*ou have emoted: Acee*"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable("balance","0")</send>
+  </trigger>
+  <trigger
+   custom_colour="17"
+   enabled="y"
+   group="combat priest"
+   match="*ou have only moments left to escape before you*"
+   name="judgement2"
+   send_to="2"
+   sequence="100"
+   other_back_colour="yellow"
+  >
+  <send>Judgement!
+Judgement!</send>
+  </trigger>
+  <trigger
+   group="anti-theft"
+   match="*ou have recovered balance on all limb*"
+   name="theft_balance"
+   sequence="100"
+  >
+  </trigger>
+  <trigger
+   custom_colour="17"
+   enabled="y"
+   group="status alert"
+   make_underline="y"
+   match="*ou have writhed free of your state of transfixation*"
+   name="writhe_free2"
+   send_to="12"
+   sequence="100"
+   other_text_colour="lime"
+  >
+  <send>local ET
+local IP
+ET = GetVariable ("entangled")
+IP = GetVariable ("impaled")
+SetVariable ("transfixed","0")
+SetVariable ("writhe","0")
+SetVariable ("writhing","0")
+SetVariable ("balance","1")
+if ET == '1' or IP == '1' then
+Send ("writhe")
+else
+Send ("stand")
+end</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="combat"
+   ignore_case="y"
+   match="*ou hold no &quot;elm&quot;."
+   name="outr_elm"
+   sequence="100"
+  >
+  <send>outr elm</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="combat"
+   ignore_case="y"
+   match="*ou hold no &quot;skullcap&quot;."
+   name="outr_skullcap"
+   sequence="100"
+  >
+  <send>outr skullcap</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="combat"
+   ignore_case="y"
+   match="*ou hold no &quot;valerian&quot;."
+   name="outr_valerian"
+   sequence="100"
+  >
+  <send>outr valerian</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*ou lash out clumsily*"
+   name="clumsiness"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("clumsiness","1")
+local ET
+local HB
+ET = GetVariable("eating")
+HB = GetVariable("herbbalance")
+if ET == '0' and HB == '1' then
+Send("outr kelp")
+Send("eat kelp")
+SetVariable ("eating","1")
+else
+end</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   make_underline="y"
+   match="*ou let out a loud, long &quot;MOOOOOOOOOOO!&quot;"
+   send_to="12"
+   sequence="100"
+  >
+  <send>Execute("cure_stupidity_syndrome")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="combat affliction"
+   match="*ou make a strangled meowing noise*"
+   name="stupidity4"
+   send_to="12"
+   sequence="100"
+  >
+  <send>Execute("cure_stupidity_syndrome")</send>
+  </trigger>
+  <trigger
+   custom_colour="3"
+   enabled="y"
+   group="combat"
+   make_underline="y"
+   match="*ou may apply another salve to yourself."
+   name="salve_balance"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("salvebalance","1")
+SetVariable ("apply","0")
+local AN
+AN = GetVariable ("anorexia")
+if AN == '1' then
+Send ("apply mending to torso")
+SetVariable ("apply","0")
+else
+Execute ("cure_limbs")
+end</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="status"
+   match="*ou may drink another affliction-healing elixir*"
+   name="sipbalance2"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("sipbalance","1")</send>
+  </trigger>
+  <trigger
+   custom_colour="3"
+   colour_change_type="1"
+   enabled="y"
+   group="combat"
+   ignore_case="y"
+   make_underline="y"
+   match="*ou may drink another health or mana elixir."
+   name="elixir_refresh"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("sipbalance","1")
+SetVariable ("sipping","0")</send>
+  </trigger>
+  <trigger
+   custom_colour="3"
+   enabled="y"
+   group="combat"
+   make_underline="y"
+   match="*ou may eat another bit of irid moss."
+   name="moss_balance"
+   sequence="100"
+  >
+  </trigger>
+  <trigger
+   custom_colour="3"
+   enabled="y"
+   group="combat"
+   match="*ou may eat another plant."
+   name="herb_balance"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("herbbalance","1")
+SetVariable ("eating","0")
+Execute ("herb_cures")
+Execute ("defence_up")</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   expand_variables="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*ou must be standing first*"
+   name="stand"
+   sequence="100"
+  >
+  <send>stand</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   expand_variables="y"
+   group="archery"
+   match="*ou must be wielding a bow in order to shoot an arrow*"
+   name="unarmed_bow2"
+   omit_from_output="y"
+   send_to="13"
+   sequence="100"
+  >
+  <send>relax grip
+sheathe sword
+sheathe sword
+remove darkbow
+wield darkbow
+grip
+aim @target e
+shoot @target e
+aim @target s
+shoot @target s
+aim @target w
+shoot @target w
+aim @target n
+shoot @target n
+aim @target ne
+shoot @target ne
+aim @target se
+shoot @target se
+aim @target nw
+shoot @target nw
+aim @target sw
+shoot @target sw
+aim @target in
+shoot @target in
+aim @target out
+shoot @target out
+aim @target u
+shoot @target u
+aim @target d
+shoot @target d</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="combat"
+   match="*ou must be wielding a sword or battleaxe to do that*"
+   name="redraw"
+   sequence="100"
+  >
+  <send>relax grip
+unwield pole
+unwield bow
+unwield totem
+wear bow
+draw strong
+draw strong
+parry head
+grip</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="combat"
+   match="*ou must be wielding two swords or battleaxes to use*"
+   name="dsl_unarmed"
+   sequence="100"
+  >
+  <send>relax grip
+unwield darkbow
+wear darkbow
+unwield pole
+unwield totem
+draw strong
+draw strong
+take 88838
+take 363086
+wield 88838
+wield 363086
+grip
+parry head
+dsl @target</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="snub"
+   match="*ou must regain balance*"
+   name="snub_balance"
+   omit_from_output="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("balance","0")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="snub"
+   match="*ou must regain equilibrium*"
+   name="snub_equilibrium"
+   omit_from_output="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("balance","0")
+SendNoEcho ("concentrate")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   expand_variables="y"
+   group="auto keep"
+   ignore_case="y"
+   match="*ou pick up * iconic shard."
+   name="keep_shard"
+   sequence="100"
+  >
+  <send>put shard in @pack</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="combat affliction"
+   match="*ou pick your nose absently."
+   name="stupidity9"
+   send_to="12"
+   sequence="100"
+  >
+  <send>Execute("cure_stupidity_syndrome")</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*ou pull down your pants and moon the world*"
+   name="stupidity6"
+   send_to="12"
+   sequence="100"
+  >
+  <send>Execute("cure_stupidity_syndrome")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   expand_variables="y"
+   group="anti-theft"
+   match="*ou put * in a luxurious black top hat."
+   name="top_hat"
+   sequence="100"
+  >
+  <send>g %2 from tophat
+put %2 in @pack
+put tophat in @pack</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   expand_variables="y"
+   group="combat"
+   match="*ou raze*@target*with*"
+   name="attack_reset2"
+   send_to="12"
+   sequence="100"
+   variable="atk"
+  >
+  <send>SetVariable ("atking","0")
+SetVariable ("balance","0")
+SetVariable ("atk","dsl")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   expand_variables="y"
+   group="fishing"
+   match="*ou reel in the last bit of line*"
+   name="caught"
+   send_to="12"
+   sequence="100"
+  >
+  <send>Send ("put fish in bucket")
+Send ("take @bait from bucket")
+Send ("bait hook with @bait")
+DoAfter (4.5, "cast line @fdir")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   match="*ou remove 1 goldenseal root, bringing the total in the*"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("gs","1")</send>
+  </trigger>
+  <trigger
+   custom_colour="17"
+   enabled="y"
+   group="anti-theft"
+   match="*ou remove an *."
+   name="auto_wear2"
+   send_to="13"
+   sequence="100"
+   other_back_colour="gold"
+  >
+  <send>wear %2
+wear %2</send>
+  </trigger>
+  <trigger
+   custom_colour="17"
+   enabled="y"
+   group="anti-theft"
+   match="*ou remove an ebony cloak trimmed with silver."
+   name="rewear_cloak"
+   send_to="13"
+   sequence="100"
+   other_back_colour="gold"
+  >
+  <send>wear cloak
+wear cloak</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*ou rush about in a state of utter panic*"
+   name="fear2"
+   sequence="100"
+  >
+  <send>compose</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="falconry"
+   match="*ou sense that your falcon has successfully delivered*"
+   name="auto_recall"
+   sequence="100"
+  >
+  <send>falcon recall</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="combat affliction"
+   match="*ou shuffle your feet noisily, suddenly bored*"
+   name="impatient"
+   sequence="100"
+  >
+  <send>outr goldenseal
+eat goldenseal</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*ou slowly hobbl*"
+   name="cripple_legs2"
+   send_to="12"
+   sequence="100"
+  >
+  <send>Execute ("cure_limbs")
+local AP
+local SB
+AP = GetVariable("apply")
+SB = GetVariable("salvebalance")
+if AP == '0' and SB == '1' then
+Send ("apply mending to legs")
+SetVariable ("apply","1")
+else
+end</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   expand_variables="y"
+   group="combat"
+   match="*ou stand up and stretch your arms out wide*"
+   name="stand_atk"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("stand","1")
+Send ("dsl @target")</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*ou stumble as your left leg shrivels*"
+   name="shrivelled_left_leg"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("leftlegdamage","1")
+Execute ("cure_limbs")</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*ou stumble as your right leg shrivels*"
+   name="shrivelled_right_leg"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("rightlegdamage","1")
+Execute ("cure_limbs")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   match="*ou take a long drag off your pipe*"
+   name="reset_smoke"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("sc","")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   match="*ou touch the tree of life tattoo*"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("balance","0")</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*ou try to raise the strength in your limbs*"
+   name="unknown4"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("weaken","1")
+local ET
+local HB
+ET = GetVariable("eating")
+HB = GetVariable("herbbalance")
+if ET == '0' and HB == '1' then
+Send ("outr kelp")
+Send ("eat kelp")
+SetVariable ("eating","1")
+else
+end</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="status"
+   match="*ou twist and turn as you attempt to escape from you*"
+   name="transfixation"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("writhe","0")
+SetVariable ("balance","0")
+SetVariable ("writhing","1")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="combat affliction"
+   match="*ou twitch spasmodically*"
+   name="stupidity8"
+   send_to="12"
+   sequence="100"
+  >
+  <send>Execute("cure_stupidity_syndrome")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="combat affliction"
+   match="*ou waggle your eyebrows comically*"
+   name="stupidity7"
+   send_to="12"
+   sequence="100"
+  >
+  <send>Execute("cure_stupidity_syndrome")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   match="*ou wail like an old woman*"
+   send_to="12"
+   sequence="100"
+  >
+  <send>Execute("cure_stupidity_syndrome")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="combat"
+   match="*ou whip*through the air*"
+   name="reset_attack"
+   send_to="12"
+   sequence="100"
+   variable="atk"
+  >
+  <send>SetVariable ("balance","0")
+SetVariable ("atk","dsl")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="defence"
+   match="*ouching the mindseye tattoo, your senses are suddenly heightened*"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("mindseye","1")
+SetVariable ("balance","0")</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*our * arm is too severely damaged to permit that."
+   name="broken_arm"
+   send_to="12"
+   sequence="100"
+  >
+  <send>Execute ("cure_limbs")</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*our * leg is too severely damaged to permit that."
+   name="broken_leg"
+   send_to="12"
+   sequence="100"
+  >
+  <send>Execute ("cure_limbs")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="defence"
+   match="*our anti-weapon field defence is ripped apart by its talons*"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("aura","0")
+Send ("put skullcap in 384270")
+Send ("light 384270")
+Send ("smoke 384270")
+SetVariable ("sc","smoke 384270")</send>
+  </trigger>
+  <trigger
+   custom_colour="17"
+   enabled="y"
+   group="archery"
+   make_underline="y"
+   match="*our arrow strikes true!"
+   name="bullseye_alert2"
+   sequence="100"
+   other_text_colour="yellow"
+   other_back_colour="blue"
+  >
+  </trigger>
+  <trigger
+   enabled="y"
+   group="combat affliction"
+   match="*our attention is grabbed and held by a fascinating butterfly-like rune*"
+   name="transfixed0"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("transfixed","1")
+local W
+local WT
+W = GetVariable ("writhe")
+WT = GetVariable ("writhing")
+if W == '0' and WT == '0' then
+Send ("writhe")
+SetVariable ("writhe","1")
+else
+end
+DoAfterSpecial (3,"",sendto.script)</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="defence"
+   match="*our blindness defence is ripped apart by its talons*"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("blind","0")
+local ET
+local HB
+ET = GetVariable("eating")
+HB = GetVariable("herbbalance")
+if ET == '0' and HB == '1' then
+Send ("outr bayberry")
+Send ("eat bayberry")
+SetVariable ("eating","1")
+else
+end</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*our blindness is cured by a wunjo rune on the groun*"
+   name="cure_blind"
+   send_to="13"
+   sequence="100"
+  >
+  <send>local ET
+local HB
+ET = GetVariable("eating")
+HB = GetVariable("herbbalance")
+if ET == '0' and HB == '1' then
+Send ("outr bayberry")
+Send ("eat bayberry")
+SetVariable ("eating","1")
+else
+end</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="status"
+   match="*our blood regains its ability to clot."
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("haemophilia","0")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="defence"
+   match="*our body begins to feel lighter and you feel that you are floating slightly*"
+   name="levitation"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("sipping","0")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="combat affliction"
+   match="*our body is too unbalanced to be able to writhe free*"
+   name="impale_unb"
+   send_to="12"
+   sequence="100"
+  >
+  <send>EnableTrigger ("autoatk2", false)
+EnableTrigger ("writhe", true)
+SetVariable ("balance","0")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="combat def"
+   match="*our cloak defence has been stripped*"
+   name="cloak_def_stripped"
+   sequence="100"
+  >
+  <send>touch cloak</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="combat def"
+   match="*our cloak defence is ripped apart by its talons*"
+   name="cloak_def_strip4"
+   sequence="100"
+  >
+  <send>touch cloak</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="defence"
+   match="*our cloak defence is ripped apart by its talons*"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("cloak","0")
+Execute (!tc)</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="combat def"
+   match="*our cloak defence is stripped*"
+   name="cloak_def_striped2"
+   sequence="100"
+  >
+  <send>touch cloak</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="defence"
+   match="*our deafness defence is ripped apart by its talons*"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("deaf","0")
+local ET
+local HB
+ET = GetVariable("eating")
+HB = GetVariable("herbbalance")
+if ET == '0' and HB == '1' then
+Send ("outr hawthorn")
+Send ("eat hawthorn")
+SetVariable ("eating","1")
+else
+end</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   match="*our exhausted mind can stay awake no longer, and you*"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("awake","0")</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*our eyelids are forced open by the powerful venom*"
+   name="oculus"
+   sequence="100"
+  >
+  <send>SetVariable ("blindness","0")
+local ET
+local HB
+ET = GetVariable("eating")
+HB = GetVariable("herbbalance")
+if ET == '0' and HB == '1' then
+Send ("outr bayberry")
+Send ("eat bayberry")
+SetVariable ("eating","1")
+else
+end</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="falconry"
+   match="*our falcon must be flying in order for this ability*"
+   name="falcon_observe"
+   send_to="12"
+   sequence="100"
+  >
+  <send>Send ("falcon circle")
+DoAfter (1, "falcon observe")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="status"
+   match="*our glands cease their oily secretion*"
+   name="cured_gecko"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("apply","0")
+SetVariable ("salvebalance","1")
+SetVariable ("slickness","0")
+local AN
+AN = GetVariable ("anorexia")
+if AN == '1' then
+Send ("apply mending to torso")
+else
+end
+Execute("cure_limbs")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="defence"
+   match="*our gripping defence is ripped apart by its talon*"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("gripping","0")
+SendNoEcho ("grip")</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*our head spins as your mind is drowned in chaos and confusion*"
+   name="confusion"
+   send_to="12"
+   sequence="100"
+  >
+  <send>local ET
+local HB
+ET = GetVariable("eating")
+HB = GetVariable("herbbalance")
+if ET == '0' and HB == '1' then
+Send("outr ash")
+Send("eat ash")
+SetVariable ("eating","1")
+else
+end</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="combat affliction"
+   match="*our health continues to drain away as your impaled body shudders*"
+   name="impale3"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("impaled","1")
+SendImmediate ("writhe")</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   ignore_case="y"
+   make_underline="y"
+   match="*our hearing is suddenly restored*"
+   name="deaf_stripped"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("deafness","0")
+local ET
+local HB
+ET = GetVariable("eating")
+HB = GetVariable("herbbalance")
+if ET == '0' and HB == '1' then
+Send("outr hawthorn")
+Send("eat hawthorn")
+SetVariable ("eating","1")
+else
+end</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="status"
+   match="*our insomnia has cleared up."
+   name="insomia_reup"
+   sequence="100"
+  >
+  <send>outr cohosh
+eat cohosh</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="defence"
+   match="*our kola defence is ripped apart by its tal*"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("kola","0")
+Send("outr kola")
+Send("eat kola")</send>
+  </trigger>
+  <trigger
+   custom_colour="17"
+   enabled="y"
+   group="status"
+   make_underline="y"
+   match="*our left arm feels stronger and healthier."
+   name="arm_restored"
+   send_to="12"
+   sequence="100"
+   other_back_colour="lime"
+  >
+  <send>SetVariable ("leftarmdamage","1")</send>
+  </trigger>
+  <trigger
+   custom_colour="17"
+   enabled="y"
+   group="status"
+   make_underline="y"
+   match="*our left leg feels stronger and healthier."
+   name="leg_restored"
+   send_to="12"
+   sequence="100"
+   other_back_colour="lime"
+  >
+  <send>SetVariable ("leftlegdamage","1")</send>
+  </trigger>
+  <trigger
+   custom_colour="17"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*our legs are tangled in a mass of rope*"
+   name="entangle"
+   send_to="13"
+   sequence="100"
+   other_text_colour="lightcoral"
+   other_back_colour="navy"
+  >
+  <send>writhe</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*our limbs grow heavy and you groan feebly*"
+   name="weaken"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("weaken","1")
+local ET
+local HB
+ET = GetVariable("eating")
+HB = GetVariable("herbbalance")
+if ET == '0' and HB == '1' then
+Send ("outr kelp")
+Send ("eat kelp")
+SetVariable ("eating","1")
+else
+end</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="status"
+   match="*our limbs strengthen and you feel stronger*"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("weaken","0")
+SetVariable ("weariness","0")</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*our lungs are much too constricted to smoke*"
+   name="asthma"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("asthma","1")
+SetVariable ("fitness","0")
+Execute ("!f")</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*our mind feels slow and stupid suddenly*"
+   name="stupidity0"
+   send_to="12"
+   sequence="100"
+  >
+  <send>Execute("cure_stupidity")</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*our mind feels somewhat slower and more plodding*"
+   name="stupidity"
+   send_to="12"
+   sequence="100"
+  >
+  <send>Execute("cure_stupidity")</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*our mind feels suddenly confused and jumble*"
+   name="confusion1"
+   send_to="12"
+   sequence="100"
+  >
+  <send>local ET
+local HB
+ET = GetVariable("eating")
+HB = GetVariable("herbbalance")
+if ET == '0' and HB == '1' then
+Send ("outr ash")
+Send ("eat ash")
+SetVariable ("eating","1")
+else
+end</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="defence"
+   match="*our mindseye defence is ripped apart by its talons*"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("mindseye","0")
+Execute ("!tm")</send>
+  </trigger>
+  <trigger
+   custom_colour="17"
+   enabled="y"
+   group="status alert"
+   make_underline="y"
+   match="*our muscles unlock; you are no longer paralysed*"
+   name="healed_paralysis"
+   send_to="12"
+   sequence="100"
+   other_text_colour="lime"
+  >
+  <send>SetVariable ("paralysis","0")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="defence"
+   match="*our resistance defence is ripped apart by its talons*"
+   send_to="12"
+   sequence="100"
+  >
+  <send>Execute (!r)</send>
+  </trigger>
+  <trigger
+   custom_colour="17"
+   enabled="y"
+   group="status"
+   make_underline="y"
+   match="*our right arm feels stronger and healthier."
+   name="arm_restored1"
+   send_to="12"
+   sequence="100"
+   other_back_colour="lime"
+  >
+  <send>SetVariable ("rightarmdamage","1")</send>
+  </trigger>
+  <trigger
+   custom_colour="17"
+   enabled="y"
+   group="status"
+   make_underline="y"
+   match="*our right leg feels stronger and healthier."
+   name="leg_restored1"
+   send_to="12"
+   sequence="100"
+   other_back_colour="lime"
+  >
+  <send>SetVariable ("rightlegdamage","1")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   expand_variables="y"
+   group="combat affliction"
+   match="*our spirit writhes in torment as it achieves new depths of dishonour*"
+   name="dishonour2"
+   send_to="13"
+   sequence="100"
+  >
+  <send>put valerian in @vpipe
+smoke @vpipe</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="defence"
+   match="*our venom defence is ripped apart by its talons*"
+   sequence="100"
+  >
+  <send>sip venom</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*our vision is flooded with light*"
+   name="unknown1"
+   send_to="13"
+   sequence="100"
+  >
+  <send>local ET
+local HB
+ET = GetVariable("eating")
+HB = GetVariable("herbbalance")
+if ET == '0' and HB == '1' then
+Send ("outr ginseng")
+Send ("eat ginseng")
+SetVariable ("eating","1")
+else
+end</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="defence"
+   match="*our weathering defence is ripped apart by its talons*"
+   sequence="100"
+  >
+  <send>weathering</send>
+  </trigger>
+  <trigger
+   custom_colour="6"
+   enabled="y"
+   group="anti-warp"
+   make_underline="y"
+   match="*piercing sound cleaves through the air*"
+   name="portaling"
+   send_to="2"
+   sequence="100"
+  >
+  <send>Alert!!</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="snub"
+   match="*plant carries no more berries that you could harvest."
+   name="snub_plant"
+   omit_from_output="y"
+   sequence="100"
+  >
+  </trigger>
+  <trigger
+   custom_colour="17"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*plunges it deep into your helpless*"
+   name="impaled"
+   send_to="12"
+   sequence="100"
+   other_text_colour="lightcoral"
+   other_back_colour="navy"
+  >
+  <send>SetVariable ("impaled","1")
+Send ("writhe")
+Send ("clot")
+Send ("clot")</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*prickly, stinging sensation spreads through your body*"
+   name="sensitivity"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("sensitivity","1")
+local ET
+local HB
+ET = GetVariable("eating")
+HB = GetVariable("herbbalance")
+if ET == '0' and HB == '1' then
+Send ("outr kelp")
+Send ("eat kelp")
+SetVariable ("eating","1")
+else
+end</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="balance"
+   match="*put your fingers to your lips and utter a shrill whistle."
+   name="whistle"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("balance","0")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="combat"
+   make_underline="y"
+   match="*razes your aura of rebounding*"
+   name="re_skullcap2"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("aura","0")
+Send ("put skullcap in 384270")
+Send ("light 384270")
+Send ("smoke 384270")
+SetVariable ("sc","smoke 384270")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="defence strip"
+   match="*razes your speed defence with*"
+   name="strip_speed"
+   send_to="12"
+   sequence="100"
+  >
+  <send>Send ("sip speed")
+EnableTrigger ("drinking_vials", false)
+DoAfterSpecial (1 ,'EnableTrigger ("drinking_vials", true)', sendto.script)</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*realize that your heroic actions*"
+   name="recklessness"
+   sequence="100"
+  >
+  <send>SetVariable ("recklessness","1")
+local ET
+local HB
+ET = GetVariable("eating")
+HB = GetVariable("herbbalance")
+if ET == '0' and HB == '1' then
+Send ("outr lobelia")
+Send ("eat lobelia")
+SetVariable ("eating","1")
+else
+end</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="status"
+   match="*rudence rules your psyche once again*"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("recklessness","0")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="scrub"
+   match="*rying to remove that horribl*"
+   name="scrub"
+   sequence="100"
+  >
+  <send>scrub</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   match="*salve dissolves into your skin with no*"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("apply","0")
+SetVariable ("salvebalance","1")
+Execute ("diag")</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*salve just slides off your skin*"
+   name="slickness2"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("gecko","1")
+SetVariable ("apply","1")
+SetVariable ("salvebalance","0")
+Execute ("!smv")</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   expand_variables="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*salve slides off your oily*"
+   name="slickness3"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("slickness","1")
+SetVariable ("apply","1")
+SetVariable ("salvebalance","0")
+Execute ("!smv")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="combat def"
+   match="*scurries around you furiously, stripping your cloak*"
+   name="cloak_def_strip"
+   sequence="100"
+  >
+  <send>touch cloak</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="snub"
+   match="*see no &quot;gold&quot;*"
+   name="snub_gold"
+   omit_from_output="y"
+   sequence="100"
+  >
+  </trigger>
+  <trigger
+   enabled="y"
+   group="snub"
+   match="*see no &quot;shard&quot;*"
+   name="snub_shard"
+   omit_from_output="y"
+   sequence="100"
+  >
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*sending you spinning*"
+   name="sprawl2"
+   sequence="100"
+  >
+  <send>stand</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="combat affliction"
+   match="*sending you tumbling*"
+   name="sprawl3"
+   sequence="100"
+  >
+  <send>stand</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*sense of extreme nausea washes over you*"
+   name="nauseous1"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("nausea","1")
+local ET
+local HB
+ET = GetVariable("eating")
+HB = GetVariable("herbbalance")
+if ET == '0' and HB == '1' then
+Send ("outr ginseng")
+Send ("eat ginseng")
+SetVariable ("eating","1")
+else
+end</send>
+  </trigger>
+  <trigger
+   custom_colour="17"
+   enabled="y"
+   group="combat sylvan"
+   match="*sickening sensation of something writhing and growing within your*"
+   name="heartseed2"
+   send_to="12"
+   sequence="100"
+   other_back_colour="yellow"
+  >
+  <send>Send ("apply restoration to torso")
+Note ("Heartseed!")</send>
+  </trigger>
+  <trigger
+   custom_colour="17"
+   enabled="y"
+   expand_variables="y"
+   group="anti-theft"
+   ignore_case="y"
+   match="*singe your fingers on the flame sigil as you try to give away*"
+   name="give_singe"
+   send_to="13"
+   sequence="100"
+   other_back_colour="orange"
+  >
+  <send>wear @pack
+wear @pouch</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   expand_variables="y"
+   ignore_case="y"
+   match="*slain by @dtarget."
+   send_to="12"
+   sequence="100"
+  >
+  <send>Execute ("f @dtarget")</send>
+  </trigger>
+  <trigger
+   custom_colour="9"
+   enabled="y"
+   group="combat"
+   match="*slowly pulls back *, readying*"
+   name="shatter_alert"
+   send_to="2"
+   sequence="100"
+  >
+  <send>Shatter!
+SHIELD UP! SHIELD UP!</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*smashing its bulk into you and knocking you*"
+   name="sprawl5"
+   sequence="100"
+  >
+  <send>stand</send>
+  </trigger>
+  <trigger
+   custom_colour="7"
+   enabled="y"
+   group="combat"
+   make_underline="y"
+   match="*spout of molten lava surges from the depths of the earth itself*"
+   name="thuriaz2"
+   sequence="100"
+  >
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*sprays you with a sticky webbing*"
+   name="webbed"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("entangled","1")
+local W
+local WT
+W = GetVariable ("writhe")
+WT = GetVariable ("writhing")
+if W == '0' and WT == '0' then
+Send ("writhe")
+SetVariable ("writhe","1")
+else
+end
+DoAfterSpecial (3,"",sendto.script)</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   match="*startles you*"
+   name="startle"
+   sequence="100"
+  >
+  <send>concentrate</send>
+  </trigger>
+  <trigger
+   custom_colour="17"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*strands of webbing cling to you*"
+   name="webbing_clinging"
+   send_to="12"
+   sequence="100"
+   other_text_colour="lightcoral"
+   other_back_colour="navy"
+  >
+  <send>SetVariable ("entangled","1")
+SetVariable ("apply","0")
+local W
+local WT
+W = GetVariable ("writhe")
+WT = GetVariable ("writhing")
+if W == '0' and WT == '0' then
+Send ("writhe")
+SetVariable ("writhe","1")
+else
+end
+DoAfterSpecial (3,"",sendto.script)</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*strange feeling overtakes you*"
+   name="unknown"
+   send_to="12"
+   sequence="100"
+  >
+  <send>local ET
+local HB
+ET = GetVariable("eating")
+HB = GetVariable("herbbalance")
+if ET == '0' and HB == '1' then
+Send ("outr kelp")
+Send ("eat kelp")
+SetVariable ("eating","1")
+else
+end</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   expand_variables="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*strange fog descends upon your mind*"
+   name="deadening"
+   send_to="13"
+   sequence="100"
+  >
+  <send>put elm in @epipe
+smoke @epipe</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   match="*stumble and fall in your alcoholic*"
+   sequence="100"
+  >
+  <send>stand</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*sun has rendered you too weak*"
+   name="unknown5"
+   send_to="13"
+   sequence="100"
+  >
+  <send>SetVariable ("darkshade","1")
+local ET
+local HB
+ET = GetVariable("eating")
+HB = GetVariable("herbbalance")
+if ET == '0' and HB == '1' then
+Send ("outr ginseng")
+Send ("eat ginseng")
+SetVariable ("eating","1")
+else
+end</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*swoon as you suffer a toxic relapse*"
+   name="relapse"
+   send_to="12"
+   sequence="100"
+  >
+  <send>local ET
+local HB
+ET = GetVariable("eating")
+HB = GetVariable("herbbalance")
+if ET == '0' and HB == '1' then
+Send ("outr ginseng")
+Send ("eat ginseng")
+SetVariable ("eating","1")
+else
+end</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="chat"
+   ignore_case="y"
+   match="*tells you*"
+   name="tells"
+   send_to="5"
+   sequence="100"
+  >
+  <send>%1tells you %2</send>
+  </trigger>
+  <trigger
+   group="quest"
+   match="*the Ka'ah Serpent says, &quot;Are you truly ready to face my challenge?*"
+   sequence="100"
+  >
+  <send>agree aneesh</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   expand_variables="y"
+   group="fishing"
+   ignore_case="y"
+   match="*the fish strains your line beyond its breaking point*"
+   name="pole_broke"
+   send_to="12"
+   sequence="100"
+  >
+  <send>Send ("get @bait from bucket")
+Send ("bait hook with @bait")
+DoAfter (4.5, "cast line @fdir")</send>
+  </trigger>
+  <trigger
+   custom_colour="3"
+   enabled="y"
+   group="Icon"
+   make_underline="y"
+   match="*the iconic shard in your hand*"
+   name="icon"
+   sequence="100"
+  >
+  <send>strengthen icon</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*thought of food revolts you*"
+   name="anorexia2"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("anorexia","1")
+SetVariable ("sipping","1")
+SetVariable ("eating","1")
+local AP
+local SB
+AP = GetVariable("apply")
+SB = GetVariable("salvebalance")
+if AP == '0' and SB == '1' then
+Send("apply epidermal to torso")
+SetVariable ("apply","1")
+else
+end</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*ticky strands of webbing spray out from * to cover you*"
+   name="web"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("entangled","1")
+local W
+local WT
+W = GetVariable ("writhe")
+WT = GetVariable ("writhing")
+if W == '0' and WT == '0' then
+Send ("writhe")
+SetVariable ("writhe","1")
+else
+end
+DoAfterSpecial (3,"",sendto.script)</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat priest"
+   make_underline="y"
+   match="*uddenly dizzy, you clutch your head and wonder what it was you were*"
+   name="Amnesia"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("headdamage","2")
+local AP
+local SB
+AP = GetVariable("apply")
+SB = GetVariable("salvebalance")
+if AP == '0' and SB == '1' then
+Send ("apply restoration to head")
+SetVariable ("apply","1")
+else
+end
+</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   expand_variables="y"
+   group="fishing"
+   match="*udge the cast at about * feet*"
+   name="line_control"
+   send_to="12"
+   sequence="100"
+  >
+  <send>if %2 &gt; 75
+then
+DoAfter (4, "reel line")
+DoAfter (4.1, "cast line @fdir")
+end
+</send>
+  </trigger>
+  <trigger
+   custom_colour="17"
+   enabled="y"
+   group="combat sylvan"
+   match="*unging forward with one palm outstretched, * aims a blow at you*"
+   name="heartseed"
+   send_to="12"
+   sequence="100"
+   other_back_colour="yellow"
+  >
+  <send>Send ("apply restoration to torso")
+Note ("Heartseed!")</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   expand_variables="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*unspeakable, horrific image rises from the bowels*"
+   name="hellsight"
+   send_to="13"
+   sequence="100"
+  >
+  <send>put elm in @epipe
+smoke @epipe</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="combat apostate"
+   match="*ure evil fills the room as a Baalzadeen emerges*"
+   name="baalzadeen"
+   sequence="100"
+  >
+  <send>p baalzadeen</send>
+  </trigger>
+  <trigger
+   custom_colour="11"
+   enabled="y"
+   group="status alert"
+   make_underline="y"
+   match="*vague outline of an aura of rebounding*"
+   name="aura_rebounding"
+   sequence="100"
+  >
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   match="*watch, in horror, as your left arm shrivels*"
+   name="shrivelled_left_arm"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("leftarmdamage","1")
+Execute ("cure_limbs")</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   match="*watch, in horror, as your right arm shrivels*"
+   name="shrivelled_right_arm"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("rightarmdamage","1")
+Execute ("cure_limbs")</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*wave of force knocks you to the ground*"
+   name="stand3"
+   sequence="100"
+  >
+  <send>stand</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*wave of utter panic washes over you*"
+   name="fear"
+   sequence="100"
+  >
+  <send>compose</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="snub"
+   match="*weat flies from*"
+   name="snub_forge"
+   omit_from_output="y"
+   sequence="100"
+  >
+  </trigger>
+  <trigger
+   custom_colour="17"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*webbing prevent you*"
+   name="webbings1"
+   send_to="12"
+   sequence="100"
+   other_text_colour="lightcoral"
+   other_back_colour="navy"
+  >
+  <send>SetVariable ("entangled","1")
+SetVariable ("sipping","0")
+SetVariable ("apply","0")
+local W
+local WT
+W = GetVariable ("writhe")
+WT = GetVariable ("writhing")
+if W == '0' and WT == '0' then
+Send ("writhe")
+SetVariable ("writhe","1")
+else
+end
+DoAfterSpecial (3,"",sendto.script)</send>
+  </trigger>
+  <trigger
+   custom_colour="17"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*you as * sprays sticky strands of spider*"
+   name="webbed0"
+   send_to="12"
+   sequence="100"
+   other_text_colour="lightcoral"
+   other_back_colour="navy"
+  >
+  <send>SetVariable ("entangled","1")
+local W
+local WT
+W = GetVariable ("writhe")
+WT = GetVariable ("writhing")
+if W == '0' and WT == '0' then
+Send ("writhe")
+SetVariable ("writhe","1")
+else
+end
+DoAfterSpecial (3,"",sendto.script)</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*you cannot bear the company of others*"
+   name="shyness"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("shyness","1")
+local ET
+local HB
+ET = GetVariable("eating")
+HB = GetVariable("herbbalance")
+if ET == '0' and HB == '1' then
+Send ("outr goldenseal")
+Send ("eat goldenseal")
+SetVariable ("eating","1")
+else
+end</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*you sprawling*"
+   name="sprawl"
+   send_to="13"
+   sequence="100"
+  >
+  <send>stand</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*you to tumble to the ground*"
+   name="sprawl4"
+   send_to="13"
+   sequence="100"
+  >
+  <send>stand</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*your body won't respond to your call*"
+   name="paralysis5"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("paralysis","1")
+SetVariable ("atking","0")
+local ET
+local HB
+ET = GetVariable("eating")
+HB = GetVariable("herbbalance")
+if ET == '0' and HB == '1' then
+Send ("outr bloodroot")
+Send ("eat bloodroot")
+SetVariable ("eating","1")
+else
+end</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*your body, fading away into numbness*"
+   name="sensitivity5"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("sensitivity","1")
+local ET
+local HB
+ET = GetVariable("eating")
+HB = GetVariable("herbbalance")
+if ET == '0' and HB == '1' then
+Send ("outr kelp")
+Send ("eat kelp")
+SetVariable ("eating","1")
+else
+end</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*your horror, your left arm has been mutilated beyond repair*"
+   name="mangled_left_arm"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable("leftarmdamage","3")
+Execute ("cure_limbs")</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*your horror, your left leg has been mutilated beyond repair*"
+   name="mangled_right_leg"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("rightlegdamage","3")
+Execute ("cure_limbs")</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*your horror, your left leg has been mutilated beyond repair*"
+   name="mangled_left_leg"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("leftlegdamage","3")
+Execute ("cure_limbs")</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*your horror, your right arm has been mutilated beyond repair*"
+   name="mangled_right_arm"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable("rightarmdamage","3")
+Execute ("cure_limbs")</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="*your sweat glands have begun to rapidly secrete*"
+   name="slickness"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable("gecko","1")
+Execute ("!smv")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   expand_variables="y"
+   ignore_case="y"
+   match="@dtarget (slashes|swings|utters|pumps|throws)(.*?)$"
+   regexp="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>Execute ("!d")
+Send ("lose @dtarget")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   expand_variables="y"
+   group="combat"
+   ignore_case="y"
+   keep_evaluating="y"
+   match="@target"
+   name="whack"
+   regexp="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SendNoEcho ("stand")
+SendNoEcho ("clot")
+Send ("@atk @target")
+SetVariable ("atking","1")
+DoAfterSpecial (3.5,'SetVariable("atking","0")',sendto.script)</send>
+  </trigger>
+  <trigger
+   custom_colour="17"
+   enabled="y"
+   expand_variables="y"
+   ignore_case="y"
+   match="@target arrives from the *"
+   sequence="100"
+   other_back_colour="deepskyblue"
+  >
+  </trigger>
+  <trigger
+   custom_colour="17"
+   enabled="y"
+   expand_variables="y"
+   group="combat"
+   ignore_case="y"
+   make_underline="y"
+   match="@target leaves to the *."
+   name="target_movement"
+   sequence="100"
+   other_back_colour="blue"
+  >
+  </trigger>
+  <trigger
+   custom_colour="17"
+   enabled="y"
+   expand_variables="y"
+   group="combat"
+   ignore_case="y"
+   make_underline="y"
+   match="@target parries the attack with a deft manoeuvre."
+   name="target_parry"
+   sequence="100"
+   other_back_colour="mediumorchid"
+  >
+  </trigger>
+  <trigger
+   custom_colour="11"
+   enabled="y"
+   group="combat"
+   match="@target takes a long drag off * pipe."
+   name="target_pipe"
+   sequence="100"
+  >
+  </trigger>
+  <trigger
+   custom_colour="17"
+   enabled="y"
+   expand_variables="y"
+   ignore_case="y"
+   match="@target takes some salve from*and rubs it on*arms."
+   sequence="100"
+   other_back_colour="deeppink"
+  >
+  </trigger>
+  <trigger
+   enabled="y"
+   match="@target's left leg has been beaten into uselessness."
+   sequence="100"
+  >
+  </trigger>
+  <trigger
+   enabled="y"
+   expand_variables="y"
+   match="@target's right leg has been beaten into uselessness."
+   sequence="100"
+  >
+  </trigger>
+  <trigger
+   enabled="y"
+   group="defence"
+   keep_evaluating="y"
+   match="A brief shiver runs through your body."
+   regexp="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("weathering","1")</send>
+  </trigger>
+  <trigger
+   custom_colour="5"
+   enabled="y"
+   expand_variables="y"
+   ignore_case="y"
+   lines_to_match="2"
+   keep_evaluating="y"
+   make_underline="y"
+   match="A massive\, translucent hammer rises out of(.*?)@target\'s tattoo and (smashes \nyou(.*?)|smashes you(.*?))"
+   multi_line="y"
+   regexp="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("shield","0")
+Note ("Hammer")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   keep_evaluating="y"
+   match="A pair of shears"
+   regexp="y"
+   sequence="100"
+  >
+  <send>g shears</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   expand_variables="y"
+   group="trace"
+   ignore_case="y"
+   match="Acee*(*)"
+   name="tracing"
+   send_to="12"
+   sequence="100"
+  >
+  <send>Note ("@trace@traceloc")
+EnableTrigger ("snub_trace", false)
+EnableTrigger ("trace_withwho", false)</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="defence"
+   match="An instant feeling of excitement and edginess overcomes you."
+   regexp="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("kola","1")</send>
+  </trigger>
+  <trigger
+   custom_colour="7"
+   enabled="y"
+   group="farkers"
+   match="Arelas"
+   name="thief7"
+   regexp="y"
+   send_to="2"
+   sequence="100"
+  >
+  <send>Thief!</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="affliction"
+   match="Cold blue flames wreathe*"
+   name="nairat_blade"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("freeze","2")
+Send ("concentrate")
+Execute("salve_cures")</send>
+  </trigger>
+  <trigger
+   custom_colour="7"
+   enabled="y"
+   group="farkers"
+   ignore_case="y"
+   make_underline="y"
+   match="Corbeaux"
+   name="thief_alert"
+   regexp="y"
+   send_to="2"
+   sequence="100"
+  >
+  <send>Thief Alert!</send>
+  </trigger>
+  <trigger
+   custom_colour="7"
+   enabled="y"
+   group="farkers"
+   ignore_case="y"
+   make_underline="y"
+   match="Dartega"
+   name="farqs"
+   regexp="y"
+   send_to="2"
+   sequence="100"
+  >
+  <send>Idiot!</send>
+  </trigger>
+  <trigger
+   custom_colour="7"
+   enabled="y"
+   group="farkers"
+   make_underline="y"
+   match="Epiphany"
+   name="thief"
+   regexp="y"
+   send_to="2"
+   sequence="100"
+  >
+  <send>Idiot!</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="quest"
+   keep_evaluating="y"
+   match="I do have a way to make rounding up the mazaran easier"
+   regexp="y"
+   sequence="100"
+  >
+  <send>yes</send>
+  </trigger>
+  <trigger
+   custom_colour="7"
+   enabled="y"
+   group="farkers"
+   ignore_case="y"
+   make_underline="y"
+   match="Kupo"
+   name="thief_alert1"
+   regexp="y"
+   send_to="2"
+   sequence="100"
+  >
+  <send>Thief Alert!</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="balance"
+   keep_evaluating="y"
+   match="Lightning-quick, you jab"
+   regexp="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("balance","0")
+SetVariable ("atking","0")</send>
+  </trigger>
+  <trigger
+   custom_colour="7"
+   enabled="y"
+   group="farkers"
+   ignore_case="y"
+   match="Linn"
+   name="thief4"
+   regexp="y"
+   send_to="2"
+   sequence="100"
+  >
+  <send>Idiot!</send>
+  </trigger>
+  <trigger
+   custom_colour="7"
+   enabled="y"
+   match="Manifest"
+   regexp="y"
+   sequence="100"
+  >
+  </trigger>
+  <trigger
+   enabled="y"
+   group="status"
+   match="Mercifully, the voyria venom has been cleansed from your body."
+   name="voyria_cure"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable("sipbalance","1")
+SetVariable("sipping","0")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="status"
+   match="No longer will the sunlight harm you."
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable("darkshade","0")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="pickup"
+   match="Number of objects\:(.*?)$"
+   name="stop_getting"
+   regexp="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>EnableTrigger ("get_stuff", false)
+Send("g sovereign")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   keep_evaluating="y"
+   match="Ooh, what good timing. Acee, could you help me out?"
+   regexp="y"
+   sequence="100"
+  >
+  <send>yes</send>
+  </trigger>
+  <trigger
+   custom_colour="7"
+   enabled="y"
+   group="farkers"
+   match="Orophin"
+   name="thief5"
+   send_to="2"
+   sequence="100"
+  >
+  <send>Idiot</send>
+  </trigger>
+  <trigger
+   custom_colour="7"
+   enabled="y"
+   group="farkers"
+   make_underline="y"
+   match="Otha"
+   name="thief6"
+   regexp="y"
+   send_to="2"
+   sequence="100"
+  >
+  <send>Idiot!</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   match="Pavilion in the Imperial Gardens."
+   name="target_reset"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("target","nonono")</send>
+  </trigger>
+  <trigger
+   custom_colour="7"
+   enabled="y"
+   group="farkers"
+   ignore_case="y"
+   make_underline="y"
+   match="Pepper"
+   name="raider"
+   regexp="y"
+   send_to="2"
+   sequence="100"
+  >
+  <send>Alert!</send>
+  </trigger>
+  <trigger
+   custom_colour="7"
+   enabled="y"
+   group="farkers"
+   ignore_case="y"
+   match="Poergh"
+   name="idiot2"
+   regexp="y"
+   send_to="2"
+   sequence="100"
+  >
+  <send>Idiot!</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="fishing"
+   match="Relaxing the tension on your line, you are able to reel again."
+   name="reel"
+   regexp="y"
+   sequence="100"
+  >
+  <send>reel line</send>
+  </trigger>
+  <trigger
+   custom_colour="7"
+   enabled="y"
+   group="farkers"
+   make_underline="y"
+   match="Santar"
+   name="thief_alert2"
+   regexp="y"
+   send_to="2"
+   sequence="100"
+  >
+  <send>Idiot!</send>
+  </trigger>
+  <trigger
+   custom_colour="7"
+   enabled="y"
+   group="farkers"
+   ignore_case="y"
+   make_underline="y"
+   match="Shecks"
+   name="thief_alert3"
+   regexp="y"
+   send_to="2"
+   sequence="100"
+  >
+  <send>Idiot!</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   match="The aural world fades to silence."
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable("eat_hawthorn","0")
+SetVariable ("deafness","1")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   match="The bayberry has no effect. You are already blind."
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("blindness","1")</send>
+  </trigger>
+  <trigger
+   custom_colour="17"
+   enabled="y"
+   group="combat apostate"
+   make_underline="y"
+   match="The blade on the daegger splits into a semblance of teeth as*"
+   name="eliminate2"
+   sequence="100"
+   other_text_colour="deepskyblue"
+   other_back_colour="darkred"
+  >
+  <send>Alert!
+
+Eliminate!
+
+Eliminate!</send>
+  </trigger>
+  <trigger
+   custom_colour="17"
+   enabled="y"
+   group="status"
+   keep_evaluating="y"
+   make_underline="y"
+   match="The bones in your left arm mend."
+   name="arm_mend1"
+   regexp="y"
+   send_to="12"
+   sequence="100"
+   other_back_colour="lime"
+  >
+  <send>SetVariable ("leftarmdamage","0")</send>
+  </trigger>
+  <trigger
+   custom_colour="17"
+   enabled="y"
+   group="status"
+   keep_evaluating="y"
+   make_underline="y"
+   match="The bones in your left leg mend."
+   name="leg_mend1"
+   regexp="y"
+   send_to="12"
+   sequence="100"
+   other_back_colour="lime"
+  >
+  <send>SetVariable ("leftlegdamage","0")</send>
+  </trigger>
+  <trigger
+   custom_colour="17"
+   enabled="y"
+   group="status"
+   keep_evaluating="y"
+   make_underline="y"
+   match="The bones in your right arm mend."
+   name="arm_mend"
+   regexp="y"
+   send_to="12"
+   sequence="100"
+   other_back_colour="lime"
+  >
+  <send>SetVariable ("rightarmdamage","0")</send>
+  </trigger>
+  <trigger
+   custom_colour="17"
+   enabled="y"
+   group="status"
+   keep_evaluating="y"
+   make_underline="y"
+   match="The bones in your right leg mend."
+   name="leg_mend"
+   regexp="y"
+   send_to="12"
+   sequence="100"
+   other_back_colour="lime"
+  >
+  <send>SetVariable ("rightlegdamage","0")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   keep_evaluating="y"
+   match="The pipe has nothing smokeable in it."
+   regexp="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("pipe","0")</send>
+  </trigger>
+  <trigger
+   custom_colour="17"
+   enabled="y"
+   expand_variables="y"
+   group="trace"
+   ignore_case="y"
+   match="The soul of @trace*(*)"
+   name="tracesoul"
+   send_to="9"
+   sequence="100"
+   variable="traceloc"
+   other_text_colour="darkslategray"
+   other_back_colour="yellow"
+  >
+  <send>'s soul at %2</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   match="The stinging feeling fades."
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("sensitivity","0")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="defence"
+   keep_evaluating="y"
+   match="Tiny tremours spread through your body as the world"
+   regexp="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("speed","1")</send>
+  </trigger>
+  <trigger
+   custom_colour="7"
+   enabled="y"
+   group="farkers"
+   ignore_case="y"
+   make_underline="y"
+   match="Trance"
+   name="thief_alert5"
+   send_to="2"
+   sequence="100"
+  >
+  <send>Idiot!</send>
+  </trigger>
+  <trigger
+   custom_colour="17"
+   enabled="y"
+   group="combat apostate"
+   make_underline="y"
+   match="With a daeggar in hand, * begins to close in on you."
+   name="eliminate"
+   send_to="2"
+   sequence="100"
+   other_text_colour="deepskyblue"
+   other_back_colour="darkred"
+  >
+  <send>Alert!
+
+Eliminate!
+
+Eliminate!</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="defence"
+   keep_evaluating="y"
+   match="You are blind\."
+   regexp="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("balance","0")
+SetVariable ("blindness","1")
+SetVariable ("fitness","0")
+SetVariable ("deafness","0")
+SetVariable ("weathering","0")
+SetVariable ("resistance","0")
+SetVariable ("cloak","0")
+SetVariable ("gripping","0")
+SetVariable ("shield","0")
+SetVariable ("levitation","0")
+SetVariable ("speed","0")
+SetVariable ("mindseye","0")
+SetVariable ("thirdeye","0")
+SetVariable ("kola","0")
+SetVariable ("aura","0")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="defence"
+   keep_evaluating="y"
+   match="You are deaf\."
+   regexp="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("balance","0")
+SetVariable ("deafness","1")
+SetVariable ("fitness","0")
+SetVariable ("weathering","0")
+SetVariable ("resistance","0")
+SetVariable ("cloak","0")
+SetVariable ("shield","0")
+SetVariable ("levitation","0")
+SetVariable ("speed","0")
+SetVariable ("gripping","0")
+SetVariable ("mindseye","0")
+SetVariable ("thirdeye","0")
+SetVariable ("kola","0")
+SetVariable ("aura","0")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   match="You are in perfect health."
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("diagnose","")
+SetVariable ("leftarmdamage","0")
+SetVariable ("leftlegdamage","0")
+SetVariable ("rightarmdamage","0")
+SetVariable ("rightlegdamage","0")
+SetVariable ("stupidity","0")
+SetVariable ("deafness","0")
+SetVariable ("blindness","0")
+SetVariable ("slickness","0")
+SetVariable ("paralysis","0")
+SetVariable ("asthma","0")
+SetVariable ("anorexia","0")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   match="You are no longer dizzy."
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("dizziness","0")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="defence"
+   match="You are protected from hand-held weapons with an aura of rebounding."
+   regexp="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("aura","1")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="defence"
+   keep_evaluating="y"
+   match="You are resisting magical damage."
+   regexp="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("resistance","1")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   match="You are scorched by the firewall as you pass through."
+   sequence="100"
+  >
+  <send>apply mending</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="defence"
+   keep_evaluating="y"
+   match="You are surrounded by a cloak of protection."
+   regexp="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("cloak","1")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="defence"
+   match="You are utilising your bodily control to make yourself more fit."
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("fitness","1")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="defence"
+   keep_evaluating="y"
+   match="You are walking on a small cushion of air."
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("levitation","1")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="diag"
+   keep_evaluating="y"
+   match="You are:"
+   name="diagnose"
+   regexp="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("diagnose","")
+SetVariable ("leftarmdamage","0")
+SetVariable ("leftlegdamage","0")
+SetVariable ("rightarmdamage","0")
+SetVariable ("rightlegdamage","0")
+SetVariable ("stupidity","0")
+SetVariable ("deafness","0")
+SetVariable ("blindness","0")
+SetVariable ("slickness","0")
+SetVariable ("paralysis","0")
+SetVariable ("asthma","0")
+SetVariable ("anorexia","0")
+SetVariable ("recklessness","0")
+DoAfterSpecial (0.5,'Execute("cure_limbs")',sendto.script)
+DoAfterSpecial (0.5,'Execute("salve_cures")',sendto.script)
+DoAfterSpecial (0.5,'Execute("herb_cures")',sendto.script)</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="defence"
+   keep_evaluating="y"
+   match="You call aloud and feel an aura of resistance shroud"
+   regexp="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("resistance","1")</send>
+  </trigger>
+  <trigger
+   custom_colour="9"
+   enabled="y"
+   group="combat devotion"
+   make_underline="y"
+   match="You cannot help but obey."
+   name="force"
+   send_to="2"
+   sequence="100"
+  >
+  <send>ALERT!!</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   match="You eat (a ginseng root|a piece of kelp|a lobelia seed|a bloodroot leaf)."
+   regexp="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("eating","0")
+SetVariable ("herbbalance","0")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   keep_evaluating="y"
+   match="You eat a goldenseal root."
+   regexp="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("gs","0")
+SetVariable ("herbbalance","0")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   keep_evaluating="y"
+   match="You eat a hawthorn berry"
+   regexp="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable("eat_hawthorn","1")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="defence"
+   keep_evaluating="y"
+   match="You feel your lungs sag somewhat as your fitness levels drop."
+   regexp="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable("fitness","0")
+SetVariable("balance","1")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   keep_evaluating="y"
+   match="You fill your pipe with(.*?)"
+   regexp="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("pipe","1")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="defence"
+   match="You have ingested the kola nut and are feeling extremely energetic."
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("kola","1")</send>
+  </trigger>
+  <trigger
+   custom_colour="17"
+   enabled="y"
+   expand_variables="y"
+   group="combat"
+   make_underline="y"
+   match="You have no swords or battleaxes in your hands!"
+   name="dbl_disarmed"
+   regexp="y"
+   sequence="100"
+   other_back_colour="white"
+  >
+  <send>relax grip
+unwield darkbow
+wear darkbow
+unwield pole
+unwield totem
+draw strong
+draw strong
+take 88838
+take 363086
+wield 88838
+wield 363086
+grip
+parry head
+dsl @target</send>
+  </trigger>
+  <trigger
+   custom_colour="2"
+   enabled="y"
+   expand_variables="y"
+   group="combat"
+   make_underline="y"
+   match="You have recovered (balance on all limbs|equilibrium)."
+   name="autoatk"
+   regexp="y"
+   repeat="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("balance", "1")
+SetVariable ("atking","0")
+local DI
+local DE
+local FT
+local SH
+local LP
+local CL
+local PI
+CL = GetVariable("cloaking")
+SH = GetVariable("shielding")
+DI = GetVariable("diagnose")
+DE = GetVariable("def2")
+FT = GetVariable("fit")
+LP = GetVariable ("lp")
+PI = GetVariable ("pipe")
+if PI == '0' then
+Send ("put valerian in @vpipe")
+else
+end
+if LP == '0' then
+Execute ("lightpipe")
+else
+end
+if SH == 'touch shield' then
+SendNoEcho ("@shielding")
+elseif CL == 'touch cloak' then
+SendNoEcho ("@cloaking")
+elseif DI == 'diag me' then
+SendNoEcho ("@diagnose")
+DoAfterSpecial (1,'Execute("herb_cures")',sendto.script)
+DoAfterSpecial (1,'Execute("salve_cures")',sendto.script)
+elseif DE == 'def' then
+SendNoEcho ("@def2")
+elseif FT == 'fitness' then
+SendNoEcho ("@fit")
+end
+SendNoEcho ("stand")
+Execute ("defence_up")
+SendNoEcho ("clot")
+SendNoEcho ("clot")
+SendNoEcho ("g shard")
+SendNoEcho ("g gold")
+Send ("@atk @target")
+SetVariable ("atking","1")
+DoAfterSpecial (1,'SetVariable("atking","0")',sendto.script)</send>
+  </trigger>
+  <trigger
+   custom_colour="2"
+   expand_variables="y"
+   group="combat"
+   make_underline="y"
+   match="You have recovered (balance on all limbs|equilibrium)."
+   name="writhe"
+   regexp="y"
+   repeat="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>Send ("writhe")
+SetVariable ("balance","0")
+EnableTrigger ("autoatk2", True)
+EnableTrigger ("writhe", false)</send>
+  </trigger>
+  <trigger
+   custom_colour="2"
+   expand_variables="y"
+   group="combat"
+   make_underline="y"
+   match="You have recovered (balance on all limbs|equilibrium)."
+   name="autoatk2"
+   regexp="y"
+   repeat="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("balance", "1")
+SetVariable ("atking","0")
+local DI
+local DE
+local FT
+local SH
+local LP
+local PI
+SH = GetVariable("shielding")
+DI = GetVariable("diagnose")
+DE = GetVariable("def2")
+FT = GetVariable("fit")
+LP = GetVariable ("lp")
+PI = GetVariable ("pipe")
+if PI == '0' then
+Send ("put valerian in @vpipe")
+else
+end
+if LP == '0' then
+Execute ("lightpipe")
+else
+end
+if SH == 'touch shield' then
+SendNoEcho ("@shielding")
+elseif DI == 'diag me' then
+SendNoEcho ("@diagnose")
+DoAfterSpecial (1,'Execute("herb_cures")',sendto.script)
+DoAfterSpecial (1,'Execute("salve_cures")',sendto.script)
+elseif DE == 'def' then
+SendNoEcho ("@def2")
+elseif FT == 'fitness' then
+SendNoEcho ("@fit")
+end
+SendNoEcho ("stand")
+Execute ("defence_up")
+SendNoEcho ("@sc")
+SendNoEcho ("clot")
+SendNoEcho ("clot")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   keep_evaluating="y"
+   match="You messily spread the salve over your body, to no effect."
+   regexp="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("apply","0")
+SetVariable ("salvebalance","1")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="wake"
+   ignore_case="y"
+   match="You open your eyes and yawn mightily."
+   name="wakeup"
+   omit_from_output="y"
+   regexp="y"
+   sequence="100"
+  >
+  <send>stand
+grip</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   expand_variables="y"
+   group="auto keep"
+   match="You pick up some gold sovereigns"
+   name="keepgold"
+   omit_from_output="y"
+   regexp="y"
+   sequence="100"
+  >
+  <send>put gold in pouch</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="defence"
+   match="You possess the sight of the third eye."
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("thirdeye","1")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="anti-theft"
+   match="You relax your grip."
+   name="re_grip"
+   omit_from_output="y"
+   regexp="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("grip","0")
+SendImmediate ("grip")
+SendImmediate ("grip")
+SendImmediate ("grip")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   match="You rub your hands together greedily."
+   regexp="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("selfishness","1")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   keep_evaluating="y"
+   match="You take out some salve and quickly rub"
+   regexp="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("apply","0")
+SetVariable ("salvebalance","0")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="balance"
+   keep_evaluating="y"
+   match="You viciously jab"
+   regexp="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("balance","0")
+SetVariable ("atking","0")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   keep_evaluating="y"
+   match="Your action causes the nearly invisible magical shield"
+   regexp="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("shield","0")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="defence"
+   keep_evaluating="y"
+   match="Your body is weathering the storm of life a little better."
+   regexp="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("balance","0")
+SetVariable ("weathering","1")
+SetVariable ("fitness","0")
+SetVariable ("resistance","0")
+SetVariable ("cloak","0")
+SetVariable ("shield","0")
+SetVariable ("levitation","0")
+SetVariable ("speed","0")
+SetVariable ("gripping","0")
+SetVariable ("mindseye","0")
+SetVariable ("thirdeye","0")
+SetVariable ("kola","0")
+SetVariable ("aura","0")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   match="Your body warms up and you stop shivering."
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("freeze","0")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   match="Your eyes dim as you lose your sight."
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("blindness","1")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="anti-theft"
+   match="Your grip is already relaxed."
+   name="re_grip2"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("grip","0")
+SendImmediate ("grip")
+SendImmediate ("grip")
+SendImmediate ("grip")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="defence"
+   keep_evaluating="y"
+   match="Your hands are gripping your wielded items tightly."
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable("gripping","1")</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   ignore_case="y"
+   keep_evaluating="y"
+   make_underline="y"
+   match="Your left arm is greatly damaged from the beating."
+   name="broken_left_arm"
+   regexp="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("leftarmdamage","2")
+Execute ("cure_limbs")
+</send>
+  </trigger>
+  <trigger
+   custom_colour="17"
+   enabled="y"
+   group="status"
+   make_underline="y"
+   match="Your left arm is greatly healed, but still damaged."
+   name="arm_heal1"
+   send_to="12"
+   sequence="100"
+   other_back_colour="lime"
+  >
+  <send>SetVariable ("leftarmdamage","2")</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   ignore_case="y"
+   keep_evaluating="y"
+   make_underline="y"
+   match="Your left leg is greatly damaged from the beating."
+   name="broken_left_leg"
+   regexp="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("leftlegdamage","2")
+Execute ("cure_limbs")</send>
+  </trigger>
+  <trigger
+   custom_colour="17"
+   enabled="y"
+   group="status"
+   keep_evaluating="y"
+   make_underline="y"
+   match="Your left leg is greatly healed, but still damaged."
+   name="leg_heal"
+   regexp="y"
+   send_to="12"
+   sequence="100"
+   other_back_colour="lime"
+  >
+  <send>SetVariable ("leftlegdamage","2")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   keep_evaluating="y"
+   match="Your movement causes your magical shield to dissipate."
+   regexp="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("shield","0")</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   ignore_case="y"
+   keep_evaluating="y"
+   make_underline="y"
+   match="Your right arm is greatly damaged from the beating."
+   name="broken_right_arm"
+   regexp="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("rightarmdamage","2")
+Execute ("cure_limbs")</send>
+  </trigger>
+  <trigger
+   custom_colour="17"
+   enabled="y"
+   group="status"
+   make_underline="y"
+   match="Your right arm is greatly healed, but still damaged."
+   name="arm_heal"
+   send_to="12"
+   sequence="100"
+   other_back_colour="lime"
+  >
+  <send>SetVariable ("rightarmdamage","2")</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   ignore_case="y"
+   keep_evaluating="y"
+   make_underline="y"
+   match="Your right leg is greatly damaged from the beating."
+   name="broken_right_leg"
+   regexp="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("rightlegdamage","2")
+Execute ("cure_limbs")</send>
+  </trigger>
+  <trigger
+   custom_colour="17"
+   enabled="y"
+   group="status"
+   keep_evaluating="y"
+   make_underline="y"
+   match="Your right leg is greatly healed, but still damaged."
+   name="leg_heal1"
+   regexp="y"
+   send_to="12"
+   sequence="100"
+   other_back_colour="lime"
+  >
+  <send>SetVariable ("rightlegdamage","2")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="defence"
+   keep_evaluating="y"
+   match="Your sense of time is heightened, and your reactions are speeded."
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("speed","1")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="defence"
+   keep_evaluating="y"
+   match="Your senses are magically heightened."
+   regexp="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("mindseye","1")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   match="Your shyness has been cured.*"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("shyness","0")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   match="Your speed defence erodes away."
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("speed","0")
+Execute ("!ss")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   match="Your stomach becalms itself."
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("nausea","0")</send>
+  </trigger>
+  <trigger
+   custom_colour="7"
+   enabled="y"
+   group="farkers"
+   ignore_case="y"
+   keep_evaluating="y"
+   match="Zambuk"
+   name="raider4"
+   send_to="2"
+   sequence="100"
+  >
+  <send>Idiot</send>
+  </trigger>
+  <trigger
+   custom_colour="17"
+   enabled="y"
+   group="combat apostate"
+   keep_evaluating="y"
+   make_underline="y"
+   match="\&quot;Hunt\!\&quot; (.*?) orders (.*?) daegger\."
+   name="anti_hunt"
+   regexp="y"
+   send_to="2"
+   sequence="100"
+   other_text_colour="deepskyblue"
+   other_back_colour="maroon"
+  >
+  <send>ALERT! HUNT!
+SHIELD UP!
+SHIELD UP!</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   expand_variables="y"
+   group="combat"
+   match="^(.*?)ou raze \@target\'s magical shield with(.*?)$"
+   name="raze_reset"
+   regexp="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("balance","0")
+SetVariable ("atking","0")
+SetVariable ("atk","dsl")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="defence"
+   keep_evaluating="y"
+   match="^You are protected by (.*?) defenc(.*?)\.$"
+   regexp="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("def2","")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="defence"
+   keep_evaluating="y"
+   match="^You will attempt to parry attacks to your (.*?)$"
+   regexp="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("parry","1")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="defence"
+   match="^blind\.$"
+   regexp="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("blindness","1")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="defence"
+   match="^deaf\.$"
+   regexp="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("deafness","1")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="fishing"
+   match="a fish nibbling on your hook"
+   name="teaseline"
+   regexp="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>DoAfter (2, "tease line")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   match="afflicted by a crippled left arm."
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("leftarmdamage","1")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="diag"
+   keep_evaluating="y"
+   match="afflicted by a crippled left leg."
+   regexp="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("leftlegdamage","1")
+Execute ("cure_limbs")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="diag"
+   match="afflicted by a crippled right leg."
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("rightlegdamage","1")
+Execute ("cure_limbs")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   match="afflicted by haemophilia."
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("haemophilia","1")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   match="afflicted by horrible asthma."
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("asthma","1")
+SetVariable ("fitness","0")
+Execute ("!f")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   match="afflicted by thin blood."
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("relapse","1")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   match="afflicted by unbearable shyness."
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("shyness","1")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="diag"
+   match="afflicted with clumsiness."
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("clumsiness","1")</send>
+  </trigger>
+  <trigger
+   keep_evaluating="y"
+   match="egg lolls"
+   regexp="y"
+   sequence="100"
+  >
+  <send>get egg</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="diag"
+   match="extremely oily."
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("slickness","1")
+Execute("!smv")</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="has a mangled left arm."
+   name="mangled_left_arm2"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("leftarmdamage","3")
+Execute ("cure_limbs")</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="has a mangled left leg."
+   name="mangled_left_leg2"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("leftlegdamage","3")
+Execute ("cure_limbs")</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="has a mangled right arm."
+   name="mangled_right_arm2"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("rightarmdamage","3")
+Execute ("cure_limbs")</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="has a mangled right leg."
+   name="mangled_right_leg2"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("rightlegdamage","3")
+Execute ("cure_limbs")</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   match="has a partially damaged left arm."
+   name="broken_left_arm2"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("leftarmdamage","2")
+Execute ("cure_limbs")</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="has a partially damaged left leg."
+   name="broken_left_leg2"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("leftlegdamage","2")
+Execute ("cure_limbs")</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   match="has a partially damaged right arm."
+   name="broken_right_arm2"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("rightarmdamage","2")
+Execute ("cure_limbs")</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   group="combat affliction"
+   make_underline="y"
+   match="has a partially damaged right leg."
+   name="broken_right_leg2"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("rightlegdamage","2")
+Execute ("cure_limbs")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   match="inspires disloyalty in those nearby."
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("dishonour","1")
+Execute ("!smv")</send>
+  </trigger>
+  <trigger
+   custom_colour="1"
+   enabled="y"
+   keep_evaluating="y"
+   make_underline="y"
+   match="jaws onto your ankle, whipping his head back and forth"
+   regexp="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>Execute ("!aml")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="combat"
+   ignore_case="y"
+   match="jolt of pain up your arm"
+   name="disarmed"
+   regexp="y"
+   sequence="100"
+  >
+  <send>take rapier
+wield rapier
+grip</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="fishing"
+   match="large strike at your bait"
+   name="largejerk"
+   regexp="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>DoAfter (1.45, "jerk")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="fishing"
+   match="medium strike at your bait"
+   name="mediumjerk"
+   regexp="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>DoAfter (1.45, "jerk")</send>
+  </trigger>
+  <trigger
+   custom_colour="17"
+   enabled="y"
+   group="combat devotion"
+   ignore_case="y"
+   match="over you to pass judgement on your sins"
+   name="judgement3"
+   regexp="y"
+   send_to="2"
+   sequence="100"
+   other_back_colour="yellow"
+  >
+  <send>Alert!
+Judgement!
+Judgement!</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   match="overcome by dizziness."
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable("diziness","1")
+local ET
+local HB
+ET = GetVariable("eating")
+HB = GetVariable("herbbalance")
+if ET == '0' and HB == '1' then
+Send ("outr goldenseal")
+Send ("eat goldenseal")
+SetVariable ("eating","1")
+Note ("eating")
+else
+end</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   match="reckless."
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("recklessness","1")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   match="sensitive to pain."
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("sensitivity","1")
+local ET
+local HB
+ET = GetVariable("eating")
+HB = GetVariable("herbbalance")
+if ET == '0' and HB == '1' then
+Send ("outr kelp")
+Send ("eat kelp")
+SetVariable ("eating","1")
+else
+end</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="quest"
+   ignore_case="y"
+   match="sheep* *a woolly * sheep"
+   name="sheep"
+   sequence="100"
+  >
+  <send>grab %1</send>
+  </trigger>
+  <trigger
+   custom_colour="17"
+   enabled="y"
+   match="shouts: STOP"
+   regexp="y"
+   send_to="12"
+   sequence="100"
+   other_back_colour="lawngreen"
+  >
+  <send>Note("Sit Sit!!!!!")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   keep_evaluating="y"
+   match="shovel lies on"
+   regexp="y"
+   sequence="100"
+  >
+  <send>g shovel</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="fishing"
+   match="small strike at your bait"
+   name="smalltease"
+   regexp="y"
+   send_to="14"
+   sequence="100"
+  >
+  <send>DoAfter (1.85, "tease line")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   match="snot dripping from his nose"
+   regexp="y"
+   sequence="100"
+  >
+  <send>hi boy</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   match="sprawled on the ground."
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("stand","0")
+Send ("stand")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   match="wearied in body."
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("weariness","1")</send>
+  </trigger>
+  <trigger
+   custom_colour="12"
+   enabled="y"
+   group="quest"
+   make_underline="y"
+   match="weasel"
+   name="weasel_alert"
+   regexp="y"
+   sequence="100"
+  >
+  </trigger>
+  <trigger
+   enabled="y"
+   group="wake"
+   match="well-rested"
+   match_text_colour="y"
+   name="stand_from_rest"
+   regexp="y"
+   sequence="100"
+   text_colour="15"
+  >
+  <send>stand
+grip</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="combat"
+   match="you sprawling to the ground"
+   name="fallen"
+   regexp="y"
+   send_to="13"
+   sequence="100"
+  >
+  <send>stand
+grip</send>
+  </trigger>
+  <trigger
+   expand_variables="y"
+   group="trace"
+   ignore_case="y"
+   make_underline="y"
+   match="* *(@traceloc2)"
+   name="trace_withwho"
+   sequence="101"
+  >
+  </trigger>
+  <trigger
+   enabled="y"
+   group="snub"
+   match="*forging hammer."
+   name="snub_forging2"
+   omit_from_output="y"
+   sequence="101"
+  >
+  </trigger>
+  <trigger
+   group="trace"
+   match="*      (*)"
+   name="snub_trace"
+   omit_from_output="y"
+   sequence="110"
+  >
+  </trigger>
+  <trigger
+   expand_variables="y"
+   group="combat"
+   keep_evaluating="y"
+   match="@target"
+   name="auto_clot"
+   omit_from_output="y"
+   send_to="12"
+   sequence="110"
+  >
+  <send>SendNoEcho ("clot")
+SendNoEcho ("clot")</send>
+  </trigger>
+</triggers>
+</muclient>
